@@ -124,8 +124,11 @@ nav {
   position: fixed;
   bottom: 0;
   right: 0;
-  opacity: 1;
   transition: all .5s ease;
+  z-index: 1;
+}
+nav.toggled {
+  transform: translateY(100%);
 }
 .toggle {
   color: #fff;
@@ -154,6 +157,17 @@ nav {
   }
   nav {
     width: 100%;
+    padding: 15px 10px;
+    background-color: #5C5C5C;
+    color: #C7C7C7;
+    text-align: center;
+    font-size: 15px;
+    cursor: default;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    transition: all .5s ease;
+    z-index: 1;
   }
   .toggle {
     display: none;

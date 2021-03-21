@@ -28,6 +28,16 @@ if (dlBtn.className.search(/disabled/g) !== -1){
   dlBtn.href = "#section2";
 }
 
+let wasToggled = false;
+window.addEventListener("resize", () => {
+  if (window.innerWidth <= 1440) {
+    document.querySelector("nav").classList.remove("toggled");
+  }
+  else if (wasToggled === true) {
+    document.querySelector("nav").classList.add("toggled");
+  }
+})
+
 const menuBar = document.querySelector("#section2");
 
 let clicked = false;
@@ -35,6 +45,12 @@ let clicked = false;
 function show() {
     menuBar.classList.toggle("toggled");
     document.querySelector("#section1").classList.toggle("toggled");
+    document.querySelector("nav").classList.toggle("toggled");
+    if (wasToggled === false) {
+      wasToggled = true;
+    } else {
+      wasToggled = false;
+    }
 }
 
 
@@ -112,14 +128,7 @@ function menu(menuName) {
     }
 
   }
-  menuBar.innerHTML += `
-  <nav>
-    <a href="#section2" onclick="menu('about')">A propos</a>
-    <a href="#section2" onclick="menu('use')">Utilisation</a>
-    <a href="#section2" onclick="menu('changelog')">Changements</a>
-    <a href="#section2" onclick="menu('contact')">Contact</a>
-  </nav>
-  `;
+
 }
 menu("changelog");
 
