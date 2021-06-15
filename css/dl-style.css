@@ -1,0 +1,123 @@
+/* Import */
+
+/* ****** */
+*, ::before, ::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "";
+}
+body {
+  background-color: #09F;
+  color: #fff;
+}
+
+a {
+  text-decoration: none;
+}
+/* ****** */
+
+.flexbox {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.title {
+  font-size: 2rem;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: space-evenly;
+
+  width: 400px;
+  height: 250px;
+
+  margin: 20px;
+
+  background: #fff;
+  color: #1a6699;
+  border-radius: 25px;
+  overflow: hidden;
+
+  transition: all .5s ease;
+}
+.card:hover {
+  width: 500px;
+}
+
+.img {
+  height: 100%;
+  flex: 1;
+}
+
+.launcher-card > .img {
+  background: url("../img/launcher-banner.png") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;;
+}
+.js-card > .img {
+  background: url("../img/js-banner.png") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;;
+}
+
+.text {
+  flex: 2;
+
+  padding: 20px;
+  max-width: 250px;
+}
+
+.card-title {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 999px) {
+  .title {
+    display: none;
+  }
+  .card-container {
+    flex-direction: column;
+  }
+  .card {
+  flex-direction: column;
+  align-items: center;
+
+    width: 200px;
+    height: 30vh;
+
+    margin: 5px 0;
+
+    transition: all .5s ease;
+  }
+  .card:hover {
+    height: 40vh;
+    width: 200px;
+  }
+  .img {
+    display: none;
+  }
+}
