@@ -74,7 +74,7 @@ function dl() {
     Voulez vous quand même le télécharger ?</p>
     <p>Si oui cliquez sur "Télécharger" ci-dessous.</p>
     <br>
-    <a class="dlLink" href="download.html" download>Télécharger</a>
+    <a class="dlLink" href="download" download>Télécharger</a>
     <style>
       .dlLink {
         background: #333;
@@ -93,7 +93,7 @@ function dl() {
     `;
   }
   else {
-    dlBtn.href = `download.html`;
+    dlBtn.href = `download`;
   }
 }
 
