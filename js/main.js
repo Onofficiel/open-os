@@ -39,7 +39,7 @@ function isMobile() {
 const dlBtn = document.querySelector(".dl-btn");
 
 if (dlBtn.className.search(/disabled/g) !== -1){
-  dlBtn.innerHTML = "INDISPONIBLE";
+  dlBtn.innerHTML = "BIENTÔT !";
 }
 
 const menuBar = document.querySelector("#changelog>div.text-container");
