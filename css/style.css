@@ -203,6 +203,10 @@ img#scrollArrow {
   color: #fff;
   overflow: wrap;
 }
+#section2>div.container#changelog {
+  min-height: 100vh;
+}
+
 
 #section2>div.container>div.text-container {
   position: absolute;
