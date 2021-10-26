@@ -175,8 +175,8 @@ let oos = {
             <img src="${wnd.icon}" />
             <span class="title">${wnd.title}</span>
             <span class="ctrl-btn">
-              <span class="close-btn">✕</span>
               <span class="fullscreen-btn">□</span>
+              <span class="close-btn">✕</span>
             </span>
           </div>
 
