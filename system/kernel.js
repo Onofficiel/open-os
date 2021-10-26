@@ -159,9 +159,9 @@ let oos = {
 
         app.src = icon;
 
-        desk.appendChild(app)
-      }
-    }
+        desk.appendChild(app);
+      },
+    },
   },
   Window: class {
     constructor(wnd) {
@@ -169,7 +169,8 @@ let oos = {
       if (!wnd.title) wnd.title = "Untitled Window";
       if (!wnd.body) wnd.body = "";
       if (!wnd.headerColor) wnd.headerColor = "#09F";
-      if (!wnd.icon) wnd.icon = "https://onofficiel.github.io/w96/dist/border/16x16.png";
+      if (!wnd.icon)
+        wnd.icon = "https://onofficiel.github.io/w96/dist/border/16x16.png";
 
       this.winDiv = document.createElement("div");
 
@@ -179,8 +180,12 @@ let oos = {
       this.winDiv.style.height = wnd.height ? wnd.height + "px" : 300 + "px";
       this.winDiv.style.width = wnd.width ? wnd.width + "px" : 400 + "px";
 
-      this.winDiv.style.minHeight = wnd.minHeight ? wnd.minHeight + "px" : 200 + "px";
-      this.winDiv.style.minWidth = wnd.minWidth ? wnd.minWidth + "px" : 200 + "px";
+      this.winDiv.style.minHeight = wnd.minHeight
+        ? wnd.minHeight + "px"
+        : 200 + "px";
+      this.winDiv.style.minWidth = wnd.minWidth
+        ? wnd.minWidth + "px"
+        : 200 + "px";
 
       this.winDiv.innerHTML = `
           <div class="window-content">${wnd.body}</div>
@@ -203,11 +208,12 @@ let oos = {
       oos.util.dragHeader(this.winDiv);
       oos.util.resizeByResizer(this.winDiv);
 
-      document.querySelector(".desktop").appendChild(this.winDiv);
-
       this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
         this.close();
       });
+
+      document.querySelector(".desktop").appendChild(this.winDiv);
+      oos.ui.desk.addIcon(wnd.icon);
 
       return this.winDiv.dataset.id;
     }
