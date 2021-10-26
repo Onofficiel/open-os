@@ -165,11 +165,9 @@ let oos = {
       this.winDiv.style.height = wnd.height ? wnd.height + "px" : 200 + "px";
       this.winDiv.style.width = wnd.width ? wnd.width + "px" : 200 + "px";
 
-      console.log(this.__proto__.close());
-
       this.winDiv.innerHTML = `
           <div class="window-content">${wnd.body}</div>
-          <div class="window-header" style="background: ${wnd.headerColor};"><span class="title">${wnd.title}</span><span onclick="this.close()" class="close-btn">✕</span></div>
+          <div class="window-header" style="background: ${wnd.headerColor};"><span class="title">${wnd.title}</span><span onclick="this.__proto__.close()" class="close-btn">✕</span></div>
 
           <div class="resizer nw"></div>
           <div class="resizer ne"></div>
