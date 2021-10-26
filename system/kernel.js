@@ -221,7 +221,7 @@ let oos = {
       this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
         this.close();
       });
-      oos.ui.desk.addIcon(this);
+      oos.ui.desk.addApp(this);
 
       return this.winDiv;
     }
@@ -232,7 +232,7 @@ let oos = {
 
     close() {
       return document.querySelector(".desktop").removeChild(this.winDiv);
-      oos.ui.desk.addIcon(this);
+      oos.ui.desk.removeApp(this);
     }
 
     show() {
