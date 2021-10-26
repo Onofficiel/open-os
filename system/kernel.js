@@ -181,7 +181,7 @@ let oos = {
       document.querySelector(".desktop").appendChild(this.winDiv);
 
       this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
-        this.__proto__.close();
+        document.querySelector(".desktop").removeChild(this.winDiv);
       });
 
       return this.winDiv.dataset.id;
