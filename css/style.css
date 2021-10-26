@@ -223,6 +223,7 @@ img#scrollArrow {
 #section2>div.container>div.text-container>h1 {
   margin-bottom: 30px;
 }
+
 p, li {
   font-size: calc(20 * var(--res));
 }
