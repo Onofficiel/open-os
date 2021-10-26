@@ -176,6 +176,7 @@ let oos = {
             <span class="title">${wnd.title}</span>
             <span class="ctrl-btn">
               <span class="close-btn">✕</span>
+              <span class="fullscreen-btn">□</span>
             </span>
           </div>
 
