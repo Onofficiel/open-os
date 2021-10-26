@@ -167,7 +167,7 @@ let oos = {
 
       this.winDiv.innerHTML = `
           <div class="window-content">${wnd.body}</div>
-          <div class="window-header" style="background: ${wnd.headerColor};">${wnd.title} <span>✕</span></div>
+          <div class="window-header" style="background: ${wnd.headerColor};"><span class="title">${wnd.title}</span><span onclick="this.close()" class="close-btn">✕</span></div>
 
           <div class="resizer nw"></div>
           <div class="resizer ne"></div>
