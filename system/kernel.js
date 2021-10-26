@@ -165,7 +165,7 @@ let oos = {
       this.winDiv.style.height = wnd.height ? wnd.height + "px" : 200 + "px";
       this.winDiv.style.width = wnd.width ? wnd.width + "px" : 200 + "px";
 
-      console.log(this);
+      console.log(this.prototype);
 
       this.winDiv.innerHTML = `
           <div class="window-content">${wnd.body}</div>
