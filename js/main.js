@@ -1,43 +1,38 @@
 //////////////// Version and News ////////////////
 
 const version = "0.0.1z";
-const lnk = "https://open-os.netlify.app";
 
-list =
-[
-"Modification du noyeau",
-"Nouveau systeme de fenetre",
-];
+list = ["Modification du noyeau", "Nouveau systeme de fenetre"];
 
 //////////////////////////////////////////////////
 
+const lnk = "https://open-os.netlify.app";
 
-const loader = document.querySelector("#loader")
+const loader = document.querySelector("#loader");
 window.addEventListener("load", () => {
   loader.classList.add("loader-out");
   setTimeout(() => {
-    loader.remove()
+    loader.remove();
   }, 400);
 });
 
-
-
-
 function isMobile() {
-  if( (navigator.userAgent.match(/iPhone/i)
-      || navigator.userAgent.match(/webOS/i)
-      || navigator.userAgent.match(/Android/i)
-      || navigator.userAgent.match(/iPad/i)
-      || navigator.userAgent.match(/iPod/i)
-      || navigator.userAgent.match(/BlackBerry/i)
-      || navigator.userAgent.match(/Windows Phone/i))
-    ) return true;
+  if (
+    navigator.userAgent.match(/iPhone/i) ||
+    navigator.userAgent.match(/webOS/i) ||
+    navigator.userAgent.match(/Android/i) ||
+    navigator.userAgent.match(/iPad/i) ||
+    navigator.userAgent.match(/iPod/i) ||
+    navigator.userAgent.match(/BlackBerry/i) ||
+    navigator.userAgent.match(/Windows Phone/i)
+  )
+    return true;
   else return false;
 }
 
 const dlBtn = document.querySelector(".dl-btn");
 
-if (dlBtn.className.search(/disabled/g) !== -1){
+if (dlBtn.className.search(/disabled/g) !== -1) {
   dlBtn.innerHTML = "INDISPONIBLE";
 }
 
@@ -49,14 +44,15 @@ for (let i = 0; i !== list.length; i++) {
   else news += "<li>" + list[i] + "</li>\n";
 }
 
-menuBar.innerHTML = `
+menuBar.innerHTML =
+  `
     <h1>Journal des modifications.</h1>
     <ul>
       ` +
-  news
-  + `
+  news +
+  `
     </ul>
-    `
+    `;
 
 let clicked = false;
 
@@ -64,7 +60,7 @@ const verP = document.querySelector(".ver");
 
 function dl() {
   if (dlBtn.className.search(/disabled/g) !== -1) return;
-  else if( isMobile() === true ){
+  else if (isMobile() === true) {
     dlBtn.remove();
     verP.innerHTML = `
     <h1>Attention !</h1>
@@ -90,8 +86,7 @@ function dl() {
       }
     </style>
     `;
-  }
-  else {
+  } else {
     dlBtn.href = lnk;
   }
 }
@@ -105,7 +100,7 @@ let link = document.querySelector("tablink");
 
 window.addEventListener("scroll", () => {
   if (window.innerWidth > 1000) {
-    if (document.documentElement.scrollTop >= (window.innerHeight / 4)) {
+    if (document.documentElement.scrollTop >= window.innerHeight / 4) {
       navBar.style.background = "#1A6699";
       navBar.style.width = "50px";
       navBar.style.height = "400px";
@@ -133,7 +128,7 @@ window.addEventListener("scroll", () => {
 
 window.addEventListener("resize", () => {
   if (window.innerWidth > 1000) {
-    if (document.documentElement.scrollTop >= (window.innerHeight / 4)) {
+    if (document.documentElement.scrollTop >= window.innerHeight / 4) {
       navBar.style.background = "#1A6699";
       navBar.style.width = "50px";
       navBar.style.height = "400px";
@@ -161,14 +156,36 @@ window.addEventListener("resize", () => {
 function toggleDarkMode() {
   dmBtn.classList.toggle("dm-btn-on");
   document.querySelector("#main").classList.toggle("dark-mode-2");
-  for (var i = 0; i < document.querySelectorAll("#section2>div.container").length; i++) {
-    document.querySelectorAll("#section2>div.container")[i].classList.toggle("dark-mode-2");
+  for (
+    var i = 0;
+    i < document.querySelectorAll("#section2>div.container").length;
+    i++
+  ) {
+    document
+      .querySelectorAll("#section2>div.container")
+      [i].classList.toggle("dark-mode-2");
   }
-  for (var i = 0; i < document.querySelectorAll("#section2>div.container:nth-child(2n+1)").length; i++) {
-    document.querySelectorAll("#section2>div.container:nth-child(2n+1)")[i].classList.toggle("dark-mode");
+  for (
+    var i = 0;
+    i <
+    document.querySelectorAll("#section2>div.container:nth-child(2n+1)").length;
+    i++
+  ) {
+    document
+      .querySelectorAll("#section2>div.container:nth-child(2n+1)")
+      [i].classList.toggle("dark-mode");
   }
-  for (var i = 0; i < document.querySelectorAll("#section2>div.container:nth-child(2n+1)>.desc-img").length; i++) {
-    document.querySelectorAll("#section2>div.container:nth-child(2n+1)>.desc-img")[i].classList.toggle("dark-mode-4");
+  for (
+    var i = 0;
+    i <
+    document.querySelectorAll(
+      "#section2>div.container:nth-child(2n+1)>.desc-img"
+    ).length;
+    i++
+  ) {
+    document
+      .querySelectorAll("#section2>div.container:nth-child(2n+1)>.desc-img")
+      [i].classList.toggle("dark-mode-4");
   }
   document.querySelector("nav").classList.toggle("dark-mode-3");
 }
