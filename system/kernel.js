@@ -168,8 +168,6 @@ let oos = {
       removeApp: (wapp) => {
         let desk = document.querySelector(".desk");
 
-        let wapp = document.querySelectorAll(".desk-icon")[n];
-
         desk.removeChild(wapp);
       },
     },
