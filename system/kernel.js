@@ -150,6 +150,19 @@ let oos = {
   shell: {
     send: () => {},
   },
+  ui: {
+    desk: {
+      addIcon: (icon) => {
+        let desk = document.querySelector(".desk");
+
+        let app = document.createElement("img");
+
+        app.src = icon;
+
+        desk.appendChild(app)
+      }
+    }
+  },
   Window: class {
     constructor(wnd) {
       if (!wnd) wnd = {};
