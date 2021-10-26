@@ -163,8 +163,11 @@ let oos = {
       this.winDiv.classList.add("window");
       this.winDiv.dataset.id = oos.util.generateId();
 
-      this.winDiv.style.height = wnd.height ? wnd.height + "px" : 200 + "px";
-      this.winDiv.style.width = wnd.width ? wnd.width + "px" : 200 + "px";
+      this.winDiv.style.height = wnd.height ? wnd.height + "px" : 300 + "px";
+      this.winDiv.style.width = wnd.width ? wnd.width + "px" : 400 + "px";
+
+      this.winDiv.style.height = wnd.minHeight ? wnd.minHeight + "px" : 200 + "px";
+      this.winDiv.style.width = wnd.minWidth ? wnd.minWidth + "px" : 200 + "px";
 
       this.winDiv.innerHTML = `
           <div class="window-content">${wnd.body}</div>
