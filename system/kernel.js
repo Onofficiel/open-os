@@ -167,13 +167,13 @@ let oos = {
 
       this.winDiv.innerHTML = `
           <div class="window-content">${wnd.body}</div>
-          <div class="window-header" style="background: ${wnd.headerColor};">${wnd.title}</div>
+          <div class="window-header" style="background: ${wnd.headerColor};">${wnd.title} <span>✕</span></div>
 
           <div class="resizer nw"></div>
           <div class="resizer ne"></div>
           <div class="resizer se"></div>
           <div class="resizer sw"></div>
-          `;
+      `;
 
       oos.util.dragHeader(this.winDiv);
       oos.util.resizeByResizer(this.winDiv);
@@ -183,11 +183,11 @@ let oos = {
       return this.winDiv.dataset.id;
     }
 
-    get id () {
+    get id() {
       return this.winDiv.dataset.id;
     }
 
-    close () {
+    close() {
       document.querySelector(".desktop").removeChild(this.winDiv);
     }
   },
