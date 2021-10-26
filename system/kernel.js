@@ -157,7 +157,7 @@ let oos = {
 
         let app = document.createElement("img");
         app.classList.add("desk-icon");
-        app.src = wapp.wnd.icon;
+        app.src = wapp.params.icon;
 
         app.addEventListener("click", () => {
           wapp.show();
