@@ -1,7 +1,7 @@
 //////////////// Version and News ////////////////
 
 const version = "0.0.1z";
-const link = "https://open-os.netlify.app";
+const lnk = "https://open-os.netlify.app";
 
 list =
 [
@@ -73,7 +73,7 @@ function dl() {
     Voulez vous quand même y accéder ?</p>
     <p>Si oui cliquez sur "ACCÉDER" ci-dessous.</p>
     <br>
-    <a class="dlLink" href="${link}">ACCÉDER</a>
+    <a class="dlLink" href="${lnk}">ACCÉDER</a>
     <style>
       .dlLink {
         background: #333;
@@ -92,7 +92,7 @@ function dl() {
     `;
   }
   else {
-    dlBtn.href = link;
+    dlBtn.href = lnk;
   }
 }
 
