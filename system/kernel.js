@@ -183,8 +183,12 @@ let oos = {
       return this.winDiv.dataset.id;
     }
 
-    get getId () {
+    get id () {
       return this.winDiv.dataset.id;
+    }
+
+    close () {
+      document.querySelector(".desktop").removeChild(this.winDiv);
     }
   },
 };
