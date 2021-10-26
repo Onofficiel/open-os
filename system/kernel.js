@@ -175,14 +175,14 @@ let oos = {
           <div class="resizer sw"></div>
       `;
 
-      this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
-        this.__proto__.close();
-      });
-
       oos.util.dragHeader(this.winDiv);
       oos.util.resizeByResizer(this.winDiv);
 
       document.querySelector(".desktop").appendChild(this.winDiv);
+
+      this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
+        this.__proto__.close();
+      });
 
       return this.winDiv.dataset.id;
     }
