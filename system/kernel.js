@@ -152,46 +152,58 @@ let oos = {
   },
   ui: {
     desk: {
-      addIcon: (icon) => {
+      addApp: (wapp) => {
         let desk = document.querySelector(".desk");
 
         let app = document.createElement("img");
         app.classList.add("desk-icon");
-        app.src = icon;
+        app.src = wapp.wnd.icon;
+
+        app.addEventListener("click", () => {
+          wapp.show();
+        });
 
         desk.appendChild(app);
+      },
+      removeApp: (wapp) => {
+        let desk = document.querySelector(".desk");
+
+        let wapp = document.querySelectorAll(".desk-icon")[n];
+
+        desk.removeChild(wapp);
       },
     },
   },
   Window: class {
-    constructor(wnd) {
-      if (!wnd) wnd = {};
-      if (!wnd.title) wnd.title = "Untitled Window";
-      if (!wnd.body) wnd.body = "";
-      if (!wnd.headerColor) wnd.headerColor = "#09F";
-      if (!wnd.icon)
-        wnd.icon = "https://onofficiel.github.io/w96/dist/border/16x16.png";
+    constructor(parms) {
+      if (!parms) parms = {};
+      if (!parms.title) parms.title = "Untitled Window";
+      if (!parms.body) parms.body = "";
+      if (!parms.headerColor) parms.headerColor = "#09F";
+      if (!parms.icon)
+        parms.icon = "https://onofficiel.github.io/w96/dist/border/16x16.png";
 
+      this.parms = parms;
       this.winDiv = document.createElement("div");
 
       this.winDiv.classList.add("window");
       this.winDiv.dataset.id = oos.util.generateId();
 
-      this.winDiv.style.height = wnd.height ? wnd.height + "px" : 300 + "px";
-      this.winDiv.style.width = wnd.width ? wnd.width + "px" : 400 + "px";
+      this.winDiv.style.height = this.parms.height ? this.parms.height + "px" : 300 + "px";
+      this.winDiv.style.width = this.parms.width ? this.parms.width + "px" : 400 + "px";
 
-      this.winDiv.style.minHeight = wnd.minHeight
-        ? wnd.minHeight + "px"
+      this.winDiv.style.minHeight = this.parms.minHeight
+        ? this.parms.minHeight + "px"
         : 200 + "px";
-      this.winDiv.style.minWidth = wnd.minWidth
-        ? wnd.minWidth + "px"
+      this.winDiv.style.minWidth = this.parms.minWidth
+        ? this.parms.minWidth + "px"
         : 200 + "px";
 
       this.winDiv.innerHTML = `
-          <div class="window-content">${wnd.body}</div>
-          <div class="window-header cs-move" style="background: ${wnd.headerColor};">
-            <img src="${wnd.icon}" />
-            <span class="title">${wnd.title}</span>
+          <div class="window-content">${this.parms.body}</div>
+          <div class="window-header cs-move" style="background: ${this.parms.headerColor};">
+            <img src="${this.parms.icon}" />
+            <span class="title">${this.parms.title}</span>
             <span class="ctrl-btn">
             <span class="minimize-btn cs-pointer">🗕</span>
               <span class="maximize-btn cs-pointer">🗖</span>
@@ -211,11 +223,9 @@ let oos = {
       this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
         this.close();
       });
+      oos.ui.desk.addIcon(this);
 
-      document.querySelector(".desktop").appendChild(this.winDiv);
-      oos.ui.desk.addIcon(wnd.icon);
-
-      return this.winDiv.dataset.id;
+      return this.winDiv;
     }
 
     get id() {
@@ -223,7 +233,12 @@ let oos = {
     }
 
     close() {
-      document.querySelector(".desktop").removeChild(this.winDiv);
+      return document.querySelector(".desktop").removeChild(this.winDiv);
+      oos.ui.desk.addIcon(this);
+    }
+
+    show() {
+      return document.querySelector(".desktop").appendChild(this.winDiv);
     }
   },
 };
