@@ -156,7 +156,7 @@ let oos = {
         let desk = document.querySelector(".desk");
 
         let app = document.createElement("img");
-
+        app.classList.add("desk-icon");
         app.src = icon;
 
         desk.appendChild(app);
