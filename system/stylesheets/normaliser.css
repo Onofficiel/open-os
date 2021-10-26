@@ -82,6 +82,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  -webkit-user-select: none;      
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .window-content {
   flex-grow: 1;

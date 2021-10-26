@@ -20,3 +20,10 @@
 .cs-wait {
     cursor: wait;
 }
+
+.text-not-selectable {
+    -webkit-user-select: none;       
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
