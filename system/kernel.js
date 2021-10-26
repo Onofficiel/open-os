@@ -193,7 +193,7 @@ let oos = {
       document.querySelector(".desktop").appendChild(this.winDiv);
 
       this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
-        this.prototype.close.call(this, []);
+        this.close();
       });
 
       return this.winDiv.dataset.id;
