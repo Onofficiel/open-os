@@ -1,13 +1,12 @@
 //////////////// Version and News ////////////////
 
 const version = "0.0.1z";
+const link = "https://open-os.netlify.app";
 
 list =
 [
-"Création du systeme.",
-"Ajout du systeme de fenêtre.",
-"Ajout du systeme d'identifiant de fenêtre.",
-"Création du logo de chargement du site."
+"Modification du noyeau",
+"Nouveau systeme de fenetre",
 ];
 
 //////////////////////////////////////////////////
@@ -39,7 +38,7 @@ function isMobile() {
 const dlBtn = document.querySelector(".dl-btn");
 
 if (dlBtn.className.search(/disabled/g) !== -1){
-  dlBtn.innerHTML = "BIENTÔT !";
+  dlBtn.innerHTML = "INDISPONIBLE";
 }
 
 const menuBar = document.querySelector("#changelog>div.text-container");
@@ -71,10 +70,10 @@ function dl() {
     <h1>Attention !</h1>
     <br>
     <p>OPEN OS ne fonction pas sur mobile.
-    Voulez vous quand même le télécharger ?</p>
-    <p>Si oui cliquez sur "Télécharger" ci-dessous.</p>
+    Voulez vous quand même y accéder ?</p>
+    <p>Si oui cliquez sur "ACCÉDER" ci-dessous.</p>
     <br>
-    <a class="dlLink" href="download" download>Télécharger</a>
+    <a class="dlLink" href="${link}">ACCÉDER</a>
     <style>
       .dlLink {
         background: #333;
@@ -93,7 +92,7 @@ function dl() {
     `;
   }
   else {
-    dlBtn.href = `download`;
+    dlBtn.href = link;
   }
 }
 
