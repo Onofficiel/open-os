@@ -156,6 +156,7 @@ let oos = {
       if (!wnd.title) wnd.title = "Untitled Window";
       if (!wnd.body) wnd.body = "";
       if (!wnd.headerColor) wnd.headerColor = "#09F";
+      if (!wnd.icon) wnd.icon = "https://onofficiel.github.io/w96/dist/border/16x16.png";
 
       this.winDiv = document.createElement("div");
 
@@ -167,7 +168,13 @@ let oos = {
 
       this.winDiv.innerHTML = `
           <div class="window-content">${wnd.body}</div>
-          <div class="window-header" style="background: ${wnd.headerColor};"><span class="title">${wnd.title}</span><span class="close-btn">✕</span></div>
+          <div class="window-header" style="background: ${wnd.headerColor};">
+            <img src="${wnd.icon}" />
+            <span class="title">${wnd.title}</span>
+            <span class="ctrl-btn">
+              <span class="close-btn">✕</span>
+            </span>
+          </div>
 
           <div class="resizer nw"></div>
           <div class="resizer ne"></div>
