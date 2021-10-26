@@ -1,0 +1,22 @@
+/**********************************
+ *                                *
+ *             OpenOS             *
+ *                                *
+ *    Copyright (c) Onofficiel    *
+ *                                *
+/*********************************/
+
+/*           master.js           */
+
+.cs-move {
+    cursor: move;
+}
+.cs-pointer {
+    cursor: pointer;
+}
+.cs-default {
+    cursor: default;
+}
+.cs-wait {
+    cursor: wait;
+}

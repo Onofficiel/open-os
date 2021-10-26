@@ -6,7 +6,7 @@
  *                                *
 /*********************************/
 
-//           Kernel.js           //
+//           kernel.js           //
 
 (() => {})();
 
@@ -189,13 +189,13 @@ let oos = {
 
       this.winDiv.innerHTML = `
           <div class="window-content">${wnd.body}</div>
-          <div class="window-header" style="background: ${wnd.headerColor};">
+          <div class="window-header cs-move" style="background: ${wnd.headerColor};">
             <img src="${wnd.icon}" />
             <span class="title">${wnd.title}</span>
             <span class="ctrl-btn">
-            <span class="minimize-btn">🗕</span>
-              <span class="maximize-btn">🗖</span>
-              <span class="close-btn">🗙</span>
+            <span class="minimize-btn cs-pointer">🗕</span>
+              <span class="maximize-btn cs-pointer">🗖</span>
+              <span class="close-btn cs-pointer">🗙</span>
             </span>
           </div>
 
