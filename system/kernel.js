@@ -38,6 +38,14 @@ let oos = {
     },
   },
   util: {
+    escapeHtml: (unsafe) => {
+      return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    },
     dragHeader: (elmnt) => {
       var pos1 = 0,
         pos2 = 0,
@@ -157,7 +165,7 @@ let oos = {
 
         let app = document.createElement("img");
         app.classList.add("desk-icon");
-        app.src = wapp.parms.icon;
+        app.src = wapp.params.icon;
 
         app.addEventListener("click", () => {
           wapp.show();
@@ -172,36 +180,30 @@ let oos = {
       },
     },
   },
-  Window: class {
-    constructor(parms) {
-      if (!parms) parms = {};
-      if (!parms.title) parms.title = "Untitled Window";
-      if (!parms.body) parms.body = "";
-      if (!parms.headerColor) parms.headerColor = "#09F";
-      if (!parms.icon)
-        parms.icon = "https://onofficiel.github.io/w96/dist/border/16x16.png";
-
-      this.parms = parms;
+  WApplication: class {},
+  WindowParams: class {
+    constructor() {
+      this.posX = 100;
+      this.posY = 100;
+      this.height = 100;
+      this.width = 100;
+      this.title = "Untitled Window";
+      this.icon = "https://onofficiel.github.io/w96/dist/border/16x16.png";
+      this.content = null;
+      this.headerColor = "#0099ff";
+    }
+  },
+  StandardWindow: class {
+    constructor(params) {
+      null == params && (params = new WindowParams());
+      e = Object.assign(new x(), e);
       this.winDiv = document.createElement("div");
 
-      this.winDiv.classList.add("window");
-      this.winDiv.dataset.id = oos.util.generateId();
-
-      this.winDiv.style.height = this.parms.height ? this.parms.height + "px" : 300 + "px";
-      this.winDiv.style.width = this.parms.width ? this.parms.width + "px" : 400 + "px";
-
-      this.winDiv.style.minHeight = this.parms.minHeight
-        ? this.parms.minHeight + "px"
-        : 200 + "px";
-      this.winDiv.style.minWidth = this.parms.minWidth
-        ? this.parms.minWidth + "px"
-        : 200 + "px";
-
       this.winDiv.innerHTML = `
-          <div class="window-content">${this.parms.body}</div>
-          <div class="window-header cs-move" style="background: ${this.parms.headerColor};">
-            <img src="${this.parms.icon}" />
-            <span class="title">${this.parms.title}</span>
+          <div class="window-content" style="left: ${this.posX}px; top: ${this.posY}px;">${this.params.content}</div>
+          <div class="window-header cs-move" style="background: ${this.params.headerColor};">
+            <img src="${this.params.icon}" />
+            <span class="title">${this.params.title}</span>
             <span class="ctrl-btn">
             <span class="minimize-btn cs-pointer">🗕</span>
               <span class="maximize-btn cs-pointer">🗖</span>
