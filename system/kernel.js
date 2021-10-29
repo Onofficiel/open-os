@@ -180,7 +180,16 @@ let oos = {
       },
     },
   },
-  WApplication: class {},
+  WApplication: class {
+    constructor() {}
+    createWindow(params) {
+      wnd = new oos.StandardWindow(params);
+
+      this.windows.push(wnd);
+
+      return wnd;
+    }
+  },
   WindowParams: class {
     constructor() {
       this.posX = 100;
