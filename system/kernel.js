@@ -181,7 +181,9 @@ let oos = {
     },
   },
   WApplication: class {
-    constructor() {}
+    constructor() {
+      this.windows = [];
+    }
     createWindow(params) {
       let wnd = new oos.StandardWindow(params);
 
