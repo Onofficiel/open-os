@@ -183,7 +183,7 @@ let oos = {
   WApplication: class {
     constructor() {}
     createWindow(params) {
-      wnd = new oos.StandardWindow(params);
+      let wnd = new oos.StandardWindow(params);
 
       this.windows.push(wnd);
 
