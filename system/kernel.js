@@ -162,8 +162,8 @@ let oos = {
 
       this.hide();
 
-      // if (this.params.resizable) this.makeResizable();
-      if (this.params.draggable) this.makeDraggable();
+      if (this.params.resizable) this.makeResizable();
+      // if (this.params.draggable) this.makeDraggable();
 
       this.winDiv.addEventListener("mousedown", () => {
         this.setCurrent();
@@ -229,7 +229,7 @@ let oos = {
       }
     }
 
-    makeDraggable() {
+    /* makeDraggable() {
       ((elem) => {
         elem
           .querySelector("." + elem.classList[0] + "-header")
@@ -261,9 +261,9 @@ let oos = {
           }
         }
       })(this.winDiv);
-    }
+    } */
 
-    /* makeResizable() {
+    makeResizable() {
       (function (elmnt) {
         const resizers = elmnt.querySelectorAll(".resizer");
         let currentResizer;
@@ -314,7 +314,7 @@ let oos = {
           }
         }
       })(this.winDiv);
-    } */
+    }
 
     close() {
       try {
