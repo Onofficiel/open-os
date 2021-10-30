@@ -179,11 +179,11 @@ let oos = {
           this.hide();
         });
 
-      /* this.winDiv
+      this.winDiv
         .querySelector(".maximize-btn")
         .addEventListener("click", () => {
           this.toggleMaximize();
-        }); */
+        });
 
       document.querySelector(".desktop").appendChild(this.winDiv);
 
