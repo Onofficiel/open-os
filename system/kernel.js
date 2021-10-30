@@ -105,16 +105,16 @@ let oos = {
   },
   WindowParams: class {
     constructor() {
-      (this.posX = 100),
-        (this.posY = 100),
-        (this.height = 100),
-        (this.width = 100),
-        (this.title = "Untitled Window"),
-        (this.icon = "https://picsum.photos/200"),
-        (this.content = ""),
-        (this.headerColor = "#0099ff"),
-        (this.resizable = true),
-        (this.draggable = true);
+      this.posX = 100;
+      this.posY = 100;
+      this.height = 100;
+      this.width = 100;
+      this.title = "Untitled Window";
+      this.icon = "https://picsum.photos/200";
+      this.content = "";
+      this.headerColor = "#0099ff";
+      this.resizable = true;
+      this.draggable = true;
     }
   },
   StandardWindow: class {
