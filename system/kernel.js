@@ -206,8 +206,8 @@ let oos = {
   },
   StandardWindow: class {
     constructor(params) {
-      null == params && (params = new oos.WindowParams());
-      this.params = Object.assign(new oos.WindowParams(), params);
+      null == params && (params = new oos.WindowParams()),
+      (this.params = Object.assign(new oos.WindowParams(), params));
       this.winDiv = document.createElement("div");
 
       this.winDiv.classList.add("window");
@@ -215,7 +215,6 @@ let oos = {
       this.winDiv.style.width = this.params.width;
       this.winDiv.style.left = this.params.posX;
       this.winDiv.style.top = this.params.posY;
-
 
       this.winDiv.innerHTML = `
           <div class="window-content">${this.params.content}</div>
