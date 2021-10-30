@@ -220,7 +220,7 @@ let oos = {
       this.winDiv.style.left = params.posX;
       this.winDiv.style.top = params.posY;
 
-      this.winDiv.style.display = "none";
+      this.hide();
       this.id = "wnd_" + oos.sys.var.wId++;
 
       this.winDiv.innerHTML = `
@@ -264,7 +264,7 @@ let oos = {
     }
 
     show() {
-      this.winDiv.style.display = "block";
+      this.winDiv.style.display = "flex";
     }
   },
 };
