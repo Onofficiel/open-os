@@ -187,6 +187,7 @@ let oos = {
     constructor() {
       this.windows = [];
     }
+
     createWindow(params) {
       let wnd = new oos.StandardWindow(params);
 
@@ -219,6 +220,7 @@ let oos = {
       this.winDiv.style.left = params.posX;
       this.winDiv.style.top = params.posY;
 
+      this.winDiv.style.display = "none";
       this.id = "wnd_" + oos.sys.var.wId++;
 
       this.winDiv.innerHTML = `
@@ -247,6 +249,8 @@ let oos = {
       });
       oos.ui.desk.addApp(this);
 
+      return document.querySelector(".desktop").appendChild(this.winDiv);
+
       return this;
     }
 
@@ -255,8 +259,12 @@ let oos = {
       oos.ui.desk.removeApp(this);
     }
 
+    hide() {
+      this.winDiv.style.display = "none";
+    }
+
     show() {
-      return document.querySelector(".desktop").appendChild(this.winDiv);
+      this.winDiv.style.display = "block";
     }
   },
 };
