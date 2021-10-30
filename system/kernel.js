@@ -153,10 +153,103 @@ let oos = {
       this.hide();
 
       if (this.params.resizable) {
-        this.makeResizable();
+        (function (elmnt) {
+          var pos1 = 0,
+            pos2 = 0,
+            pos3 = 0,
+            pos4 = 0;
+          if (elmnt.getElementsByClassName(elmnt.classList[0] + "-header")[0]) {
+            // if present, the header is where you move the DIV from:
+            elmnt.getElementsByClassName(
+              elmnt.classList[0] + "-header"
+            )[0].onmousedown = dragMouseDown;
+          } else {
+            // otherwise, move the DIV from anywhere inside the DIV:
+            elmnt.onmousedown = dragMouseDown;
+          }
+
+          function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+          }
+
+          function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // calculate the new cursor position:
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // set the element's new position:
+            elmnt.style.top = elmnt.offsetTop - pos2 + "px";
+            elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
+          }
+
+          function closeDragElement() {
+            // stop moving when mouse button is released:
+            document.onmouseup = null;
+            document.onmousemove = null;
+          }
+        })(this.winDiv);
       }
       if (this.params.draggable) {
-        this.makeDraggable();
+        (function (elmnt) {
+          const resizers = elmnt.querySelectorAll(".resizer");
+          let currentResizer;
+
+          for (let resizer of resizers) {
+            resizer.addEventListener("mousedown", mousedown);
+
+            function mousedown(e) {
+              currentResizer = e.target;
+              isResizing = true;
+
+              let prevX = e.clientX;
+              let prevY = e.clientY;
+
+              window.addEventListener("mousemove", mousemove);
+              window.addEventListener("mouseup", mouseup);
+
+              function mousemove(e) {
+                const rect = elmnt.getBoundingClientRect();
+
+                if (currentResizer.classList.contains("se")) {
+                  elmnt.style.width = rect.width - (prevX - e.clientX) + "px";
+                  elmnt.style.height = rect.height - (prevY - e.clientY) + "px";
+                } else if (currentResizer.classList.contains("sw")) {
+                  elmnt.style.width = rect.width + (prevX - e.clientX) + "px";
+                  elmnt.style.height = rect.height - (prevY - e.clientY) + "px";
+                  elmnt.style.left = rect.left - (prevX - e.clientX) + "px";
+                } else if (currentResizer.classList.contains("ne")) {
+                  elmnt.style.width = rect.width - (prevX - e.clientX) + "px";
+                  elmnt.style.height = rect.height + (prevY - e.clientY) + "px";
+                  elmnt.style.top = rect.top - (prevY - e.clientY) + "px";
+                } else {
+                  elmnt.style.width = rect.width + (prevX - e.clientX) + "px";
+                  elmnt.style.height = rect.height + (prevY - e.clientY) + "px";
+                  elmnt.style.top = rect.top - (prevY - e.clientY) + "px";
+                  elmnt.style.left = rect.left - (prevX - e.clientX) + "px";
+                }
+
+                prevX = e.clientX;
+                prevY = e.clientY;
+              }
+
+              function mouseup() {
+                window.removeEventListener("mousemove", mousemove);
+                window.removeEventListener("mouseup", mouseup);
+                isResizing = false;
+              }
+            }
+          }
+        })(this.winDiv);
       }
 
       this.winDiv.addEventListener("mousedown", () => {
@@ -201,96 +294,6 @@ let oos = {
       this.winDiv.style.display === "none"
         ? (this.winDiv.style.display = "flex")
         : (this.winDiv.style.display = "none");
-    }
-
-    makeDraggable() {
-      var pos1 = 0,
-        pos2 = 0,
-        pos3 = 0,
-        pos4 = 0;
-
-      this.winDiv.getElementsByClassName(
-        this.winDiv.classList[0] + "-header"
-      )[0].onmousedown = dragMouseDown;
-
-      function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        document.onmousemove = elementDrag;
-      }
-
-      function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        this.winDiv.style.top = this.winDiv.offsetTop - pos2 + "px";
-        this.winDiv.style.left = this.winDiv.offsetLeft - pos1 + "px";
-      }
-
-      function closeDragElement() {
-        document.onmouseup = null;
-        document.onmousemove = null;
-      }
-    }
-    makeResizable() {
-      const resizers = this.winDiv.querySelectorAll(".resizer");
-      let currentResizer;
-
-      for (let resizer of resizers) {
-        resizer.addEventListener("mousedown", mousedown);
-
-        function mousedown(e) {
-          currentResizer = e.target;
-          isResizing = true;
-
-          let prevX = e.clientX;
-          let prevY = e.clientY;
-
-          window.addEventListener("mousemove", mousemove);
-          window.addEventListener("mouseup", mouseup);
-
-          function mousemove(e) {
-            const rect = this.winDiv.getBoundingClientRect();
-
-            if (currentResizer.classList.contains("se")) {
-              this.winDiv.style.width = rect.width - (prevX - e.clientX) + "px";
-              this.winDiv.style.height =
-                rect.height - (prevY - e.clientY) + "px";
-            } else if (currentResizer.classList.contains("sw")) {
-              this.winDiv.style.width = rect.width + (prevX - e.clientX) + "px";
-              this.winDiv.style.height =
-                rect.height - (prevY - e.clientY) + "px";
-              this.winDiv.style.left = rect.left - (prevX - e.clientX) + "px";
-            } else if (currentResizer.classList.contains("ne")) {
-              this.winDiv.style.width = rect.width - (prevX - e.clientX) + "px";
-              this.winDiv.style.height =
-                rect.height + (prevY - e.clientY) + "px";
-              this.winDiv.style.top = rect.top - (prevY - e.clientY) + "px";
-            } else {
-              this.winDiv.style.width = rect.width + (prevX - e.clientX) + "px";
-              this.winDiv.style.height =
-                rect.height + (prevY - e.clientY) + "px";
-              this.winDiv.style.top = rect.top - (prevY - e.clientY) + "px";
-              this.winDiv.style.left = rect.left - (prevX - e.clientX) + "px";
-            }
-
-            prevX = e.clientX;
-            prevY = e.clientY;
-          }
-
-          function mouseup() {
-            window.removeEventListener("mousemove", mousemove);
-            window.removeEventListener("mouseup", mouseup);
-            isResizing = false;
-          }
-        }
-      }
     }
 
     setCurrent() {
