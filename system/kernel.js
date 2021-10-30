@@ -179,7 +179,7 @@ let oos = {
       removeApp: (wapp) => {
         let desk = document.querySelector(".desk");
 
-        desk.removeChild(desk.querySelector("img[data-dId='" + wapp.id + "']"));
+        desk.removeChild(desk.querySelector("img[data-d-id='" + wapp.id + "']"));
       },
     },
   },
