@@ -219,7 +219,7 @@ let oos = {
       this.winDiv.style.left = params.posX;
       this.winDiv.style.top = params.posY;
 
-      this.id = "wnd_" + wId++;
+      this.id = "wnd_" + oos.sys.var.wId++;
 
       this.winDiv.innerHTML = `
           <div class="window-content">${params.content}</div>
