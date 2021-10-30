@@ -153,7 +153,7 @@ let oos = {
       this.hide();
 
       if (this.params.resizable) {
-        ((elmnt) => {
+        (function (elmnt) {
           var pos1 = 0,
             pos2 = 0,
             pos3 = 0,
@@ -200,7 +200,7 @@ let oos = {
         })(this.winDiv);
       }
       if (this.params.draggable) {
-        ((elmnt) => {
+        (function (elmnt) {
           const resizers = elmnt.querySelectorAll(".resizer");
           let currentResizer;
 
