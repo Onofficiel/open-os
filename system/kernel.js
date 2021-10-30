@@ -159,7 +159,7 @@ let oos = {
         for (let resizer of resizers) {
           resizer.addEventListener("mousedown", mousedown);
 
-          function mousedown(e) {
+          mousedown = (e) => {
             currentResizer = e.target;
             isResizing = true;
 
@@ -169,7 +169,7 @@ let oos = {
             window.addEventListener("mousemove", mousemove);
             window.addEventListener("mouseup", mouseup);
 
-            function mousemove(e) {
+            mousemove = (e) => {
               const rect = this.winDiv.getBoundingClientRect();
 
               if (currentResizer.classList.contains("se")) {
@@ -200,14 +200,14 @@ let oos = {
 
               prevX = e.clientX;
               prevY = e.clientY;
-            }
+            };
 
-            function mouseup() {
+            mouseup = () => {
               window.removeEventListener("mousemove", mousemove);
               window.removeEventListener("mouseup", mouseup);
               isResizing = false;
-            }
-          }
+            };
+          };
         }
       }
       if (this.params.draggable) {
