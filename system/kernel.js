@@ -160,7 +160,7 @@ let oos = {
     send: () => {},
   },
   ui: {
-    Desk: class {
+    desk: class {
       addApp(wapp) {
         let desk = document.querySelector(".desk");
 
