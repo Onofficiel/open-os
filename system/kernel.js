@@ -231,7 +231,9 @@ let oos = {
 
     makeDraggable() {
       ((elem) => {
-        elem.querySelector("." + elem.classList[0] + "-header").addEventListener("mousedown", mousedown);
+        elem
+          .querySelector("." + elem.classList[0] + "-header")
+          .addEventListener("mousedown", mousedown);
 
         function mousedown(e) {
           let prevX = e.clientX;
