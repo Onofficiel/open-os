@@ -107,8 +107,8 @@ let oos = {
     constructor() {
       this.posX = 100;
       this.posY = 100;
-      this.height = 100;
-      this.width = 100;
+      this.height = 300;
+      this.width = 480;
       this.title = "Untitled Window";
       this.icon = "https://picsum.photos/200";
       this.content = "";
