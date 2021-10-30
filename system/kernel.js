@@ -205,7 +205,7 @@ let oos = {
         for (const value in this.maximizeInfo) {
           if (Object.hasOwnProperty.call(this.maximizeInfo, value)) {
             const cValue = this.maximizeInfo[value];
-            this.maximizeInfo[value] = this.winDiv.style[Object.keys(cValue)];
+            this.maximizeInfo[value] = this.winDiv.style[Object.keys(this.maximizeInfo)[value]];
           }
         }
         console.log(this.maximizeInfo);
