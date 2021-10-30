@@ -183,6 +183,11 @@ let oos = {
       return this;
     }
 
+    center() {
+      this.winDiv.style.left = window.innerWidth / 2 - parseInt(this.winDiv.style.left) / 2;
+      this.winDiv.style.top = window.innerHeight / 2 - parseInt(this.winDiv.style.top) / 2;
+    }
+
     makeDraggable() {
       (function (elmnt) {
         var pos1 = 0,
