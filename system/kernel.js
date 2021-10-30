@@ -202,12 +202,10 @@ let oos = {
         this.winDiv.style.height = this.maximizeInfo.height;
         this.winDiv.style.width = this.maximizeInfo.width;
       } else {
-        console.log(this.winDiv.style.left);
         this.maximizeInfo.left = this.winDiv.style.left;
         this.maximizeInfo.top = this.winDiv.style.top;
         this.maximizeInfo.height = this.winDiv.style.height;
         this.maximizeInfo.width = this.winDiv.style.width;
-        console.log(this.winDiv.style);
       }
     }
 
