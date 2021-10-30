@@ -74,7 +74,7 @@
   overflow: hidden;
 }
 .window-header {
-  padding: 10px;
+  padding: 5px 10px;
   color: #fff;
   
   display: flex;

@@ -228,7 +228,7 @@ let oos = {
       this.winDiv.innerHTML = `
           <div class="window-content">${this.params.content}</div>
           <div class="window-header cs-move" style="background: ${this.params.headerColor};">
-            <img src="${this.params.icon}" height="10px" width="10px" />
+            <img src="${this.params.icon}" height="20px" width="20px" />
             <span class="title">${this.params.title}</span>
             <span class="ctrl-btn">
             <span class="minimize-btn cs-pointer">🗕</span>
