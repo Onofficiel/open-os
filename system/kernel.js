@@ -159,7 +159,7 @@ let oos = {
         for (let resizer of resizers) {
           resizer.addEventListener("mousedown", mousedown);
 
-          const mousedown = (e) => {
+          function mousedown(e) {
             currentResizer = e.target;
             isResizing = true;
 
@@ -207,7 +207,7 @@ let oos = {
               window.removeEventListener("mouseup", mouseup);
               isResizing = false;
             };
-          };
+          }
         }
       }
       if (this.params.draggable) {
