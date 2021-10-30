@@ -120,8 +120,10 @@ let oos = {
   StandardWindow: class {
     constructor(params) {
       null == params && (params = new oos.WindowParams());
+
       this.params = Object.assign(new oos.WindowParams(), params);
       this.winDiv = document.createElement("div");
+      this.minimized = false;
 
       this.winDiv.classList.add("window");
       this.winDiv.style.height = this.params.height;
@@ -278,10 +280,12 @@ let oos = {
 
     hide() {
       this.winDiv.style.display = "none";
+      this.minimized = true;
     }
 
     show() {
       this.winDiv.style.display = "flex";
+      this.minimized = false;
     }
 
     toggleVisibility() {
