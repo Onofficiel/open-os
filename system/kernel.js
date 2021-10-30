@@ -263,7 +263,7 @@ let oos = {
       })(this.winDiv);
     }
 
-    makeResizable() {
+    /* makeResizable() {
       (function (elmnt) {
         const resizers = elmnt.querySelectorAll(".resizer");
         let currentResizer;
@@ -314,7 +314,7 @@ let oos = {
           }
         }
       })(this.winDiv);
-    }
+    } */
 
     close() {
       try {
