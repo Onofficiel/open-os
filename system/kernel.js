@@ -265,7 +265,8 @@ let oos = {
 
     close() {
       return document.querySelector(".desktop").removeChild(this.winDiv);
-      oos.ui.desk.removeApp(this.winDiv);
+      console.log(this);
+      oos.ui.desk.removeApp(this);
     }
 
     hide() {
