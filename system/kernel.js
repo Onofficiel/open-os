@@ -159,7 +159,7 @@ let oos = {
         for (let resizer of resizers) {
           resizer.addEventListener("mousedown", mousedown);
 
-          mousedown = (e) => {
+          const mousedown = (e) => {
             currentResizer = e.target;
             isResizing = true;
 
@@ -169,7 +169,7 @@ let oos = {
             window.addEventListener("mousemove", mousemove);
             window.addEventListener("mouseup", mouseup);
 
-            mousemove = (e) => {
+            const mousemove = (e) => {
               const rect = this.winDiv.getBoundingClientRect();
 
               if (currentResizer.classList.contains("se")) {
@@ -202,7 +202,7 @@ let oos = {
               prevY = e.clientY;
             };
 
-            mouseup = () => {
+            const mouseup = () => {
               window.removeEventListener("mousemove", mousemove);
               window.removeEventListener("mouseup", mouseup);
               isResizing = false;
@@ -225,16 +225,16 @@ let oos = {
           )[0].onmousedown = dragMouseDown;
         }
 
-        function dragMouseDown(e) {
+        const dragMouseDown = (e) => {
           e = e || window.event;
           e.preventDefault();
           pos3 = e.clientX;
           pos4 = e.clientY;
           document.onmouseup = closeDragElement;
           document.onmousemove = elementDrag;
-        }
+        };
 
-        function elementDrag(e) {
+        const elementDrag = (e) => {
           e = e || window.event;
           e.preventDefault();
           pos1 = pos3 - e.clientX;
@@ -243,12 +243,12 @@ let oos = {
           pos4 = e.clientY;
           this.winDiv.style.top = this.winDiv.offsetTop - pos2 + "px";
           this.winDiv.style.left = this.winDiv.offsetLeft - pos1 + "px";
-        }
+        };
 
-        function closeDragElement() {
+        const closeDragElement = () => {
           document.onmouseup = null;
           document.onmousemove = null;
-        }
+        };
       }
 
       this.winDiv.addEventListener("mousedown", () => {
