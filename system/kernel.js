@@ -195,7 +195,7 @@ let oos = {
         "px";
     }
 
-    toggleMaximize() {
+    /* toggleMaximize() {
       if (this.maximized) {
         this.winDiv.style.left = this.maximizeInfo.left;
         this.winDiv.style.top = this.maximizeInfo.top;
@@ -216,7 +216,7 @@ let oos = {
 
         return this.maximized = true;
       }
-    }
+    } */
 
     makeDraggable() {
       (function (elmnt) {
