@@ -170,7 +170,7 @@ let oos = {
         app.dataset.dId = wapp.id;
 
         app.addEventListener("click", () => {
-          wapp.show();
+          wapp.toggleVisibility();
         });
 
         desk.appendChild(app);
@@ -271,6 +271,12 @@ let oos = {
 
     show() {
       this.winDiv.style.display = "flex";
+    }
+
+    toggleVisibility() {
+      this.winDiv.style.display = "none"
+        ? (this.winDiv.style.display = "flex")
+        : (this.winDiv.style.display = "none");
     }
   },
 };
