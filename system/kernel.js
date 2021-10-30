@@ -286,6 +286,26 @@ let oos = {
         ? (this.winDiv.style.display = "flex")
         : (this.winDiv.style.display = "none");
     }
+
+    setCurrent() {
+      try {
+        for (
+          let i = 0;
+          i <
+          document.querySelector(".desktop").querySelectorAll(".window")
+            .length;
+          i++
+        ) {
+          document
+            .querySelector(".desktop")
+            .querySelectorAll(".window")
+            [i].classList.remove("current");
+        }
+        document
+          .querySelector('.window[data-id~="' + this.id + '"]')
+          .classList.add("current");
+      } catch {}
+    }
   },
 };
 oos.main();

@@ -66,7 +66,6 @@
 }
 .window {
   position: absolute;
-  z-index: 9;
   background-color: #f1f1f1;
   text-align: center;
   display: flex;
@@ -76,7 +75,6 @@
 }
 .window-header {
   padding: 10px;
-  z-index: 10;
   color: #fff;
   
   display: flex;
@@ -96,7 +94,7 @@
   width: 10px;
   height: 10px;
   position: absolute;
-  z-index: 10;
+  z-index: 2;
   border-radius: 50%;
   transition: background-color .2s ease;
 }
@@ -128,4 +126,8 @@
   margin-bottom: 10px;
   width: 20px;
   height: 20px;
+}
+
+.window.current {
+  z-index: 1;
 }
