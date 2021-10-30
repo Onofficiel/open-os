@@ -221,7 +221,7 @@ let oos = {
       this.winDiv.style.top = this.params.posY;
 
       this.hide();
-      this.id = this.dataset.id = "wnd_" + oos.sys.var.wId++;
+      this.id, (this.dataset.id = "wnd_" + oos.sys.var.wId++);
 
       this.winDiv.innerHTML = `
           <div class="window-content">${this.params.content}</div>
