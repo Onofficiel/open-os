@@ -221,7 +221,7 @@ let oos = {
       this.winDiv.style.top = this.params.posY;
 
       this.hide();
-      this.id = "wnd_" + oos.sys.var.wId++;
+      this.id = this.dataset.id = "wnd_" + oos.sys.var.wId++;
 
       this.winDiv.innerHTML = `
           <div class="window-content">${this.params.content}</div>
@@ -247,9 +247,11 @@ let oos = {
       this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
         this.close();
       });
-      this.winDiv.querySelector(".minimize-btn").addEventListener("click", () => {
-        this.hide();
-      });
+      this.winDiv
+        .querySelector(".minimize-btn")
+        .addEventListener("click", () => {
+          this.hide();
+        });
 
       document.querySelector(".desktop").appendChild(this.winDiv);
 
