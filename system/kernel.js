@@ -274,7 +274,7 @@ let oos = {
     }
 
     toggleVisibility() {
-      this.winDiv.style.display = "none"
+      this.winDiv.style.display === "none"
         ? (this.winDiv.style.display = "flex")
         : (this.winDiv.style.display = "none");
     }
