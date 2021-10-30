@@ -264,9 +264,13 @@ let oos = {
     }
 
     close() {
-      return document.querySelector(".desktop").removeChild(this.winDiv);
-      console.log(this);
-      oos.ui.desk.removeApp(this);
+      try {
+        oos.ui.desk.removeApp(this);
+        document.querySelector(".desktop").removeChild(this.winDiv);
+        return true;
+      } catch {
+        return false;
+      }
     }
 
     hide() {
