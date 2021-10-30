@@ -161,8 +161,8 @@ let oos = {
 
       this.hide();
 
-      // if (this.params.resizable) this.makeResizable();
-      // if (this.params.draggable) this.makeDraggable();
+      if (this.params.resizable) this.makeResizable();
+      if (this.params.draggable) this.makeDraggable();
 
       this.winDiv.addEventListener("mousedown", () => {
         this.setCurrent();
@@ -171,10 +171,17 @@ let oos = {
       this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
         this.close();
       });
+      
       this.winDiv
         .querySelector(".minimize-btn")
         .addEventListener("click", () => {
           this.hide();
+        });
+
+      this.winDiv
+        .querySelector(".maximize-btn")
+        .addEventListener("click", () => {
+          this.toggleMaximize();
         });
 
       document.querySelector(".desktop").appendChild(this.winDiv);
@@ -202,7 +209,7 @@ let oos = {
         this.winDiv.style.height = this.maximizeInfo.height;
         this.winDiv.style.width = this.maximizeInfo.width;
 
-        return this.maximized = false;
+        return (this.maximized = false);
       } else {
         this.maximizeInfo.left = this.winDiv.style.left;
         this.maximizeInfo.top = this.winDiv.style.top;
@@ -214,7 +221,7 @@ let oos = {
         this.winDiv.style.height = "100%";
         this.winDiv.style.width = "100%";
 
-        return this.maximized = true;
+        return (this.maximized = true);
       }
     }
 
