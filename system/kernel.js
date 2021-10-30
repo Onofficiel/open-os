@@ -179,7 +179,9 @@ let oos = {
       removeApp: (wapp) => {
         let desk = document.querySelector(".desk");
 
-        desk.removeChild(desk.querySelector("img[data-d-id='" + wapp.id + "']"));
+        desk.removeChild(
+          desk.querySelector("img[data-d-id='" + wapp.id + "']")
+        );
       },
     },
   },
@@ -219,8 +221,9 @@ let oos = {
       this.winDiv.style.width = this.params.width;
       this.winDiv.style.left = this.params.posX;
       this.winDiv.style.top = this.params.posY;
+      this.winDiv.dataset.id = "wnd_" + oos.sys.var.wId++;
 
-      this.id, (this.winDiv.dataset.id = "wnd_" + oos.sys.var.wId++);
+      this.id = this.winDiv.dataset.id;
 
       this.winDiv.innerHTML = `
           <div class="window-content">${this.params.content}</div>
