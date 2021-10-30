@@ -160,7 +160,7 @@ let oos = {
           <div class="resizer sw"></div>
       `;
 
-      this.hide();
+      // this.hide();
 
       if (this.params.resizable) this.makeResizable();
       if (this.params.draggable) this.makeDraggable();
@@ -230,7 +230,7 @@ let oos = {
     }
 
     makeDraggable() {
-      ((elem) => {
+      (function (elem) {
         elem
           .querySelector("." + elem.classList[0] + "-header")
           .addEventListener("mousedown", mousedown);
