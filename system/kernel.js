@@ -179,7 +179,7 @@ let oos = {
       return this;
     }
 
-    makeResizable() {
+    makeDraggable() {
       (function (elmnt) {
         var pos1 = 0,
           pos2 = 0,
@@ -217,7 +217,7 @@ let oos = {
       })(this.winDiv);
     }
 
-    makeDraggable() {
+    makeResizable() {
       (function (elmnt) {
         const resizers = elmnt.querySelectorAll(".resizer");
         let currentResizer;
