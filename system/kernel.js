@@ -220,8 +220,7 @@ let oos = {
       this.winDiv.style.left = this.params.posX;
       this.winDiv.style.top = this.params.posY;
 
-      this.dataset.id = "wnd_" + oos.sys.var.wId++;
-      this.id = this.dataset.id = "wnd_" + oos.sys.var.wId++;
+      this.id, (this.winDiv.dataset.id = "wnd_" + oos.sys.var.wId++);
 
       this.winDiv.innerHTML = `
           <div class="window-content">${this.params.content}</div>
