@@ -247,9 +247,9 @@ let oos = {
       this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
         this.close();
       });
-      oos.ui.desk.addApp(this.winDiv);
-
-      return document.querySelector(".desktop").appendChild(this.winDiv);
+      document.querySelector(".desktop").appendChild(this.winDiv);
+      
+      oos.ui.desk.addApp(this);
 
       return this;
     }
