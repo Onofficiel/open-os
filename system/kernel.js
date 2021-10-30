@@ -161,8 +161,8 @@ let oos = {
 
       this.hide();
 
-      if (this.params.resizable) this.makeResizable();
-      if (this.params.draggable) this.makeDraggable();
+      // if (this.params.resizable) this.makeResizable();
+      // if (this.params.draggable) this.makeDraggable();
 
       this.winDiv.addEventListener("mousedown", () => {
         this.setCurrent();
@@ -195,7 +195,7 @@ let oos = {
         "px";
     }
 
-    /* toggleMaximize() {
+    toggleMaximize() {
       if (this.maximized) {
         this.winDiv.style.left = this.maximizeInfo.left;
         this.winDiv.style.top = this.maximizeInfo.top;
@@ -216,7 +216,7 @@ let oos = {
 
         return this.maximized = true;
       }
-    } */
+    }
 
     makeDraggable() {
       (function (elmnt) {
