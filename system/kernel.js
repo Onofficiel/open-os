@@ -220,8 +220,8 @@ let oos = {
       this.winDiv.style.left = this.params.posX;
       this.winDiv.style.top = this.params.posY;
 
-      this.hide();
-      this.id, (this.dataset.id = "wnd_" + oos.sys.var.wId++);
+      this.dataset.id = "wnd_" + oos.sys.var.wId++;
+      this.id = this.dataset.id = "wnd_" + oos.sys.var.wId++;
 
       this.winDiv.innerHTML = `
           <div class="window-content">${this.params.content}</div>
@@ -241,6 +241,7 @@ let oos = {
           <div class="resizer sw"></div>
       `;
 
+      this.hide();
       oos.util.dragHeader(this.winDiv);
       oos.util.resizeByResizer(this.winDiv);
 
