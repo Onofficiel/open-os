@@ -211,23 +211,23 @@ let oos = {
   StandardWindow: class {
     constructor(params) {
       null == params && (params = new oos.WindowParams());
-      params = Object.assign(new oos.WindowParams(), params);
+      this.params = Object.assign(new oos.WindowParams(), params);
       this.winDiv = document.createElement("div");
 
       this.winDiv.classList.add("window");
-      this.winDiv.style.height = params.height;
-      this.winDiv.style.width = params.width;
-      this.winDiv.style.left = params.posX;
-      this.winDiv.style.top = params.posY;
+      this.winDiv.style.height = this.params.height;
+      this.winDiv.style.width = this.params.width;
+      this.winDiv.style.left = this.params.posX;
+      this.winDiv.style.top = this.params.posY;
 
       this.hide();
       this.id = "wnd_" + oos.sys.var.wId++;
 
       this.winDiv.innerHTML = `
-          <div class="window-content">${params.content}</div>
-          <div class="window-header cs-move" style="background: ${params.headerColor};">
-            <img src="${params.icon}" />
-            <span class="title">${params.title}</span>
+          <div class="window-content">${this.params.content}</div>
+          <div class="window-header cs-move" style="background: ${this.params.headerColor};">
+            <img src="${this.params.icon}" />
+            <span class="title">${this.params.title}</span>
             <span class="ctrl-btn">
             <span class="minimize-btn cs-pointer">🗕</span>
               <span class="maximize-btn cs-pointer">🗖</span>
@@ -247,8 +247,12 @@ let oos = {
       this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
         this.close();
       });
+      this.winDiv.querySelector(".minimize-btn").addEventListener("click", () => {
+        this.hide();
+      });
+
       document.querySelector(".desktop").appendChild(this.winDiv);
-      
+
       oos.ui.desk.addApp(this);
 
       return this;
