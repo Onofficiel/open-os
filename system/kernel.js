@@ -209,11 +209,16 @@ let oos = {
       null == params && (params = new oos.WindowParams());
       this.params = Object.assign(new oos.WindowParams(), params);
       this.winDiv = document.createElement("div");
+
       this.winDiv.classList.add("window");
+      this.winDiv.style.height = this.params.height;
+      this.winDiv.style.width = this.params.width;
+      this.winDiv.style.left = this.params.posX;
+      this.winDiv.style.top = this.params.posY;
 
 
       this.winDiv.innerHTML = `
-          <div class="window-content" style="left: ${this.posX}px; top: ${this.posY}px;">${this.params.content}</div>
+          <div class="window-content">${this.params.content}</div>
           <div class="window-header cs-move" style="background: ${this.params.headerColor};">
             <img src="${this.params.icon}" />
             <span class="title">${this.params.title}</span>
