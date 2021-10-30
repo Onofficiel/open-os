@@ -130,6 +130,7 @@ let oos = {
         top: 0,
         width: 0,
         height: 0,
+        borderRadius: 0,
       };
 
       this.winDiv.classList.add("window");
@@ -208,6 +209,7 @@ let oos = {
         this.winDiv.style.top = this.maximizeInfo.top;
         this.winDiv.style.height = this.maximizeInfo.height;
         this.winDiv.style.width = this.maximizeInfo.width;
+        this.winDiv.style.borderRadius = this.maximizeInfo.borderRadius;
 
         return (this.maximized = false);
       } else {
@@ -215,11 +217,13 @@ let oos = {
         this.maximizeInfo.top = this.winDiv.style.top;
         this.maximizeInfo.height = this.winDiv.style.height;
         this.maximizeInfo.width = this.winDiv.style.width;
+        this.maximizeInfo.borderRadius = this.winDiv.style.borderRadius;
 
         this.winDiv.style.left = 0;
         this.winDiv.style.top = 0;
         this.winDiv.style.height = "100%";
         this.winDiv.style.width = "100%";
+        this.winDiv.style.borderRadius = 0;
 
         return (this.maximized = true);
       }
