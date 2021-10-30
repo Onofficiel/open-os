@@ -201,11 +201,20 @@ let oos = {
         this.winDiv.style.top = this.maximizeInfo.top;
         this.winDiv.style.height = this.maximizeInfo.height;
         this.winDiv.style.width = this.maximizeInfo.width;
+
+        return this.maximized = false;
       } else {
         this.maximizeInfo.left = this.winDiv.style.left;
         this.maximizeInfo.top = this.winDiv.style.top;
         this.maximizeInfo.height = this.winDiv.style.height;
         this.maximizeInfo.width = this.winDiv.style.width;
+
+        this.winDiv.style.left = 0;
+        this.winDiv.style.top = 0;
+        this.winDiv.style.height = "100%";
+        this.winDiv.style.width = "100%";
+
+        return this.maximized = true;
       }
     }
 
