@@ -185,9 +185,9 @@ let oos = {
 
     center() {
       this.winDiv.style.left =
-        window.innerWidth / 2 - parseInt(this.winDiv.style.left) / 2 + "px";
+        document.body.offsetWidth / 2 - parseInt(this.winDiv.style.left) / 2 + "px";
       this.winDiv.style.top =
-        window.innerHeight / 2 - parseInt(this.winDiv.style.top) / 2 + "px";
+        document.body.offsetHeight / 2 - parseInt(this.winDiv.style.top) / 2 + "px";
     }
 
     makeDraggable() {
