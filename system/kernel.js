@@ -160,8 +160,8 @@ let oos = {
     send: () => {},
   },
   ui: {
-    desk: class {
-      addApp(wapp) {
+    desk: {
+      addApp: (wapp) => {
         let desk = document.querySelector(".desk");
 
         let app = document.createElement("img");
@@ -174,13 +174,13 @@ let oos = {
         });
 
         desk.appendChild(app);
-      }
+      },
 
-      removeApp(wapp) {
+      removeApp: (wapp) => {
         let desk = document.querySelector(".desk");
 
         desk.removeChild(desk.querySelector("img[data-id='" + wapp.id + "']"));
-      }
+      },
     },
   },
   WApplication: class {
