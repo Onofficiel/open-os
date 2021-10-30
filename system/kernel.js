@@ -124,12 +124,18 @@ let oos = {
       this.params = Object.assign(new oos.WindowParams(), params);
       this.winDiv = document.createElement("div");
       this.minimized = false;
+      this.maximizeInfo = {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0,
+      };
 
       this.winDiv.classList.add("window");
-      this.winDiv.style.height = this.params.height;
-      this.winDiv.style.width = this.params.width;
-      this.winDiv.style.left = this.params.posX;
-      this.winDiv.style.top = this.params.posY;
+      this.winDiv.style.height = this.params.height + "px";
+      this.winDiv.style.width = this.params.width + "px";
+      this.winDiv.style.left = this.params.posX + "px";
+      this.winDiv.style.top = this.params.posY + "px";
       this.winDiv.dataset.id = "wnd_" + oos.sys.var.wId++;
 
       this.id = this.winDiv.dataset.id;
