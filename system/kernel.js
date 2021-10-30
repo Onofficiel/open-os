@@ -236,7 +236,7 @@ let oos = {
       });
       oos.ui.desk.addApp(this);
 
-      return this.winDiv;
+      return this;
     }
 
     get id() {
