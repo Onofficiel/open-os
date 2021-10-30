@@ -124,6 +124,7 @@ let oos = {
       this.params = Object.assign(new oos.WindowParams(), params);
       this.winDiv = document.createElement("div");
       this.minimized = false;
+      this.maximized = false;
       this.maximizeInfo = {
         left: 0,
         top: 0,
@@ -192,6 +193,24 @@ let oos = {
         document.body.offsetHeight / 2 -
         parseInt(this.winDiv.style.height) / 2 +
         "px";
+    }
+
+    toggleMaximize() {
+      if (this.maximized) {
+        this.winDiv.style.left = this.maximizeInfo.left;
+        this.winDiv.style.top = this.maximizeInfo.top;
+        this.winDiv.style.height = this.maximizeInfo.height;
+        this.winDiv.style.width = this.maximizeInfo.width;
+      } else {
+        for (const value in this.maximizeInfo) {
+          if (Object.hasOwnProperty.call(this.maximizeInfo, value)) {
+            const cValue = this.maximizeInfo[value];
+
+            cValue = this.winDiv.style[Object.keys(cValue)];
+          }
+        }
+        console.log(this.maximizeInfo);
+      }
     }
 
     makeDraggable() {
