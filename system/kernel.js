@@ -152,12 +152,8 @@ let oos = {
 
       this.hide();
 
-      if (this.params.resizable) {
-        this.makeResizable();
-      }
-      if (this.params.draggable) {
-        this.makeDraggable();
-      }
+      if (this.params.resizable) this.makeResizable();
+      if (this.params.draggable) this.makeDraggable();
 
       this.winDiv.addEventListener("mousedown", () => {
         this.setCurrent();
