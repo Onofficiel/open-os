@@ -165,9 +165,9 @@ let oos = {
       if (this.params.resizable) this.makeResizable();
       if (this.params.draggable) this.makeDraggable();
 
-      this.winDiv.addEventListener("mousedown", () => {
+      /* this.winDiv.addEventListener("mousedown", () => {
         this.setCurrent();
-      });
+      }); */
 
       this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
         this.close();
