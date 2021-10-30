@@ -247,7 +247,7 @@ let oos = {
       oos.util.dragHeader(this.winDiv);
       oos.util.resizeByResizer(this.winDiv);
 
-      this.winDiv.addEventListener("click", () => {
+      this.winDiv.addEventListener("mousedown", () => {
         this.setCurrent();
       });
 
