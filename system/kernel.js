@@ -209,6 +209,8 @@ let oos = {
       null == params && (params = new oos.WindowParams());
       this.params = Object.assign(new oos.WindowParams(), params);
       this.winDiv = document.createElement("div");
+      this.winDiv.classList.add("window");
+
 
       this.winDiv.innerHTML = `
           <div class="window-content" style="left: ${this.posX}px; top: ${this.posY}px;">${this.params.content}</div>
