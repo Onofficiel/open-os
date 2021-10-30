@@ -247,6 +247,10 @@ let oos = {
       oos.util.dragHeader(this.winDiv);
       oos.util.resizeByResizer(this.winDiv);
 
+      this.winDiv.addEventListener("click", () => {
+        this.setCurrent();
+      });
+
       this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
         this.close();
       });
@@ -292,8 +296,7 @@ let oos = {
         for (
           let i = 0;
           i <
-          document.querySelector(".desktop").querySelectorAll(".window")
-            .length;
+          document.querySelector(".desktop").querySelectorAll(".window").length;
           i++
         ) {
           document
