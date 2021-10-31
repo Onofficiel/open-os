@@ -224,7 +224,7 @@ let oos = {
           <div class="resizer sw"></div>
       `;
 
-      this.hide();
+      this.setCurrent();
 
       if (this.params.resizable) this.makeResizable();
       if (this.params.draggable) this.makeDraggable();
