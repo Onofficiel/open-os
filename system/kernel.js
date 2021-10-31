@@ -267,6 +267,7 @@ let oos = {
           .addEventListener("click", () => {
             this.hide();
           });
+        oos.ui.desk.addApp(this);
       }
       if (this.params.maximizable) {
         this.winDiv
@@ -281,8 +282,6 @@ let oos = {
       });
 
       document.querySelector(".desktop").appendChild(this.winDiv);
-
-      oos.ui.desk.addApp(this);
 
       return this;
     }
@@ -413,7 +412,8 @@ let oos = {
 
     close() {
       try {
-        oos.ui.desk.removeApp(this);
+        if (this.params.minimizable) oos.ui.desk.removeApp(this);
+
         document.querySelector(".desktop").removeChild(this.winDiv);
         return true;
       } catch {
