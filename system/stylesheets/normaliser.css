@@ -87,7 +87,7 @@
 }
 .window-content {
   flex-grow: 1;
-  overflow: scroll;
+  overflow: auto;
 }
 .resizer {
   width: 10px;
