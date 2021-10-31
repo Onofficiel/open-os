@@ -31,7 +31,6 @@ let oos = {
         osDiv.removeChild(osDiv.querySelector(".loader"));
       }, 2000);
 
-      console.error = window.console.error;
       window.console.error = (error) => {
         new oos.StandardWindow({
           content: `
@@ -61,9 +60,40 @@ let oos = {
           title: "Error",
           headerColor: "#ff6868",
           width: 450,
-          height: 200
+          height: 200,
         }).show();
-      }
+      };
+      window.alert = (msg) => {
+        new oos.StandardWindow({
+          content: `
+          <div style="
+      
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-evenly;
+      
+          width: 100%;
+          height: 100%;
+      
+          color: #333333;
+      
+          ">
+              <h1 style="
+      
+              font-size: 80px;
+      
+              ">⚠</h1>
+              <div>${msg.toString()}</div>
+          </div>
+          `,
+          resizable: false,
+          headerColor: "#333333",
+          width: 430,
+          height: 200,
+          title: "Alert",
+        }).show();
+      };
     });
   },
   sys: {
