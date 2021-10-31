@@ -253,25 +253,32 @@ let oos = {
       if (this.params.resizable) this.makeResizable();
       if (this.params.draggable) this.makeDraggable();
 
+      if (this.params.closable) {
+        this.winDiv
+          .querySelector(".close-btn")
+          .addEventListener("click", () => {
+            this.close();
+          });
+      }
+
+      if (this.params.minimizable) {
+        this.winDiv
+          .querySelector(".minimize-btn")
+          .addEventListener("click", () => {
+            this.hide();
+          });
+      }
+      if (this.params.maximizable) {
+        this.winDiv
+          .querySelector(".maximize-btn")
+          .addEventListener("click", () => {
+            this.toggleMaximize();
+          });
+      }
+
       this.winDiv.addEventListener("mousedown", () => {
         this.setCurrent();
       });
-
-      this.winDiv.querySelector(".close-btn").addEventListener("click", () => {
-        this.close();
-      });
-
-      this.winDiv
-        .querySelector(".minimize-btn")
-        .addEventListener("click", () => {
-          this.hide();
-        });
-
-      this.winDiv
-        .querySelector(".maximize-btn")
-        .addEventListener("click", () => {
-          this.toggleMaximize();
-        });
 
       document.querySelector(".desktop").appendChild(this.winDiv);
 
