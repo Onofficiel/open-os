@@ -31,8 +31,8 @@ let oos = {
         osDiv.removeChild(osDiv.querySelector(".loader"));
       }, 2000);
 
-      const vError = window.error;
-      window.error = (error) => {
+      console.error = window.console.error;
+      window.console.error = (error) => {
         new oos.StandardWindow({
           content: `
           <div style="background-color: #ff6868;
