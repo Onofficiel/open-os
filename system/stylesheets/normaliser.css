@@ -72,11 +72,11 @@
   flex-direction: column;
   border-radius: 10px;
   overflow: hidden;
-  /* transition: all .5s ease; */
 }
 .window-header {
   padding: 5px 10px;
   color: #fff;
+  mix-blend-mode: difference;
   
   display: flex;
   justify-content: space-between;
