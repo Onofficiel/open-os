@@ -61,7 +61,7 @@ let oos = {
           headerColor: "#ff6868",
           width: 450,
           height: 200,
-        }).show();
+        }).show().setCurrent();
       };
       window.alert = (msg) => {
         new oos.StandardWindow({
@@ -92,7 +92,7 @@ let oos = {
           width: 430,
           height: 200,
           title: "Alert",
-        }).show();
+        }).show().setCurrent();
       };
     });
   },
@@ -224,7 +224,7 @@ let oos = {
           <div class="resizer sw"></div>
       `;
 
-      this.setCurrent();
+      this.hide();
 
       if (this.params.resizable) this.makeResizable();
       if (this.params.draggable) this.makeDraggable();
