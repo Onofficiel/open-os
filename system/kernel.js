@@ -30,6 +30,40 @@ let oos = {
       setTimeout(() => {
         osDiv.removeChild(osDiv.querySelector(".loader"));
       }, 2000);
+
+      const vError = window.error;
+      window.error = (error) => {
+        new oos.StandardWindow({
+          content: `
+          <div style="background-color: #ff6868;
+                  width: 100%;
+                  height: 100%;">
+        <span style="font-size:100px;
+                  position: absolute;
+                  left: 50%;
+                  top: 30%;
+                  transform: translate(-150%, -50%);
+                  color: #fff;">&#9888;</span>
+        <h2 style="color: #fff;
+                 position: absolute;
+                 left: 60%;
+                 top: 30%;
+                 transform: translate(-50%, -50%);">An error occured.</h2>
+        <p style="color: #fff;
+                 position: absolute;
+                 left: 50%;
+                 top: 60%;
+                 transform: translateX(-50%);
+                 padding: 5px:">${error.toString()}</p>
+        </div>
+          `,
+          resizable: false,
+          title: "Error",
+          headerColor: "#ff6868",
+          width: 450,
+          height: 200
+        }).show();
+      }
     });
   },
   sys: {
