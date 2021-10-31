@@ -76,7 +76,6 @@
 .window-header {
   padding: 5px 10px;
   color: #fff;
-  mix-blend-mode: difference;
   
   display: flex;
   justify-content: space-between;
@@ -86,6 +85,9 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+.window-header > .title {
+  mix-blend-mode: difference;
 }
 .window-content {
   flex-grow: 1;
