@@ -212,9 +212,9 @@ let oos = {
             <img src="${this.params.icon}" height="20px" width="20px" />
             <span class="title">${this.params.title}</span>
             <span class="ctrl-btn">
-            <span class="minimize-btn cs-pointer">🗕</span>
-              <span class="maximize-btn cs-pointer">🗖</span>
-              <span class="close-btn cs-pointer">🗙</span>
+              ${this.params.minimizable ? `<span class="minimize-btn cs-pointer">🗕</span>` : ""}
+              ${this.params.maximizable ? `<span class="maximize-btn cs-pointer">🗖</span>` : ""}
+              ${this.params.closable ? `<span class="close-btn cs-pointer">🗙</span>` : ""}
             </span>
           </div>
 

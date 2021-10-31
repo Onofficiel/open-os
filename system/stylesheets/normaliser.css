@@ -67,7 +67,6 @@
 .window {
   position: absolute;
   background-color: #f1f1f1;
-  text-align: center;
   display: flex;
   flex-direction: column;
   border-radius: 10px;
