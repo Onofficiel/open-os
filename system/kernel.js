@@ -61,7 +61,9 @@ let oos = {
           headerColor: "#ff6868",
           width: 450,
           height: 200,
-        }).show().setCurrent();
+        })
+          .show()
+          .setCurrent();
       };
       window.alert = (msg) => {
         new oos.StandardWindow({
@@ -92,7 +94,9 @@ let oos = {
           width: 430,
           height: 200,
           title: "Alert",
-        }).show().setCurrent();
+        })
+          .show()
+          .setCurrent();
       };
     });
   },
@@ -173,12 +177,18 @@ let oos = {
       this.posY = 100;
       this.height = 300;
       this.width = 480;
+
       this.title = "Untitled Window";
       this.icon = "https://picsum.photos/200";
       this.content = "";
       this.headerColor = "#0099ff";
+
       this.resizable = true;
       this.draggable = true;
+
+      this.minimizable = true;
+      this.maximizable = true;
+      this.closable = true;
     }
   },
   StandardWindow: class {
@@ -208,13 +218,27 @@ let oos = {
 
       this.winDiv.innerHTML = `
           <div class="window-content">${this.params.content}</div>
-          <div class="window-header cs-move" style="background: ${this.params.headerColor};">
+          <div class="window-header cs-move" style="background: ${
+            this.params.headerColor
+          };">
             <img src="${this.params.icon}" height="20px" width="20px" />
             <span class="title">${this.params.title}</span>
             <span class="ctrl-btn">
-              ${this.params.minimizable ? `<span class="minimize-btn cs-pointer">🗕</span>` : ""}
-              ${this.params.maximizable ? `<span class="maximize-btn cs-pointer">🗖</span>` : ""}
-              ${this.params.closable ? `<span class="close-btn cs-pointer">🗙</span>` : ""}
+              ${
+                this.params.minimizable
+                  ? `<span class="minimize-btn cs-pointer">🗕</span>`
+                  : ""
+              }
+              ${
+                this.params.maximizable
+                  ? `<span class="maximize-btn cs-pointer">🗖</span>`
+                  : ""
+              }
+              ${
+                this.params.closable
+                  ? `<span class="close-btn cs-pointer">🗙</span>`
+                  : ""
+              }
             </span>
           </div>
 
