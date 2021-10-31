@@ -57,6 +57,8 @@ let oos = {
         </div>
           `,
           resizable: false,
+          minimizable: false,
+          maximizable: false,
           title: "Error",
           headerColor: "#ff6868",
           width: 450,
@@ -90,6 +92,8 @@ let oos = {
           </div>
           `,
           resizable: false,
+          minimizable: false,
+          maximizable: false,
           headerColor: "#333333",
           width: 430,
           height: 200,
