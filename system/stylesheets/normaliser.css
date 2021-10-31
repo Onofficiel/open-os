@@ -76,7 +76,7 @@
 .window-header {
   padding: 5px 10px;
   color: #fff;
-  mix-blend-mode: saturation;
+  mix-blend-mode: difference;
   
   display: flex;
   justify-content: space-between;
