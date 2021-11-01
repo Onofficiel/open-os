@@ -283,13 +283,9 @@ let oos = {
 
       // Window Events //
 
-      this.winDiv.addEventListener("mousedown", () => {
-        this.setCurrent();
-      });
+      this.winDiv.addEventListener("mousedown", this.setCurrent());
 
-      this.winDiv.addEventListener("dblclick", () => {
-        this.toggleMaximize();
-      });
+      this.winDiv.addEventListener("dblclick", this.toggleMaximize());
 
       document.querySelector(".desktop").appendChild(this.winDiv);
 
