@@ -141,7 +141,7 @@ let oos = {
       addApp: (wapp) => {
         let desk = document.querySelector(".desk");
 
-        let app = document.createwndent("img");
+        let app = document.createElement("img");
         app.classList.add("desk-icon");
         app.src = wapp.params.icon;
         app.dataset.dId = wapp.id;
@@ -200,7 +200,7 @@ let oos = {
       null == params && (params = new oos.WindowParams());
 
       this.params = Object.assign(new oos.WindowParams(), params);
-      this.winDiv = document.createwndent("div");
+      this.winDiv = document.createElement("div");
       this.minimized = false;
       this.maximized = false;
       this.maximizeInfo = {
