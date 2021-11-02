@@ -425,7 +425,7 @@ let oos = {
             }
           }
         }
-      })(this.winDiv);
+      })(this);
     }
 
     close() {
