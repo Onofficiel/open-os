@@ -349,12 +349,16 @@ let oos = {
           window.addEventListener("mouseup", mouseup);
 
           function mousemove(e) {
-            if (ctx.maximized) ctx.toggleMaximize();
-
             let newX = prevX - e.clientX;
             let newY = prevY - e.clientY;
 
             const rect = wnd.getBoundingClientRect();
+
+            if (ctx.maximized) {
+              ctx.maximizeInfo.left = rect.left - newX + "px";
+              ctx.maximizeInfo.top = rect.top - newX + "px";
+              ctx.toggleMaximize();
+            }
 
             wnd.style.left = rect.left - newX + "px";
             wnd.style.top = rect.top - newY + "px";
@@ -392,7 +396,9 @@ let oos = {
             window.addEventListener("mouseup", mouseup);
 
             function mousemove(e) {
-              if (ctx.maximized) ctx.toggleMaximize();
+              if (ctx.maximized) {
+                ctx.toggleMaximize();
+              }
 
               const rect = wnd.getBoundingClientRect();
 
