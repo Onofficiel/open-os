@@ -349,14 +349,14 @@ let oos = {
           window.addEventListener("mouseup", mouseup);
 
           function mousemove(e) {
+            if (ctx.maximized) {
+              ctx.toggleMaximize();
+            }
+            
             let newX = prevX - e.clientX;
             let newY = prevY - e.clientY;
 
             const rect = wnd.getBoundingClientRect();
-
-            if (ctx.maximized) {
-              ctx.toggleMaximize();
-            }
 
             wnd.style.left = rect.left - newX + "px";
             wnd.style.top = rect.top - newY + "px";
