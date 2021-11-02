@@ -334,6 +334,8 @@ let oos = {
     }
 
     makeDraggable() {
+      if (this.maximized) this.toggleMaximize();
+      
       (function (elem) {
         elem
           .querySelector("." + elem.classList[0] + "-header")
@@ -368,6 +370,8 @@ let oos = {
     }
 
     makeResizable() {
+      if (this.maximized) this.toggleMaximize();
+
       (function (elmnt) {
         const resizers = elmnt.querySelectorAll(".resizer");
         let currentResizer;
