@@ -141,7 +141,7 @@ let oos = {
       addApp: (wapp) => {
         let desk = document.querySelector(".desk");
 
-        let app = document.createElement("img");
+        let app = document.createwndent("img");
         app.classList.add("desk-icon");
         app.src = wapp.params.icon;
         app.dataset.dId = wapp.id;
@@ -200,7 +200,7 @@ let oos = {
       null == params && (params = new oos.WindowParams());
 
       this.params = Object.assign(new oos.WindowParams(), params);
-      this.winDiv = document.createElement("div");
+      this.winDiv = document.createwndent("div");
       this.minimized = false;
       this.maximized = false;
       this.maximizeInfo = {
@@ -334,11 +334,11 @@ let oos = {
     }
 
     makeDraggable() {
-      if (this.maximized) this.toggleMaximize();
-      
-      (function (elem) {
-        elem
-          .querySelector("." + elem.classList[0] + "-header")
+      (function (ctx) {
+        let wnd = ctx.winDiv;
+
+        wnd
+          .querySelector("." + wnd.classList[0] + "-header")
           .addEventListener("mousedown", mousedown);
 
         function mousedown(e) {
@@ -349,13 +349,15 @@ let oos = {
           window.addEventListener("mouseup", mouseup);
 
           function mousemove(e) {
+            if (ctx.maximized) ctx.toggleMaximize();
+
             let newX = prevX - e.clientX;
             let newY = prevY - e.clientY;
 
-            const rect = elem.getBoundingClientRect();
+            const rect = wnd.getBoundingClientRect();
 
-            elem.style.left = rect.left - newX + "px";
-            elem.style.top = rect.top - newY + "px";
+            wnd.style.left = rect.left - newX + "px";
+            wnd.style.top = rect.top - newY + "px";
 
             prevX = e.clientX;
             prevY = e.clientY;
@@ -366,14 +368,14 @@ let oos = {
             window.removeEventListener("mousemove", mousemove);
           }
         }
-      })(this.winDiv);
+      })(this);
     }
 
     makeResizable() {
-      if (this.maximized) this.toggleMaximize();
+      (function (ctx) {
+        let wnd = ctx.winDiv;
 
-      (function (elmnt) {
-        const resizers = elmnt.querySelectorAll(".resizer");
+        const resizers = wnd.querySelectorAll(".resizer");
         let currentResizer;
 
         for (let resizer of resizers) {
@@ -390,24 +392,26 @@ let oos = {
             window.addEventListener("mouseup", mouseup);
 
             function mousemove(e) {
-              const rect = elmnt.getBoundingClientRect();
+              if (ctx.maximized) ctx.toggleMaximize();
+
+              const rect = wnd.getBoundingClientRect();
 
               if (currentResizer.classList.contains("se")) {
-                elmnt.style.width = rect.width - (prevX - e.clientX) + "px";
-                elmnt.style.height = rect.height - (prevY - e.clientY) + "px";
+                wnd.style.width = rect.width - (prevX - e.clientX) + "px";
+                wnd.style.height = rect.height - (prevY - e.clientY) + "px";
               } else if (currentResizer.classList.contains("sw")) {
-                elmnt.style.width = rect.width + (prevX - e.clientX) + "px";
-                elmnt.style.height = rect.height - (prevY - e.clientY) + "px";
-                elmnt.style.left = rect.left - (prevX - e.clientX) + "px";
+                wnd.style.width = rect.width + (prevX - e.clientX) + "px";
+                wnd.style.height = rect.height - (prevY - e.clientY) + "px";
+                wnd.style.left = rect.left - (prevX - e.clientX) + "px";
               } else if (currentResizer.classList.contains("ne")) {
-                elmnt.style.width = rect.width - (prevX - e.clientX) + "px";
-                elmnt.style.height = rect.height + (prevY - e.clientY) + "px";
-                elmnt.style.top = rect.top - (prevY - e.clientY) + "px";
+                wnd.style.width = rect.width - (prevX - e.clientX) + "px";
+                wnd.style.height = rect.height + (prevY - e.clientY) + "px";
+                wnd.style.top = rect.top - (prevY - e.clientY) + "px";
               } else {
-                elmnt.style.width = rect.width + (prevX - e.clientX) + "px";
-                elmnt.style.height = rect.height + (prevY - e.clientY) + "px";
-                elmnt.style.top = rect.top - (prevY - e.clientY) + "px";
-                elmnt.style.left = rect.left - (prevX - e.clientX) + "px";
+                wnd.style.width = rect.width + (prevX - e.clientX) + "px";
+                wnd.style.height = rect.height + (prevY - e.clientY) + "px";
+                wnd.style.top = rect.top - (prevY - e.clientY) + "px";
+                wnd.style.left = rect.left - (prevX - e.clientX) + "px";
               }
 
               prevX = e.clientX;
