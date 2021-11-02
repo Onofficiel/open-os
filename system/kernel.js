@@ -355,8 +355,6 @@ let oos = {
             const rect = wnd.getBoundingClientRect();
 
             if (ctx.maximized) {
-              ctx.maximizeInfo.left = rect.left - newX + "px";
-              ctx.maximizeInfo.top = rect.top - newX + "px";
               ctx.toggleMaximize();
             }
 
