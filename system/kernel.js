@@ -12,7 +12,7 @@
 
 let oos = {
   main: () => {
-    oos.addEventListener("load", () => {
+    document.addEventListener("load", () => {
       let osDiv = document.querySelector(".os-container");
 
       // import CSS //
