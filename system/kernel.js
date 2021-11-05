@@ -15,25 +15,6 @@ let oos = {
     document.addEventListener("load", () => {
       let osDiv = document.querySelector(".os-container");
 
-      // import CSS //
-      let normaliserLink = document.createElement("link");
-
-      normaliserLink.type = "text/css";
-      normaliserLink.rel = "stylesheet";
-      normaliserLink.href =
-        "https://open-os.netlify.app/system/stylesheets/normaliser.css";
-
-      document.head.appendChild(normaliserLink);
-
-      let masterLink = document.createElement("link");
-
-      masterLink.type = "text/css";
-      masterLink.rel = "stylesheet";
-      masterLink.href =
-        "https://open-os.netlify.app/system/stylesheets/master.css";
-
-      document.head.appendChild(masterLink);
-
       osDiv.innerHTML = `
             <div class='loader'>
                 <img src="https://open-os.netlify.app/system/ressources/img/OutlinedLogoWhite.png">
