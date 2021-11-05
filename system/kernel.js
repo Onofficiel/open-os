@@ -8,7 +8,9 @@
 
 //           kernel.js           //
 
-(() => {})();
+(() => {
+  export {oos};
+})();
 
 let oos = {
   main: () => {
