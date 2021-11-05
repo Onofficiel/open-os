@@ -8,19 +8,19 @@
 
 //           kernel.js           //
 
-(() => {
-  
-})();
+(() => {})();
 
-export {oos};
-
-let oos = {
+export let oos = {
   main: () => {
     addEventListener("load", () => {
       let osDiv = document.querySelector(".os-container");
 
-      oos.util.import.css("https://open-os.netlify.app/system/stylesheets/normaliser.css");
-      oos.util.import.css("https://open-os.netlify.app/system/stylesheets/master.css");
+      oos.util.import.css(
+        "https://open-os.netlify.app/system/stylesheets/normaliser.css"
+      );
+      oos.util.import.css(
+        "https://open-os.netlify.app/system/stylesheets/master.css"
+      );
 
       osDiv.innerHTML = `
             <div class='loader'>
