@@ -10,7 +10,7 @@
 
 (() => {})();
 
-export let hello = "10";
+export default { hello: "hi" };
 
 let oos = {
   main: () => {
