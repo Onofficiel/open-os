@@ -13,6 +13,8 @@
 let oos = {
   main: () => {
     addEventListener("load", () => {
+      import "https://open-os.netlify.app/system/stylesheets/normaliser.css";
+      
       let osDiv = document.querySelector(".os-container");
 
       osDiv.innerHTML = `
@@ -352,7 +354,7 @@ let oos = {
             if (ctx.maximized) {
               ctx.toggleMaximize();
             }
-            
+
             let newX = prevX - e.clientX;
             let newY = prevY - e.clientY;
 
