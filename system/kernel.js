@@ -10,7 +10,9 @@
 
 (() => {})();
 
-export let oos = {
+export let hello = "10";
+
+let oos = {
   main: () => {
     addEventListener("load", () => {
       let osDiv = document.querySelector(".os-container");
