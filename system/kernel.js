@@ -15,6 +15,8 @@ let oos = {
     addEventListener("load", () => {
       let osDiv = document.querySelector(".os-container");
 
+      oos.util.import.css("https://open-os.netlify.app/system/stylesheets/normaliser.css");
+
       osDiv.innerHTML = `
             <div class='loader'>
                 <img src="https://open-os.netlify.app/system/ressources/img/OutlinedLogoWhite.png">
