@@ -16,8 +16,12 @@ let oos = {
       let osDiv = document.querySelector(".os-container");
 
       // import CSS //
-      oos.util.import.css("https://open-os.netlify.app/system/stylesheets/normaliser.css");
-      oos.util.import.css("https://open-os.netlify.app/system/stylesheets/master.css");
+      oos.util.import.css(
+        "https://open-os.netlify.app/system/stylesheets/normaliser.css"
+      );
+      oos.util.import.css(
+        "https://open-os.netlify.app/system/stylesheets/master.css"
+      );
 
       osDiv.innerHTML = `
             <div class='loader'>
@@ -117,10 +121,13 @@ let oos = {
   util: {
     import: {
       css: (href) => {
+        let osDiv = document.querySelector(".os-container");
         let link = document.createElement("link");
+
         link.type = "text/css";
         link.rel = "stylesheet";
         link.href = href;
+
         osDiv.appendChild(link);
       },
     },
