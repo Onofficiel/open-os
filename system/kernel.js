@@ -12,14 +12,14 @@
 
 let oos = {
   main: () => {
-    document.addEventListener("load", () => {
+    document.addEventListener("load", async () => {
       let osDiv = document.querySelector(".os-container");
 
       // import CSS //
-      oos.util.import.css(
+      await oos.util.import.css(
         "https://open-os.netlify.app/system/stylesheets/normaliser.css"
       );
-      oos.util.import.css(
+      await oos.util.import.css(
         "https://open-os.netlify.app/system/stylesheets/master.css"
       );
 
