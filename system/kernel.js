@@ -115,14 +115,13 @@ let oos = {
   util: {
     import: {
       css: (href) => {
-        let osDiv = document.querySelector(".os-container");
         let link = document.createElement("link");
 
         link.type = "text/css";
         link.rel = "stylesheet";
         link.href = href;
 
-        osDiv.appendChild(link);
+        document.head.appendChild(link);
       },
     },
     escapeHtml: (unsafe) => {
