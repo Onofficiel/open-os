@@ -40,7 +40,7 @@
   z-index: 1;
 }
 .desktop {
-  background: url("../../system/ressources/img/DefaultWallPaper.png") no-repeat
+  background: url("https://open-os.netlify.app/system/ressources/img/DefaultWallPaper.png") no-repeat
     center center;
   background-size: cover;
 }

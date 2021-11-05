@@ -17,7 +17,7 @@ let oos = {
 
       osDiv.innerHTML = `
             <div class='loader'>
-                <img src="system/ressources/img/OutlinedLogoWhite.png">
+                <img src="https://open-os.netlify.app/system/ressources/img/OutlinedLogoWhite.png">
             </div>
             <div class='desktop'>Desktop</div>
             `;
