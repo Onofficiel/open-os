@@ -9,8 +9,10 @@
 //           kernel.js           //
 
 (() => {
-  export {oos};
+  
 })();
+
+export {oos};
 
 let oos = {
   main: () => {
