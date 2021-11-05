@@ -13,9 +13,11 @@
 let oos = {
   main: () => {
     addEventListener("load", () => {
-      import "https://open-os.netlify.app/system/stylesheets/normaliser.css";
-      
       let osDiv = document.querySelector(".os-container");
+
+      // import CSS //
+      oos.util.import.css("https://open-os.netlify.app/system/stylesheets/normaliser.css");
+      oos.util.import.css("https://open-os.netlify.app/system/stylesheets/master.css");
 
       osDiv.innerHTML = `
             <div class='loader'>
@@ -113,6 +115,15 @@ let oos = {
     },
   },
   util: {
+    import: {
+      css: (href) => {
+        let link = document.createElement("link");
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.href = href;
+        osDiv.appendChild(link);
+      },
+    },
     escapeHtml: (unsafe) => {
       return unsafe
         .replace(/&/g, "&amp;")
