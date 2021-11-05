@@ -23,7 +23,7 @@ let oos = {
       normaliserLink.href =
         "https://open-os.netlify.app/system/stylesheets/normaliser.css";
 
-      osDiv.appendChild(normaliserLink);
+      document.head.appendChild(normaliserLink);
 
       let masterLink = document.createElement("link");
 
@@ -32,7 +32,7 @@ let oos = {
       masterLink.href =
         "https://open-os.netlify.app/system/stylesheets/master.css";
 
-      osDiv.appendChild(masterLink);
+      document.head.appendChild(masterLink);
 
       osDiv.innerHTML = `
             <div class='loader'>
