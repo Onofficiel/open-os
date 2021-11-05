@@ -16,12 +16,23 @@ let oos = {
       let osDiv = document.querySelector(".os-container");
 
       // import CSS //
-      await oos.util.import.css(
-        "https://open-os.netlify.app/system/stylesheets/normaliser.css"
-      );
-      await oos.util.import.css(
-        "https://open-os.netlify.app/system/stylesheets/master.css"
-      );
+      let normaliserLink = document.createElement("link");
+
+      normaliserLink.type = "text/css";
+      normaliserLink.rel = "stylesheet";
+      normaliserLink.href =
+        "https://open-os.netlify.app/system/stylesheets/normaliser.css";
+
+      osDiv.appendChild(normaliserLink);
+
+      let masterLink = document.createElement("link");
+
+      masterLink.type = "text/css";
+      masterLink.rel = "stylesheet";
+      masterLink.href =
+        "https://open-os.netlify.app/system/stylesheets/master.css";
+
+      osDiv.appendChild(masterLink);
 
       osDiv.innerHTML = `
             <div class='loader'>
