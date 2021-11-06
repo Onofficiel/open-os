@@ -10,13 +10,12 @@
 
 (() => {})();
 
-export default { hello: "hi" };
-
 let oos = {
   main: () => {
     addEventListener("load", () => {
       let osDiv = document.querySelector(".os-container");
 
+      // import CSS //
       oos.util.import.css(
         "https://open-os.netlify.app/system/stylesheets/normaliser.css"
       );
@@ -122,13 +121,14 @@ let oos = {
   util: {
     import: {
       css: (href) => {
+        let osDiv = document.querySelector(".os-container");
         let link = document.createElement("link");
 
         link.type = "text/css";
         link.rel = "stylesheet";
         link.href = href;
 
-        document.head.appendChild(link);
+        osDiv.appendChild(link);
       },
     },
     escapeHtml: (unsafe) => {
@@ -498,3 +498,5 @@ let oos = {
   },
 };
 oos.main();
+
+export { oos };
