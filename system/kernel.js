@@ -219,8 +219,9 @@ let oos = {
 
         script.type = "text/javascript";
         script.src = src;
+        !!script.defer;
 
-        document.querySelector(".os-container").appendChild(script);
+        document.head.appendChild(script);
       },
     },
     escapeHtml: (unsafe) => {
