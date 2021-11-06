@@ -42,7 +42,7 @@ let oos = {
       }, 2000);
 
       window.console.error = (error) => {
-        new oos.StandardWindow({
+        let wnd = new oos.StandardWindow({
           content: `
           <div style="background-color: #ff6868;
                   width: 100%;
@@ -73,12 +73,13 @@ let oos = {
           headerColor: "#ff6868",
           width: 450,
           height: 200,
-        })
-          .show()
-          .setCurrent();
+        });
+
+        wnd.show();
+        wnd.setCurrent();
       };
       window.alert = (msg) => {
-        new oos.StandardWindow({
+        let wnd = new oos.StandardWindow({
           content: `
           <div style="
       
@@ -108,9 +109,10 @@ let oos = {
           width: 430,
           height: 200,
           title: "Alert",
-        })
-          .show()
-          .setCurrent();
+        });
+
+        wnd.show();
+        wnd.setCurrent();
       };
     });
   },
