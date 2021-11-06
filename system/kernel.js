@@ -15,7 +15,8 @@ let oos = {
     window.addEventListener("load", () => {
       let osDiv = document.querySelector(".os-container");
 
-      /*/ import CSS /*/
+      /*/ import Other Ressources /*/
+
       fetch("https://open-os.netlify.app").then(() => {
         oos.util.import.css(
           "https://open-os.netlify.app/system/stylesheets/normaliser.css"
@@ -205,14 +206,21 @@ let oos = {
   util: {
     import: {
       css: (href) => {
-        let osDiv = document.querySelector(".os-container");
         let link = document.createElement("link");
 
         link.type = "text/css";
         link.rel = "stylesheet";
         link.href = href;
 
-        osDiv.appendChild(link);
+        document.head.appendChild(link);
+      },
+      css: (src) => {
+        let script = document.createElement("script");
+
+        script.type = "text/javascript";
+        script.src = src;
+
+        document.querySelector(".os-container").appendChild(script);
       },
     },
     escapeHtml: (unsafe) => {
