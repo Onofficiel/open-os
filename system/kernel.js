@@ -544,7 +544,7 @@ let oos = {
           }
         </span>
         
-        <img src="${this.params.icon}"
+        <img src="${!!this.params.icon ? this.params.icon : ''}"
             style="width: 50px;
                     height: 50px;
         ">
