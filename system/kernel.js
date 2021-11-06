@@ -134,6 +134,8 @@ let oos = {
           font-family: monospace;
           background: #0f1020;
           color: #fff;
+
+          overflow: auto;
       }
 
       #term-input {
@@ -141,7 +143,6 @@ let oos = {
       }
 
       #term-history {
-        background: #0f1020;
         width: 100%;
       }
     
