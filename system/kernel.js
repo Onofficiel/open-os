@@ -515,9 +515,9 @@ let oos = {
   },
   StandardNotification: class {
     constructor(params) {
-      if (params == null) params = new oos.WindowParams();
+      if (params == null) params = new oos.NotificationParams();
 
-      this.params = Object.assign(new oos.WindowParams(), params);
+      this.params = Object.assign(new oos.NotificationParams(), params);
       this.notifDiv = document.createElement("div");
 
       this.notifDiv.classList.add("notification");
