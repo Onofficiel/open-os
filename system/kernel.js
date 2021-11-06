@@ -11,8 +11,8 @@
 (() => {})();
 
 let oos = {
-  main: () => {
-    addEventListener("load", () => {
+  main: async () => {
+    window.addEventListener("load", () => {
       let osDiv = document.querySelector(".os-container");
 
       // import CSS //
