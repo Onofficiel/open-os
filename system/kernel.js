@@ -219,7 +219,6 @@ let oos = {
 
         script.type = "text/javascript";
         script.src = src;
-        !!script.defer;
 
         document.head.appendChild(script);
       },
