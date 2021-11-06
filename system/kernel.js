@@ -499,4 +499,4 @@ let oos = {
 };
 oos.main();
 
-export { oos };
+export default { oos };
