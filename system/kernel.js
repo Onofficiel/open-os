@@ -558,7 +558,7 @@ let oos = {
       `;
 
       if (this.params.closable) {
-        this.winDiv
+        this.notifDiv
           .querySelector(".close-btn")
           .addEventListener("click", () => {
             this.close();
