@@ -10,7 +10,7 @@
 
 (() => {})();
 
-let oos = {
+export let oos = {
   main: () => {
     window.addEventListener("load", () => {
       let osDiv = document.querySelector(".os-container");
