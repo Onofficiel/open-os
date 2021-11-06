@@ -162,33 +162,36 @@ let oos = {
         maximizable: 0,
         minimizable: 0,
         icon: 0,
-    }).show();
-    
-    document.querySelector(".root").addEventListener("click", () => {
+      }).show();
+
+      document.querySelector(".root").addEventListener("click", () => {
         document.querySelector("#term-input").focus();
       });
-    
-      document.querySelector("#term-input").addEventListener("keypress", (e) => {
-        if (e.key == "Enter") {
-          let result =
-            "<span>" +
-            oos.util.escapeHtml(document.querySelector("#term-input").value) +
-            "</span><br />";
-          try {
-            result +=
+
+      document
+        .querySelector("#term-input")
+        .addEventListener("keypress", (e) => {
+          if (e.key == "Enter") {
+            let result =
               "<span>" +
-              eval(document.querySelector("#term-input").value) + "</span>";
-          } catch (e) {
-            result += "<span style='color: #ff6868;'>" + e + "</span>";
+              oos.util.escapeHtml(document.querySelector("#term-input").value) +
+              "</span><br />";
+            try {
+              result +=
+                "<span>" +
+                eval(document.querySelector("#term-input").value) +
+                "</span>";
+            } catch (e) {
+              result += "<span style='color: #ff6868;'>" + e + "</span>";
+            }
+
+            let line = document.createElement("div");
+            line.innerHTML = result;
+
+            document.querySelector("#term-history").appendChild(line);
+            document.querySelector("#term-input").value = "";
           }
-    
-          let line = document.createElement("div");
-          line.innerHTML = result;
-    
-          document.querySelector("#term-history").appendChild(line);
-          document.querySelector("#term-input").value = "";
-        }
-      });
+        });
       //<
     });
   },
@@ -382,10 +385,10 @@ let oos = {
       }
       if (this.params.maximizable) {
         this.winDiv
-        .querySelector(".window-header")
-        .addEventListener("dblclick", () => {
-          this.toggleMaximize();
-        });
+          .querySelector(".window-header")
+          .addEventListener("dblclick", () => {
+            this.toggleMaximize();
+          });
 
         this.winDiv
           .querySelector(".maximize-btn")
@@ -667,5 +670,6 @@ let oos = {
         .removeChild(this.notifDiv);
     }
   },
+  FS: class {},
 };
 oos.main();
