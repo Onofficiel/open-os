@@ -313,9 +313,11 @@ let oos = {
         this.setCurrent();
       });
 
-      this.winDiv.addEventListener("dblclick", () => {
-        this.toggleMaximize();
-      });
+      this.winDiv
+        .querySelector(".window-header")
+        .addEventListener("dblclick", () => {
+          this.toggleMaximize();
+        });
 
       document.querySelector(".desktop").appendChild(this.winDiv);
 
