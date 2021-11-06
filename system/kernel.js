@@ -172,7 +172,7 @@ let oos = {
         if (e.key == "Enter") {
           let result =
             "<span>" +
-            document.querySelector("#term-input").value +
+            document.querySelector("#term-input").value.toString() +
             "</span><br />";
           try {
             result +=
