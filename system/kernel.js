@@ -521,7 +521,7 @@ let oos = {
       this.notifDiv = document.createElement("div");
 
       this.notifDiv.classList.add("notification");
-      this.notifDiv.dataset.id = "ntf_" + nId++;
+      this.notifDiv.dataset.id = "ntf_" + oos.sys.var.nId++;
 
       this.id = this.notifDiv.dataset.id;
 
