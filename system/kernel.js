@@ -548,8 +548,8 @@ let oos = {
           this.params.closable
             ? `<span class="close-btn cs-pointer"
                      style="position: absolute;
-                            top: 0;
-                            right: 0;
+                            top: 10px;
+                            right: 10px;
             ">🗙</span>`
             : ""
         }
