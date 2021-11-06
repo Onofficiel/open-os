@@ -2,7 +2,7 @@
 
 const version = "0.0.1z";
 
-list = ["Modification du noyeau", "Nouveau systeme de fenetre"];
+list = ["Modification du noyeau", "Nouveau systeme de fenetre", "Système de notification ajouté"];
 
 //////////////////////////////////////////////////
 
