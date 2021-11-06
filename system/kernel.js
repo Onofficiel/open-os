@@ -549,7 +549,7 @@ let oos = {
             ? `<span class="close-btn cs-pointer"
                      style="position: absolute;
                             top: 10px;
-                            right: 10px;
+                            right: 15px;
             ">🗙</span>`
             : ""
         }
