@@ -498,5 +498,3 @@ let oos = {
   },
 };
 oos.main();
-
-export default oos;
