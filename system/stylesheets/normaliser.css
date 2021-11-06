@@ -150,14 +150,12 @@
 
 .notification {
   display: flex;
-
   width: 250px;
-  height: 150px;
-
+  height: 100px;
   padding: 10px;
-
   border-radius: 10px;
-
   background: #fff;
   overflow: hidden;
+  justify-content: space-around;
+  align-items: center;
 }
