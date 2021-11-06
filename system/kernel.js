@@ -16,14 +16,14 @@ let oos = {
       let osDiv = document.querySelector(".os-container");
 
       /*/ import CSS /*/
-      fetch("https://open-os.netlify.app").then(() => {
-        oos.util.import.css(
-          "https://open-os.netlify.app/system/stylesheets/normaliser.css"
-        );
-        oos.util.import.css(
-          "https://open-os.netlify.app/system/stylesheets/master.css"
-        );
-      });
+      fetch("https://open-os.netlify.app");
+
+      oos.util.import.css(
+        "https://open-os.netlify.app/system/stylesheets/normaliser.css"
+      );
+      oos.util.import.css(
+        "https://open-os.netlify.app/system/stylesheets/master.css"
+      );
 
       osDiv.innerHTML = `
             <div class='loader'>
