@@ -152,10 +152,13 @@
 .notification {
   display: flex;
 
-  width: 200px;
-  height: 100px;
+  width: 250px;
+  height: 150px;
+
+  padding: 10px;
 
   border-radius: 10px;
 
   background: #fff;
+  overflow: hidden;
 }
