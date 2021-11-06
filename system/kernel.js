@@ -307,6 +307,12 @@ let oos = {
       }
       if (this.params.maximizable) {
         this.winDiv
+        .querySelector(".window-header")
+        .addEventListener("dblclick", () => {
+          this.toggleMaximize();
+        });
+        
+        this.winDiv
           .querySelector(".maximize-btn")
           .addEventListener("click", () => {
             this.toggleMaximize();
@@ -318,12 +324,6 @@ let oos = {
       this.winDiv.addEventListener("mousedown", () => {
         this.setCurrent();
       });
-
-      this.winDiv
-        .querySelector(".window-header")
-        .addEventListener("dblclick", () => {
-          this.toggleMaximize();
-        });
 
       document.querySelector(".desktop").appendChild(this.winDiv);
 
