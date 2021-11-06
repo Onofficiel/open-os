@@ -531,6 +531,8 @@ let oos = {
 
       <div style="display: flex;
                   flex-direction: column;
+                  margin-right: 10px;
+                  align-items: center;
       ">
         <span>
           ${
