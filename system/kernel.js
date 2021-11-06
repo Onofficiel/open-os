@@ -141,12 +141,14 @@ let oos = {
       }
 
       #term-history {
+        background: #0f1020;
         width: 100%;
       }
     
       input#term-input:focus, input#term-input {
           outline: none;
           border: none;
+          margin: 0;
     
           background: #0f1020;
           color: #fff;
