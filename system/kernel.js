@@ -527,15 +527,23 @@ let oos = {
 
       this.notifDiv.innerHTML = `
       
-      <img src="${this.params.icon}" style="width: 50px">
+      <img src="${this.params.icon}"
+           style="width: 50px;
+                  height: 50px;
+      ">
+
       <div style="display: flex;">
+
         <b>${this.params.title}</b>
         <p>${this.params.content}</p>
+        
       </div>
 
       `;
 
-      document.querySelector(".notification-container").appendChild(this.notifDiv);
+      document
+        .querySelector(".notification-container")
+        .appendChild(this.notifDiv);
 
       return this;
     }
