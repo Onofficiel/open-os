@@ -34,6 +34,7 @@ let oos = {
 
       osDiv.querySelector(".desktop").innerHTML = `
             
+            <div class="notification-container"></div>
             <div class="desk"></div>
 
             `;
@@ -120,6 +121,7 @@ let oos = {
     var: {
       winId: [],
       wId: 0,
+      nId: 0,
     },
   },
   util: {
@@ -221,7 +223,7 @@ let oos = {
   },
   StandardWindow: class {
     constructor(params) {
-      null == params && (params = new oos.WindowParams());
+      if (params == null) params = new oos.WindowParams();
 
       this.params = Object.assign(new oos.WindowParams(), params);
       this.winDiv = document.createElement("div");
@@ -498,6 +500,44 @@ let oos = {
           .querySelector('.window[data-id~="' + this.id + '"]')
           .classList.add("current");
       } catch {}
+    }
+  },
+  NotificationParams: class {
+    constructor() {
+      this.title = "Untitled Notification";
+      this.icon = "https://picsum.photos/200";
+      this.content = "";
+
+      this.headerColor = "#0099ff";
+
+      this.closable = true;
+    }
+  },
+  StandardNotification: class {
+    constructor(params) {
+      if (params == null) params = new oos.WindowParams();
+
+      this.params = Object.assign(new oos.WindowParams(), params);
+      this.notifDiv = document.createElement("div");
+
+      this.notifDiv.classList.add("notification");
+      this.notifDiv.dataset.id = "ntf_" + nId++;
+
+      this.id = this.notifDiv.dataset.id;
+
+      this.notifDiv.innerHTML = `
+      
+      <img src="${this.params.icon}">
+      <div style="display: flex;">
+        <b>${this.params.title}</b>
+        <p>${this.params.content}</p>
+      </div>
+
+      `;
+
+      document.querySelector(".desktop").appendChild(this.notifDiv);
+
+      return this;
     }
   },
 };

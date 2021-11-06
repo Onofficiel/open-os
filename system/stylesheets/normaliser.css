@@ -138,4 +138,22 @@
   z-index: 1;
 }
 
-.notification {}
+.notification-container {
+  display: flex;
+  flex-direction: column-reverse;
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  padding: 10px;
+}
+
+.notification {
+  display: flex;
+
+  width: 100px;
+  height: 50px;
+
+  background: #fff;
+}
