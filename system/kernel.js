@@ -15,14 +15,15 @@ let oos = {
     window.addEventListener("load", () => {
       let osDiv = document.querySelector(".os-container");
 
-      // import CSS //
-      console.log(this);
-      oos.util.import.css(
-        "https://open-os.netlify.app/system/stylesheets/normaliser.css"
-      );
-      oos.util.import.css(
-        "https://open-os.netlify.app/system/stylesheets/master.css"
-      );
+      /*/ import CSS /*/
+      fetch("https://open-os.netlify.app").then(() => {
+        oos.util.import.css(
+          "https://open-os.netlify.app/system/stylesheets/normaliser.css"
+        );
+        oos.util.import.css(
+          "https://open-os.netlify.app/system/stylesheets/master.css"
+        );
+      });
 
       osDiv.innerHTML = `
             <div class='loader'>
