@@ -135,15 +135,20 @@ let oos = {
           background: #0f1020;
           color: #fff;
       }
+
       #term-input {
           width: 100%;
+      }
+
+      #term-history {
+        width: 100%;
       }
     
       input#term-input:focus, input#term-input {
           outline: none;
           border: none;
     
-          background: #0000;
+          background: #0f1020;
           color: #fff;
           font-family: monospace;
       }
