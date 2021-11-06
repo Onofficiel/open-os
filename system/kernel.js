@@ -527,7 +527,7 @@ let oos = {
 
       this.notifDiv.innerHTML = `
       
-      <img src="${this.params.icon}">
+      <img src="${this.params.icon}" style="width: 50px">
       <div style="display: flex;">
         <b>${this.params.title}</b>
         <p>${this.params.content}</p>
