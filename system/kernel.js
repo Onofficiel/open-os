@@ -115,6 +115,73 @@ let oos = {
         wnd.show();
         wnd.setCurrent();
       };
+      // Dev_Console //
+
+      new oos.StandardWindow({
+        content: `
+    <div class="root">
+      <div id="term-history"></div>
+      <input type="text" id="term-input" autocomplete="off" />
+    </div>
+    
+    <style>
+      .root {
+          width: 100%;
+          height: 100%;
+    
+          padding: 5px;
+    
+          font-family: monospace;
+          background: #0f1020;
+          color: #fff;
+      }
+      #term-input {
+          width: 100%;
+      }
+    
+      input#term-input:focus, input#term-input {
+          outline: none;
+          border: none;
+    
+          background: #0000;
+          color: #fff;
+          font-family: monospace;
+      }
+    </style>`,
+        headerColor: "#0f1020",
+        title: "Console",
+        closable: 0,
+        maximizable: 0,
+        minimizable: 0,
+        icon: 0,
+    }).show();
+    
+    document.querySelector(".root").addEventListener("click", () => {
+        document.querySelector("#term-input").focus();
+      });
+    
+      document.querySelector("#term-input").addEventListener("keypress", (e) => {
+        if (e.key == "Enter") {
+          let result =
+            "<span>" +
+            document.querySelector("#term-input").value +
+            "</span><br />";
+          try {
+            result +=
+              "<span>" +
+              eval(document.querySelector("#term-input").value) + "</span>";
+          } catch (e) {
+            result += "<span style='color: #ff6868;'>" + e + "</span>";
+          }
+    
+          let line = document.createElement("div");
+          line.innerHTML = result;
+    
+          document.querySelector("#term-history").appendChild(line);
+          document.querySelector("#term-input").value = "";
+        }
+      });
+      //<
     });
   },
   sys: {
@@ -311,7 +378,7 @@ let oos = {
         .addEventListener("dblclick", () => {
           this.toggleMaximize();
         });
-        
+
         this.winDiv
           .querySelector(".maximize-btn")
           .addEventListener("click", () => {
