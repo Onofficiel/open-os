@@ -543,7 +543,27 @@ let oos = {
         
       </div>
 
+      <span>
+        ${
+          this.params.closable
+            ? `<span class="close-btn cs-pointer"
+                     style="position: absolute;
+                            top: 0;
+                            right: 0;
+            ">🗙</span>`
+            : ""
+        }
+      </span>
+
       `;
+
+      if (this.params.closable) {
+        this.winDiv
+          .querySelector(".close-btn")
+          .addEventListener("click", () => {
+            this.close();
+          });
+      }
 
       this.notifDiv.addEventListener("click", () => {
         this.params.onclick();
