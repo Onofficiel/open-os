@@ -11,11 +11,12 @@
 (() => {})();
 
 let oos = {
-  main: async () => {
+  main: () => {
     window.addEventListener("load", () => {
       let osDiv = document.querySelector(".os-container");
 
       // import CSS //
+      console.log(oos);
       oos.util.import.css(
         "https://open-os.netlify.app/system/stylesheets/normaliser.css"
       );
