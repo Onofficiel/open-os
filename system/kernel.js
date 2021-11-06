@@ -633,7 +633,7 @@ let oos = {
       <span>
         ${
           this.params.closable
-            ? `<span class="close-btn cs-pointer">🗙</span>`
+            ? `<span class="close-btn cs-pointer" style="margin-left: 10px;">🗙</span>`
             : ""
         }
       </span>
