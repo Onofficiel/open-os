@@ -612,27 +612,14 @@ let oos = {
 
       this.notifDiv.innerHTML = `
 
-      <div style="display: flex;
-                  flex-direction: column;
-                  margin-right: 10px;
-                  align-items: center;
-      ">
-        <span>
-          ${
-            this.params.closable
-              ? `<span class="close-btn cs-pointer">🗙</span>`
-              : ""
-          }
-        </span>
-        
-        ${
-          !!this.params.icon
-            ? `<img src="` +
-              this.params.icon +
-              `" style="width: 50px; height: 50px; ">`
-            : ""
-        }
-      </div>
+      
+      ${
+        !!this.params.icon
+          ? `<img src="` +
+            this.params.icon +
+            `" style="width: 50px; height: 50px; ">`
+          : ""
+      }
 
       <div style="display: flex;
                   flex-direction: column;
@@ -642,6 +629,14 @@ let oos = {
         <p>${this.params.content}</p>
         
       </div>
+
+      <span>
+        ${
+          this.params.closable
+            ? `<span class="close-btn cs-pointer">🗙</span>`
+            : ""
+        }
+      </span>
 
       `;
 
