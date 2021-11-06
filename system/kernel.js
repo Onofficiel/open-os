@@ -535,7 +535,7 @@ let oos = {
 
       `;
 
-      document.querySelector(".desktop").appendChild(this.notifDiv);
+      document.querySelector(".notification-container").appendChild(this.notifDiv);
 
       return this;
     }
