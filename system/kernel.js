@@ -561,9 +561,11 @@ let oos = {
           });
       }
 
-      setTimeout(() => {
-        this.close();
-      }, this.params.timeout);
+      if (!!this.params.timeout) {
+        setTimeout(() => {
+          this.close();
+        }, this.params.timeout);
+      }
 
       document
         .querySelector(".notification-container")
