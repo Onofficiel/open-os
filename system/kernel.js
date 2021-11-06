@@ -529,18 +529,22 @@ let oos = {
 
       this.notifDiv.innerHTML = `
 
-      <span>
-        ${
-          this.params.closable
-            ? `<span class="close-btn cs-pointer">🗙</span>`
-            : ""
-        }
-      </span>
-      
-      <img src="${this.params.icon}"
-           style="width: 50px;
-                  height: 50px;
+      <div style="display: flex;
+                  flex-direction: column;
       ">
+        <span>
+          ${
+            this.params.closable
+              ? `<span class="close-btn cs-pointer">🗙</span>`
+              : ""
+          }
+        </span>
+        
+        <img src="${this.params.icon}"
+            style="width: 50px;
+                    height: 50px;
+        ">
+      </div>
 
       <div style="display: flex;
                   flex-direction: column;
