@@ -16,7 +16,7 @@ let oos = {
       let osDiv = document.querySelector(".os-container");
 
       // import CSS //
-      console.log(oos);
+      console.log(this);
       oos.util.import.css(
         "https://open-os.netlify.app/system/stylesheets/normaliser.css"
       );
