@@ -511,6 +511,8 @@ let oos = {
       this.headerColor = "#0099ff";
 
       this.closable = true;
+
+      this.timeout = 5000;
     }
   },
   StandardNotification: class {
@@ -544,11 +546,7 @@ let oos = {
       <span>
         ${
           this.params.closable
-            ? `<span class="close-btn cs-pointer"
-                     style="position: relative;
-                            top: 10px;
-                            right: 15px;
-            ">🗙</span>`
+            ? `<span class="close-btn cs-pointer">🗙</span>`
             : ""
         }
       </span>
@@ -562,6 +560,10 @@ let oos = {
             this.close();
           });
       }
+
+      setTimeout(() => {
+        this.close();
+      }, this.params.timeout);
 
       document
         .querySelector(".notification-container")
