@@ -511,8 +511,6 @@ let oos = {
       this.headerColor = "#0099ff";
 
       this.closable = true;
-
-      this.onclick = () => {};
     }
   },
   StandardNotification: class {
@@ -564,10 +562,6 @@ let oos = {
             this.close();
           });
       }
-
-      this.notifDiv.addEventListener("click", () => {
-        this.params.onclick();
-      });
 
       document
         .querySelector(".notification-container")
