@@ -528,6 +528,14 @@ let oos = {
       this.id = this.notifDiv.dataset.id;
 
       this.notifDiv.innerHTML = `
+
+      <span>
+        ${
+          this.params.closable
+            ? `<span class="close-btn cs-pointer">🗙</span>`
+            : ""
+        }
+      </span>
       
       <img src="${this.params.icon}"
            style="width: 50px;
@@ -542,14 +550,6 @@ let oos = {
         <p>${this.params.content}</p>
         
       </div>
-
-      <span>
-        ${
-          this.params.closable
-            ? `<span class="close-btn cs-pointer">🗙</span>`
-            : ""
-        }
-      </span>
 
       `;
 
