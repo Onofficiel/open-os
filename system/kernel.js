@@ -532,7 +532,9 @@ let oos = {
                   height: 50px;
       ">
 
-      <div style="display: flex;">
+      <div style="display: flex;
+                  flex-direction: column;
+      ">
 
         <b>${this.params.title}</b>
         <p>${this.params.content}</p>
