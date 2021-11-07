@@ -730,18 +730,20 @@ let oos = {
 
     writestr(path, str) {
       return new Promise((resolve, reject) => {
-        let req = this.db
-          .transaction("fs", "readwrite")
-          .objectStore("fs")
-          .get("main");
+        let transaction = this.db
+          .transaction("fs", "readonly")
+          .objectStore("fs");
+        let req = transaction.get("main");
 
         req.onsuccess = function () {
-          /* this.db.transaction("fs", "readwrite").objectStore("fs").put({
-            fsName: "main",
+          let data = req.result;
+          data.data[path] = {
+            type: 0,
             content: str,
-          }); */
+          };
 
-          resolve(req.result);
+          transaction.put(data);
+          resolve(req.result.data);
         };
       });
     }
