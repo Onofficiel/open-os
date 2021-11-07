@@ -719,7 +719,10 @@ let oos = {
 
     async readstr(path) {
       return new Promise((resolve, reject) => {
-        let req = this.db.transaction("fs", "readwrite").objectStore("fs").get(path);
+        let req = this.db
+          .transaction("fs", "readwrite")
+          .objectStore("fs")
+          .get(path);
 
         req.onsuccess = function () {
           resolve(req.result);
