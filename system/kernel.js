@@ -707,10 +707,6 @@ let oos = {
         this.db = openReq.result;
       };
 
-      return this.db;
-    }
-
-    static get thisDB() {
       return this;
     }
 
