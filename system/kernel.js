@@ -730,10 +730,10 @@ let oos = {
 
     isFile(path) {
       return new Promise((resolve, reject) => {
-        let transaction = this.db
+        let req = this.db
           .transaction("fs", "readonly")
-          .objectStore("fs");
-        let req = transaction.get("main");
+          .objectStore("fs")
+          .get("main");
 
         req.onsuccess = function () {
           resolve(!req.result.data[path].type);
@@ -745,7 +745,7 @@ let oos = {
       return new Promise((resolve, reject) => {
         let transaction = this.db
           .transaction("fs", "readwrite")
-          .objectStore("fs");
+          .objectStore("fs")
         let req = transaction.get("main");
 
         req.onsuccess = function () {
@@ -779,12 +779,12 @@ let oos = {
         let req = this.db
           .transaction("fs", "readonly")
           .objectStore("fs")
-          .getAll();
+          .getAll("main");
 
         req.onsuccess = function () {
           let paths = [];
 
-          for (let cPath in req.result) {
+          for (let cPath in Object.keys(req.result.data)) {
             if (!req.result[cPath].path.endsWith("/"))
               req.result[cPath].path += "/";
 
