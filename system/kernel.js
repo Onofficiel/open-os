@@ -763,7 +763,7 @@ let oos = {
               paths.push(
                 req.result[cPath].path.slice(
                   path.endsWith("/") ? path.length : path.length + 1
-                )
+                ).split("/")[0]
               );
             }
           }
