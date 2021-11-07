@@ -682,12 +682,12 @@ let oos = {
   FS: class {
     constructor() {
       let db = "";
-      let openReq = indexedDB.open("fs", 1);
+      let openReq = indexedDB.open("OpenDB", 1);
 
       openReq.onupgradeneeded = () => {
         db = openReq.result;
 
-        const store = db.createObjectStore("users", { keyPath: "path" });
+        const store = db.createObjectStore("fs", { keyPath: "path" });
 
         console.log(store);
         store.add({
