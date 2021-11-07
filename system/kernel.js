@@ -723,8 +723,8 @@ let oos = {
         .objectStore("fs")
         .get(path);
 
-      req.onsuccess = async () => {
-        return await req.result.content;
+      req.onsuccess = () => {
+        return req.result.content;
       };
     }
   },
