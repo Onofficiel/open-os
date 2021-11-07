@@ -718,7 +718,7 @@ let oos = {
     }
 
     readstr(path) {
-      let req = db.transaction("fs", "readwrite").objectStore("fs").get(path);
+      let req = this.db.transaction("fs", "readwrite").objectStore("fs").get(path);
       req.onsuccess = () => {
           console.log(req.result.content);
       }
