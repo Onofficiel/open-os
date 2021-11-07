@@ -685,9 +685,9 @@ let oos = {
       let openReq = indexedDB.open("OpenDB", 1);
 
       openReq.onupgradeneeded = () => {
-        db = openReq.result;
+        this.db = openReq.result;
 
-        const fsDB = db.createObjectStore("fs", { keyPath: "path" });
+        const fsDB = this.db.createObjectStore("fs", { keyPath: "path" });
 
         fsDB.add({
           path: "/test/hello.js",
@@ -706,7 +706,7 @@ let oos = {
       };
 
       openReq.onsuccess = () => {
-        db = openReq.result;
+        this.db = openReq.result;
       };
     }
 
