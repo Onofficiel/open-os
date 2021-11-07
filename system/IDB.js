@@ -5,10 +5,11 @@ openReq.onupgradeneeded = () => {
   db = openReq.result;
 
   const store = db.createObjectStore("users", { keyPath: "path" });
-  
+
+  console.log(store);
   store.add({
     path: "/test/hello.js",
-    content: "Hello, World!"
+    content: "Hello, World!",
   });
 };
 
