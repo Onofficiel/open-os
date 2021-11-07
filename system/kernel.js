@@ -722,9 +722,11 @@ let oos = {
         .transaction("fs", "readwrite")
         .objectStore("fs")
         .get(path);
-      return (req.onsuccess = () => {
+      req.onsuccess = () => {
         return req.result.content;
-      });
+      };
+
+      return req.onsuccess();
     }
   },
 };
