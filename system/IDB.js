@@ -4,9 +4,12 @@ let openReq = indexedDB.open("fs", 1);
 openReq.onupgradeneeded = () => {
   db = openReq.result;
 
-  if (!db.objectStoreNames.contains("users")) {
-    db.createObjectStore("users", { keyPath: "id" });
-  }
+  const store = db.createObjectStore("users", { keyPath: "path" });
+  
+  store.add({
+    path: "/test/hello.js",
+    content: "Hello, World!"
+  });
 };
 
 openReq.onerror = () => {
