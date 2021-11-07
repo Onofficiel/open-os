@@ -287,7 +287,7 @@ let oos = {
   },
   WApplication: class {
     constructor() {
-      this.windows = [];
+      this.windows, this.notifications = [];
     }
 
     createWindow(params) {
@@ -296,6 +296,14 @@ let oos = {
       this.windows.push(wnd);
 
       return wnd;
+    }
+
+    createWindow(params) {
+      let ntf = new oos.StandardNotification(params);
+
+      this.notifications.push(ntf);
+
+      return ntf;
     }
   },
   WindowParams: class {
