@@ -722,6 +722,7 @@ let oos = {
         .transaction("fs", "readwrite")
         .objectStore("fs")
         .get(path);
+
       req.onsuccess = () => {
         return req.result.content;
       };
