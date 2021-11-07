@@ -724,6 +724,9 @@ let oos = {
         req.onsuccess = function () {
           resolve(req.result.content);
         };
+        req.onerror = function (e) {
+          reject(e);
+        }
       });
     }
   },
