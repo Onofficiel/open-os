@@ -724,7 +724,7 @@ let oos = {
         .get(path);
 
       req.onsuccess = () => {
-        return console.log(req.result.content);
+        return await req.result.content;
       };
     }
   },
