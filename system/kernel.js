@@ -706,6 +706,8 @@ let oos = {
       openReq.onsuccess = () => {
         this.db = openReq.result;
       };
+
+      return this.db;
     }
 
     static get thisDB() {
