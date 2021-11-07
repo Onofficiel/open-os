@@ -287,7 +287,7 @@ let oos = {
   },
   WApplication: class {
     constructor() {
-      this.windows, this.notifications = [];
+      this.windows, (this.notifications = []);
     }
 
     createWindow(params) {
@@ -738,12 +738,35 @@ let oos = {
     async readstr(path) {
       return new Promise((resolve, reject) => {
         let req = this.db
-          .transaction("fs", "readwrite")
+          .transaction("fs", "readonly")
           .objectStore("fs")
           .get(path);
 
         req.onsuccess = function () {
           resolve(req.result.content);
+        };
+      });
+    }
+
+    async readdir(path) {
+      return new Promise((resolve, reject) => {
+        let req = this.db
+          .transaction("fs", "readonly")
+          .objectStore("fs")
+          .getAll();
+
+        req.onsuccess = function () {
+          let paths = [];
+          
+          for (let cPath in req.result) {
+            if (req.result[cPath].path.startsWith(path)) {
+              paths.push(
+                cPath.slice(path.endsWith("/") ? path.length : path.length + 1)
+              );
+            }
+          }
+
+          resolve(paths);
         };
       });
     }
