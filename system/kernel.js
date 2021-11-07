@@ -687,10 +687,10 @@ let oos = {
       openReq.onupgradeneeded = () => {
         db = openReq.result;
 
-        const store = db.createObjectStore("fs", { keyPath: "path" });
+        this.fsDB = db.createObjectStore("fs", { keyPath: "path" });
 
-        console.log(store);
-        store.add({
+        console.log(fsDB);
+        fsDB.add({
           path: "/test/hello.js",
           content: "Hello, World!",
         });
@@ -707,6 +707,13 @@ let oos = {
       openReq.onsuccess = () => {
         db = openReq.result;
       };
+    }
+
+    writestr(path, str) {
+      this.fsDB.put({
+        path: path,
+        content: str,
+      });
     }
   },
 };
