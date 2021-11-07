@@ -296,7 +296,7 @@ let oos = {
       this.width = 480;
 
       this.title = "Untitled Window";
-      this.icon = "https://picsum.photos/200";
+      this.icon = null;
       this.content = "";
       this.headerColor = "#0099ff";
 
@@ -600,7 +600,7 @@ let oos = {
   NotificationParams: class {
     constructor() {
       this.title = "Untitled Notification";
-      this.icon = "https://picsum.photos/200";
+      this.icon = null;
       this.content = "";
 
       this.headerColor = "#0099ff";
