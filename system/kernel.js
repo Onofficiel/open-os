@@ -723,17 +723,9 @@ let oos = {
         .objectStore("fs")
         .get(path);
 
-      let promise = new Promise((resolve, reject) => {
-        resolve(
-          (req.onsuccess = () => {
-            return req.result.content;
-          })
-        );
-      });
-
-      promise.then((e) => {
-        return e;
-      });
+      req.onsuccess = () => {
+        return req.result.content;
+      };
     }
   },
 };
