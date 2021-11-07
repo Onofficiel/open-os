@@ -714,7 +714,7 @@ let oos = {
       return this;
     }
 
-    static writestr(path, str) {
+    writestr(path, str) {
       this.db.transaction("fs", "readwrite").objectStore("fs").put({
         path: path,
         content: str,
