@@ -179,6 +179,15 @@ let oos = {
         document.querySelector("#term-input").focus();
       });
 
+      window.addEventListener("error", (e) => {
+        let error = "<span style='color: #ff6868;'>" + e + "</span>";
+
+        let line = document.createElement("div");
+        line.innerHTML = error;
+
+        document.querySelector("#term-history").appendChild(line);
+      });
+
       document
         .querySelector("#term-input")
         .addEventListener("keypress", (e) => {
@@ -745,7 +754,7 @@ let oos = {
       return new Promise((resolve, reject) => {
         let transaction = this.db
           .transaction("fs", "readwrite")
-          .objectStore("fs")
+          .objectStore("fs");
         let req = transaction.get("main");
 
         req.onsuccess = function () {
