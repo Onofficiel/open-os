@@ -18,14 +18,19 @@ let oos = {
       /*/ import Other Ressources /*/
 
       fetch("https://open-os.netlify.app").then(() => {
-        oos.util.import.css(
+        oos.sys.import.css(
           "https://open-os.netlify.app/system/stylesheets/normaliser.css"
         );
-        oos.util.import.css(
+        oos.sys.import.css(
           "https://open-os.netlify.app/system/stylesheets/master.css"
         );
-        // oos.util.import.js("https://open-os.netlify.app/system/IDB.js");
       });
+
+      /*/ Init File Sysytem /*/
+
+      oos.FS = new oos.FS();
+
+      /*/ Render Graphic User Interface /*/
 
       osDiv.innerHTML = `
             <div class='loader'>
@@ -43,6 +48,8 @@ let oos = {
       setTimeout(() => {
         osDiv.removeChild(osDiv.querySelector(".loader"));
       }, 2000);
+
+      /*/ Redefining some JavaScript functions /*/
 
       window.console.error = (error) => {
         let wnd = new oos.StandardWindow({
@@ -81,6 +88,7 @@ let oos = {
         wnd.show();
         wnd.setCurrent();
       };
+
       window.alert = (msg) => {
         let wnd = new oos.StandardWindow({
           content: `
@@ -117,7 +125,8 @@ let oos = {
         wnd.show();
         wnd.setCurrent();
       };
-      // Dev_Console //
+
+      /*/ Init dev console /*/
 
       new oos.StandardWindow({
         content: `
@@ -194,7 +203,6 @@ let oos = {
             document.querySelector("#term-input").value = "";
           }
         });
-      //<
     });
   },
   sys: {
@@ -203,8 +211,6 @@ let oos = {
       wId: 0,
       nId: 0,
     },
-  },
-  util: {
     import: {
       css: (href) => {
         let link = document.createElement("link");
@@ -224,6 +230,8 @@ let oos = {
         document.head.appendChild(script);
       },
     },
+  },
+  util: {
     escapeHtml: (unsafe) => {
       return unsafe
         .replace(/&/g, "&amp;")
@@ -247,7 +255,9 @@ let oos = {
     },
   },
   shell: {
-    send: () => {},
+    send: () => {
+      console.error("Sorry not yet disponible...");
+    },
   },
   ui: {
     desk: {
@@ -719,7 +729,10 @@ let oos = {
 
     async readstr(path) {
       return new Promise((resolve, reject) => {
-        let req = this.db.transaction("fs", "readwrite").objectStore("fs").get(path);
+        let req = this.db
+          .transaction("fs", "readwrite")
+          .objectStore("fs")
+          .get(path);
 
         req.onsuccess = function () {
           resolve(req.result.content);
