@@ -700,16 +700,16 @@ let oos = {
   FS: class {
     constructor() {
       this.db = "";
-      let openReq = indexedDB.open("OpenDB", 1);
+      let openReq = indexedDB.open("OpenFS", 1);
 
       openReq.onupgradeneeded = () => {
         this.db = openReq.result;
 
-        const fsDB = this.db.createObjectStore("fs", { keyPath: "path" });
+        const fsDB = this.db.createObjectStore("fs", { keyPath: "fsName" });
 
-        fsDB.add({
-          path: "/test/hello.js",
-          content: "Hello, World!",
+        fsDB.put({
+          fsName: "main",
+          data: {},
         });
       };
 
@@ -729,9 +729,20 @@ let oos = {
     }
 
     writestr(path, str) {
-      this.db.transaction("fs", "readwrite").objectStore("fs").put({
-        path: path,
-        content: str,
+      return new Promise((resolve, reject) => {
+        let req = this.db
+          .transaction("fs", "readwrite")
+          .objectStore("fs")
+          .get("main");
+
+        req.onsuccess = function () {
+          /* this.db.transaction("fs", "readwrite").objectStore("fs").put({
+            fsName: "main",
+            content: str,
+          }); */
+
+          resolve(req.result.content);
+        };
       });
     }
 
@@ -743,7 +754,7 @@ let oos = {
           .get(path);
 
         req.onsuccess = function () {
-          resolve(req.result.content);
+          resolve(req.result);
         };
       });
     }
@@ -759,11 +770,14 @@ let oos = {
           let paths = [];
 
           for (let cPath in req.result) {
+            if (!req.result[cPath].path.endsWith("/"))
+              req.result[cPath].path += "/";
+
             if (req.result[cPath].path.startsWith(path)) {
               paths.push(
-                req.result[cPath].path.slice(
-                  path.endsWith("/") ? path.length : path.length + 1
-                ).split("/")[0]
+                req.result[cPath].path
+                  .slice(path.endsWith("/") ? path.length : path.length + 1)
+                  .split("/")[0]
               );
             }
           }
