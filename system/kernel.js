@@ -687,6 +687,7 @@ let oos = {
       openReq.onupgradeneeded = () => {
         db = openReq.result;
 
+        console.log(this)
         this.fsDB = db.createObjectStore("fs", { keyPath: "path" });
 
         console.log(fsDB);
@@ -695,6 +696,8 @@ let oos = {
           content: "Hello, World!",
         });
       };
+
+      console.log(this);
 
       openReq.onerror = () => {
         console.error("Error while accessing FileSystem");
