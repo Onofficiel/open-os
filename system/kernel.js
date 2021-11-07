@@ -695,8 +695,6 @@ let oos = {
         });
       };
 
-      console.log(this);
-
       openReq.onerror = () => {
         console.error("Error while accessing FileSystem");
       };
@@ -708,6 +706,10 @@ let oos = {
       openReq.onsuccess = () => {
         this.db = openReq.result;
       };
+    }
+
+    static get thisDB() {
+      console.log(this);
     }
 
     static writestr(path, str) {
