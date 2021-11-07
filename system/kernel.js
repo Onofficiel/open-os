@@ -709,7 +709,7 @@ let oos = {
       };
     }
 
-    writestr(path, str) {
+    static writestr(path, str) {
       this.fsDB.put({
         path: path,
         content: str,
