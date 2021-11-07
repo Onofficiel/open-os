@@ -718,7 +718,7 @@ let oos = {
     }
 
     async readstr(path) {
-      await (async () => {
+      return await (async () => {
         let req = this.db
           .transaction("fs", "readwrite")
           .objectStore("fs")
