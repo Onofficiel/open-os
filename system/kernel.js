@@ -718,16 +718,14 @@ let oos = {
     }
 
     async readstr(path) {
-      return await (async () => {
-        let req = this.db
-          .transaction("fs", "readwrite")
-          .objectStore("fs")
-          .get(path);
+      let req = this.db
+        .transaction("fs", "readwrite")
+        .objectStore("fs")
+        .get(path);
 
-        req.onsuccess = () => {
-          return req.result.content;
-        };
-      })();
+      req.onsuccess = () => {
+        return req.result.content;
+      };
     }
   },
 };
