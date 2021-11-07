@@ -717,14 +717,14 @@ let oos = {
       });
     }
 
-    readstr(path) {
+    async readstr(path) {
       let req = this.db
         .transaction("fs", "readwrite")
         .objectStore("fs")
         .get(path);
 
       req.onsuccess = () => {
-        return console.log(req.result.content);
+        return req.result.content;
       };
     }
   },
