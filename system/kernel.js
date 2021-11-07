@@ -718,16 +718,22 @@ let oos = {
     }
 
     readstr(path) {
-      let result;
       let req = this.db
         .transaction("fs", "readwrite")
         .objectStore("fs")
         .get(path);
 
-      req.onsuccess = () => {
-        result = req.result.content;
-        return result;
-      };
+      let promise = new Promise((resolve, reject) => {
+        resolve(
+          (req.onsuccess = () => {
+            return req.result.content;
+          })
+        );
+      });
+
+      promise.then((e) => {
+        return e;
+      });
     }
   },
 };
