@@ -751,7 +751,7 @@ let oos = {
         let req = this.db
           .transaction("fs", "readonly")
           .objectStore("fs")
-          .get(path);
+          .get("main");
 
         req.onsuccess = function () {
           resolve(req.result);
