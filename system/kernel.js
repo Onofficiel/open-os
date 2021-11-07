@@ -718,7 +718,7 @@ let oos = {
     }
 
     async readstr(path) {
-      return new Promise(function (resolve, reject) {
+      return new Promise((resolve, reject) => {
         let req = this.db.transaction("fs", "readwrite").objectStore("fs").get(path);
 
         req.onsuccess = function () {
