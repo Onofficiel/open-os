@@ -709,7 +709,7 @@ let oos = {
     }
 
     static get thisDB() {
-      console.log(this);
+      return this;
     }
 
     static writestr(path, str) {
