@@ -743,7 +743,7 @@ let oos = {
           };
 
           transaction.put(data);
-          resolve(req.result.data);
+          resolve(req.result.data[path].content);
         };
       });
     }
