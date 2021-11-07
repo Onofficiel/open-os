@@ -716,6 +716,13 @@ let oos = {
         content: str,
       });
     }
+
+    readstr(path) {
+      let req = db.transaction("fs", "readwrite").objectStore("fs").get(path);
+      req.onsuccess = () => {
+          console.log(req.result.content);
+      }
+    }
   },
 };
 oos.main();
