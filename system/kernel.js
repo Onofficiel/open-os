@@ -741,7 +741,7 @@ let oos = {
             content: str,
           }); */
 
-          resolve(req.result.content);
+          resolve(req.result);
         };
       });
     }
