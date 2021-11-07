@@ -24,7 +24,7 @@ let oos = {
         oos.util.import.css(
           "https://open-os.netlify.app/system/stylesheets/master.css"
         );
-        oos.util.import.js("https://open-os.netlify.app/system/IDB.js");
+        // oos.util.import.js("https://open-os.netlify.app/system/IDB.js");
       });
 
       osDiv.innerHTML = `
