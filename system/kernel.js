@@ -726,9 +726,8 @@ let oos = {
 
       req.onsuccess = () => {
         result = req.result.content;
+        return result;
       };
-
-      return result;
     }
   },
 };
