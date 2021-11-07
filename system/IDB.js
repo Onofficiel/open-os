@@ -13,6 +13,10 @@ openReq.onerror = () => {
   console.error("Error while accessing FileSystem");
 };
 
+openReq.onblocked = function (event) {
+  alert("Please close all other tabs with Open OS open!");
+};
+
 openReq.onsuccess = () => {
   db = openReq.result;
 };
