@@ -162,7 +162,7 @@ let oos = {
         closable: 0,
         maximizable: 0,
         minimizable: 0,
-        icon: 0,
+        icon: "https://open-os.netlify.app/system/ressources/icon/terminal.png",
       }).show();
 
       document.querySelector(".root").addEventListener("click", () => {
