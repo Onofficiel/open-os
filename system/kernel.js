@@ -757,11 +757,13 @@ let oos = {
 
         req.onsuccess = function () {
           let paths = [];
-          
+
           for (let cPath in req.result) {
             if (req.result[cPath].path.startsWith(path)) {
               paths.push(
-                cPath.slice(path.endsWith("/") ? path.length : path.length + 1)
+                req.result[cPath].path.slice(
+                  path.endsWith("/") ? path.length : path.length + 1
+                )
               );
             }
           }
