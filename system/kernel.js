@@ -728,10 +728,23 @@ let oos = {
       return this;
     }
 
-    writestr(path, str) {
+    isFile(path) {
       return new Promise((resolve, reject) => {
         let transaction = this.db
           .transaction("fs", "readonly")
+          .objectStore("fs");
+        let req = transaction.get("main");
+
+        req.onsuccess = function () {
+          resolve(!req.result.data[path].type);
+        };
+      });
+    }
+
+    writestr(path, str) {
+      return new Promise((resolve, reject) => {
+        let transaction = this.db
+          .transaction("fs", "readwrite")
           .objectStore("fs");
         let req = transaction.get("main");
 
@@ -756,7 +769,7 @@ let oos = {
           .get("main");
 
         req.onsuccess = function () {
-          resolve(req.result);
+          resolve(req.result.data[path].content);
         };
       });
     }
