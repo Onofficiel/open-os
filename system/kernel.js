@@ -681,16 +681,14 @@ let oos = {
   },
   FS: class {
     constructor() {
-      let db = "";
+      this.db = "";
       let openReq = indexedDB.open("OpenDB", 1);
 
       openReq.onupgradeneeded = () => {
         db = openReq.result;
 
-        console.log(this)
-        this.fsDB = db.createObjectStore("fs", { keyPath: "path" });
+        const fsDB = db.createObjectStore("fs", { keyPath: "path" });
 
-        console.log(fsDB);
         fsDB.add({
           path: "/test/hello.js",
           content: "Hello, World!",
