@@ -772,17 +772,20 @@ let oos = {
       });
     }
 
-    async exist(path) {
-      return await new Promise((resolve, reject) => {
+    exist(path) {
+      return new Promise((resolve, reject) => {
         let req = this.db
           .transaction("fs", "readonly")
-          .objectStore("fs").get("main");
+          .objectStore("fs")
+          .get("main");
 
         req.onsuccess = function () {
           let data = req.result;
           if (data.data[path]) resolve(true);
           else resolve(false);
         };
+      }).then((r) => {
+        return r;
       });
     }
 
