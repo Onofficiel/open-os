@@ -45,9 +45,7 @@ let oos = {
             <div class="desk"></div>
 
             `;
-      setTimeout(() => {
-        osDiv.removeChild(osDiv.querySelector(".loader"));
-      }, 2000);
+      osDiv.removeChild(osDiv.querySelector(".loader"));
 
       /*/ Redefining some JavaScript functions /*/
 
