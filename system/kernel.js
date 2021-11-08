@@ -797,10 +797,11 @@ let oos = {
         req.onsuccess = function () {
           let data = req.result;
 
-          if (
-            !data.data[(path.split("/").pop()).join("/")] ||
-            data.data[path].type
-          )
+          let dir = path.split("/");
+          dir.pop();
+          dir.join("/");
+          
+          if (!data.data[dir] || data.data[path].type)
             throw new Error("Can't write.");
 
           data.data[path] = {
