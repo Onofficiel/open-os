@@ -772,6 +772,21 @@ let oos = {
       });
     }
 
+    exist(path) {
+      return new Promise((resolve, reject) => {
+        let transaction = this.db
+          .transaction("fs", "readonly")
+          .objectStore("fs");
+        let req = transaction.get("main");
+
+        req.onsuccess = function () {
+          let data = req.result;
+          if (data.data[path]) resolve(true);
+          else resolve(false);
+        };
+      });
+    }
+
     writestr(path, str) {
       return new Promise((resolve, reject) => {
         let transaction = this.db
