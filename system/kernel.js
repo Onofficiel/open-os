@@ -773,7 +773,7 @@ let oos = {
     }
 
     exist(path) {
-      let promise = new Promise((resolve, reject) => {
+      return new Promise((resolve, reject) => {
         let req = this.db
           .transaction("fs", "readonly")
           .objectStore("fs")
@@ -785,9 +785,6 @@ let oos = {
           else resolve(false);
         };
       });
-      setTimeout(() => {
-        return promise;
-      }, 500);
     }
 
     writestr(path, str) {
@@ -799,6 +796,13 @@ let oos = {
 
         req.onsuccess = function () {
           let data = req.result;
+
+          if (
+            !data.data[path.split("/").pop().join("/")] ||
+            data.data[path].type
+          )
+            throw new Error("Can't write.");
+
           data.data[path] = {
             type: 0,
             content: str || "",
