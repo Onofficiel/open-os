@@ -843,7 +843,7 @@ let oos = {
                 path = path.slice(0, path.length - 1);
 
               if (el.startsWith(path)) {
-                if (req.result[0].data[cPath].type)
+                if (req.result[0].data[el].type)
                   paths.push(el.slice(path.length + 1, el.length) + "/");
                 else paths.push(el.slice(path.length + 1, el.length));
               }
