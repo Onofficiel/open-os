@@ -125,7 +125,7 @@ let oos = {
 
       /*/ Init dev console /*/
 
-      /* new oos.StandardWindow({
+      new oos.StandardWindow({
         content: `
     <div class="root">
       <div id="term-history"></div>
@@ -170,8 +170,7 @@ let oos = {
         maximizable: 0,
         minimizable: 0,
         icon: "https://open-os.netlify.app/system/ressources/icon/terminal.png",
-      })
-        .show()
+      }).show();
 
       document.querySelector(".root").addEventListener("click", () => {
         document.querySelector("#term-input").focus();
@@ -208,8 +207,11 @@ let oos = {
 
             document.querySelector("#term-history").appendChild(line);
             document.querySelector("#term-input").value = "";
+            document
+              .querySelector(".root")
+              .scrollTo(0, document.querySelector(".root").scrollHeight);
           }
-        }); */
+        });
     });
   },
   sys: {
