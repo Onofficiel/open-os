@@ -855,7 +855,6 @@ let oos = {
 
         req.onsuccess = function () {
           let paths = [];
-          console.log(req.result);
 
           for (const cPath in Object.keys(req.result[0].data)) {
             if (
@@ -870,8 +869,6 @@ let oos = {
                   paths.push(el.slice(path.length, el.length) + "/");
                 else paths.push(el.slice(path.length, el.length));
               }
-
-              console.log(el);
             }
           }
 
