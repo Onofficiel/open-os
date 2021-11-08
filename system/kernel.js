@@ -275,7 +275,9 @@ let oos = {
 
         let app = document.createElement("img");
         app.classList.add("desk-icon");
-        app.src = wapp.params.icon;
+        app.src =
+          wapp.params.icon ||
+          "https://open-os.netlify.app/system/ressources/icon/application.png";
         app.dataset.dId = wapp.id;
 
         app.addEventListener("click", () => {
@@ -594,15 +596,21 @@ let oos = {
     hide() {
       this.winDiv.style.display = "none";
       this.minimized = true;
+
+      return this;
     }
 
     show() {
       this.winDiv.style.display = "flex";
       this.minimized = false;
+
+      return this;
     }
 
     toggleVisibility() {
       this.minimized ? this.show() : this.hide();
+
+      return this;
     }
 
     setCurrent() {
@@ -621,7 +629,10 @@ let oos = {
         document
           .querySelector('.window[data-id~="' + this.id + '"]')
           .classList.add("current");
-      } catch {}
+      } catch {
+      } finally {
+        return this;
+      }
     }
   },
   NotificationParams: class {
