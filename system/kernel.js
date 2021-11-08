@@ -812,6 +812,7 @@ let oos = {
 
         req.onsuccess = function () {
           let paths = [];
+          console.log(req.result);
 
           for (let cPath in Object.keys(req.result.data)) {
             if (!req.result[cPath].path.endsWith("/"))
