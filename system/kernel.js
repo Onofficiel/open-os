@@ -814,16 +814,15 @@ let oos = {
           let paths = [];
           console.log(req.result[0]);
 
-          for (let cPath in Object.keys(req.result[0].data)) {
-            if (!req.result[0][cPath].path.endsWith("/"))
-              req.result[0][cPath].path += "/";
+          for (const cPath in Object.keys(req.result[0].data)) {
+            if (
+              Object.hasOwnProperty.call(Object.keys(req.result[0].data), cPath)
+            ) {
+              const el = Object.keys(req.result[0].data)[cPath];
 
-            if (req.result[0][cPath].path.startsWith(path)) {
-              paths.push(
-                req.result[0][cPath].path
-                  .slice(path.endsWith("/") ? path.length : path.length + 1)
-                  .split("/")[0]
-              );
+              if (path.endsWith("/")) path = path.slice(0, --str.length);
+
+              console.log(el);
             }
           }
 
