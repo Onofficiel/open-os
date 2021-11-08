@@ -207,12 +207,10 @@ let oos = {
 
             document.querySelector("#term-history").appendChild(line);
             document.querySelector("#term-input").value = "";
-            document
-              .querySelector(".root")
-              .scrollTo({
-                top: document.querySelector(".root").scrollHeight,
-                behavior: "smooth",
-              });
+            document.querySelector(".root").scrollTo({
+              top: document.querySelector(".root").scrollHeight,
+              behavior: "smooth",
+            });
           }
         });
     });
@@ -843,13 +841,12 @@ let oos = {
             ) {
               const el = Object.keys(req.result[0].data)[cPath];
 
-              if (path.endsWith("/") && path !== "/")
-                path = path.slice(0, path.length - 1);
+              if (!path.endsWith("/") && path !== "/") path += "/";
 
               if (el.startsWith(path)) {
                 if (req.result[0].data[el].type)
-                  paths.push(el.slice(path.length + 1, el.length) + "/");
-                else paths.push(el.slice(path.length + 1, el.length));
+                  paths.push(el.slice(path.length, el.length) + "/");
+                else paths.push(el.slice(path.length, el.length));
               }
 
               console.log(el);
