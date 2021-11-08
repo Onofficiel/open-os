@@ -798,7 +798,7 @@ let oos = {
           let data = req.result;
 
           if (
-            !data.data[path.split("/").pop().join("/")] ||
+            !data.data[(path.split("/").pop()).join("/")] ||
             data.data[path].type
           )
             throw new Error("Can't write.");
