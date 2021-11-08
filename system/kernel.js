@@ -772,7 +772,7 @@ let oos = {
       });
     }
 
-    exist(path) {
+    async exist(path) {
       let promise = new Promise((resolve, reject) => {
         let req = this.db
           .transaction("fs", "readonly")
@@ -785,7 +785,7 @@ let oos = {
           else resolve(false);
         };
       });
-      return promise;
+      return await promise;
     }
 
     writestr(path, str) {
