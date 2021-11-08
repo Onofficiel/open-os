@@ -374,23 +374,31 @@ let oos = {
                 : ""
             }
             <span class="title">${this.params.title}</span>
-            <span class="ctrl-btn">
-              ${
-                this.params.minimizable
-                  ? `<span class="minimize-btn cs-pointer">🗕</span>`
-                  : ""
-              }
-              ${
-                this.params.maximizable
-                  ? `<span class="maximize-btn cs-pointer">🗖</span>`
-                  : ""
-              }
-              ${
-                this.params.closable
-                  ? `<span class="close-btn cs-pointer">🗙</span>`
-                  : ""
-              }
-            </span>
+            ${
+              this.params.minimizable ||
+              this.params.maximizable ||
+              this.params.closable
+                ? `
+              <span class="ctrl-btn">
+                ${
+                  this.params.minimizable
+                    ? '<span class="minimize-btn cs-pointer">🗕</span>'
+                    : ""
+                }
+                ${
+                  this.params.maximizable
+                    ? '<span class="maximize-btn cs-pointer">🗖</span>'
+                    : ""
+                }
+                ${
+                  this.params.closable
+                    ? '<span class="close-btn cs-pointer">🗙</span>'
+                    : ""
+                }
+              </span>
+              `
+                : ""
+            }
           </div>
 
           <div class="resizer nw"></div>
