@@ -839,7 +839,7 @@ let oos = {
             ) {
               const el = Object.keys(req.result[0].data)[cPath];
 
-              if (path.endsWith("/")) path = path.slice(0, --path.length);
+              if (path.endsWith("/")) path = path.slice(0, path.length--);
 
               console.log(el);
             }
