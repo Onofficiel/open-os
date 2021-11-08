@@ -125,7 +125,7 @@ let oos = {
 
       /*/ Init dev console /*/
 
-      new oos.StandardWindow({
+      /* new oos.StandardWindow({
         content: `
     <div class="root">
       <div id="term-history"></div>
@@ -171,8 +171,7 @@ let oos = {
         minimizable: 0,
         icon: "https://open-os.netlify.app/system/ressources/icon/terminal.png",
       })
-        .show()
-        .center();
+        .show() */
 
       document.querySelector(".root").addEventListener("click", () => {
         document.querySelector("#term-input").focus();
