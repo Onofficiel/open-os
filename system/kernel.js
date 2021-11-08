@@ -785,7 +785,9 @@ let oos = {
           else resolve(false);
         };
       });
-      return await promise;
+      setTimeout(() => {
+        return await promise;
+      }, 500);
     }
 
     writestr(path, str) {
