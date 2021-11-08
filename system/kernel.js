@@ -772,12 +772,11 @@ let oos = {
       });
     }
 
-    exist(path) {
-      return new Promise((resolve, reject) => {
-        let transaction = this.db
+    async exist(path) {
+      return await new Promise((resolve, reject) => {
+        let req = this.db
           .transaction("fs", "readonly")
-          .objectStore("fs");
-        let req = transaction.get("main");
+          .objectStore("fs").get("main");
 
         req.onsuccess = function () {
           let data = req.result;
@@ -795,6 +794,7 @@ let oos = {
         let req = transaction.get("main");
 
         req.onsuccess = function () {
+          if (oos.FS.exist())
           let data = req.result;
           data.data[path] = {
             type: 0,
