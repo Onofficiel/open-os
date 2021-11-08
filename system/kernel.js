@@ -794,7 +794,6 @@ let oos = {
         let req = transaction.get("main");
 
         req.onsuccess = function () {
-          if (oos.FS.exist())
           let data = req.result;
           data.data[path] = {
             type: 0,
