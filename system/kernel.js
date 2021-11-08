@@ -831,7 +831,7 @@ let oos = {
 
         req.onsuccess = function () {
           let paths = [];
-          console.log(req.result[0]);
+          console.log(req.result);
 
           for (const cPath in Object.keys(req.result[0].data)) {
             if (
