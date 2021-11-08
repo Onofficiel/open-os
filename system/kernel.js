@@ -790,7 +790,26 @@ let oos = {
       });
     }
 
-    async readstr(path) {
+    mkdir(path) {
+      return new Promise((resolve, reject) => {
+        let transaction = this.db
+          .transaction("fs", "readwrite")
+          .objectStore("fs");
+        let req = transaction.get("main");
+
+        req.onsuccess = function () {
+          let data = req.result;
+          data.data[path] = {
+            type: 1,
+          };
+
+          transaction.put(data);
+          resolve(req.result.data[path].content);
+        };
+      });
+    }
+
+    readstr(path) {
       return new Promise((resolve, reject) => {
         let req = this.db
           .transaction("fs", "readonly")
@@ -803,7 +822,7 @@ let oos = {
       });
     }
 
-    async readdir(path) {
+    readdir(path) {
       return new Promise((resolve, reject) => {
         let req = this.db
           .transaction("fs", "readonly")
