@@ -773,7 +773,7 @@ let oos = {
     }
 
     exist(path) {
-      return new Promise((resolve, reject) => {
+      new Promise((resolve, reject) => {
         let req = this.db
           .transaction("fs", "readonly")
           .objectStore("fs")
