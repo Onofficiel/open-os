@@ -118,10 +118,9 @@ let oos = {
           width: 430,
           height: 200,
           title: "Alert",
-        });
-
-        wnd.show();
-        wnd.setCurrent();
+        })
+          .show()
+          .setCurrent();
       };
 
       /*/ Init dev console /*/
@@ -172,8 +171,8 @@ let oos = {
         minimizable: 0,
         icon: "https://open-os.netlify.app/system/ressources/icon/terminal.png",
       })
-        .center()
-        .show();
+        .show()
+        .center();
 
       document.querySelector(".root").addEventListener("click", () => {
         document.querySelector("#term-input").focus();
