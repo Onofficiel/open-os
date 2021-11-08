@@ -783,7 +783,7 @@ let oos = {
           let data = req.result;
           data.data[path] = {
             type: 0,
-            content: str,
+            content: str || "",
           };
 
           transaction.put(data);
@@ -864,7 +864,10 @@ let oos = {
 
               if (!path.endsWith("/") && path !== "/") path += "/";
 
-              if (el.startsWith(path) && el.slice(path.length).split("/").length <= 1) {
+              if (
+                el.startsWith(path) &&
+                el.slice(path.length).split("/").length <= 1
+              ) {
                 if (req.result[0].data[el].type)
                   paths.push(el.slice(path.length, el.length) + "/");
                 else paths.push(el.slice(path.length, el.length));
