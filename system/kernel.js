@@ -792,6 +792,27 @@ let oos = {
       });
     }
 
+    clearstr(path) {
+      return new Promise((resolve, reject) => {
+        let transaction = this.db
+          .transaction("fs", "readwrite")
+          .objectStore("fs");
+        let req = transaction.get("main");
+
+        req.onsuccess = function () {
+          try {
+            let data = req.result;
+            delete data.data[path];
+
+            transaction.put(data);
+            resolve(true);
+          } catch {
+            reject(false);
+          }
+        };
+      });
+    }
+
     mkdir(path) {
       return new Promise((resolve, reject) => {
         let transaction = this.db
@@ -800,6 +821,7 @@ let oos = {
         let req = transaction.get("main");
 
         req.onsuccess = function () {
+          if (path.endsWith("/")) path = path.slice(0, path.length - 1);
           let data = req.result;
           data.data[path] = {
             type: 1,
