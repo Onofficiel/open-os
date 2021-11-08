@@ -173,7 +173,9 @@ let oos = {
         maximizable: 0,
         minimizable: 0,
         icon: "https://open-os.netlify.app/system/ressources/icon/terminal.png",
-      }).show();
+      })
+        .center()
+        .show();
 
       document.querySelector(".root").addEventListener("click", () => {
         document.querySelector("#term-input").focus();
@@ -455,6 +457,8 @@ let oos = {
         document.body.offsetHeight / 2 -
         parseInt(this.winDiv.style.height) / 2 +
         "px";
+
+      return this;
     }
 
     toggleMaximize() {
