@@ -209,7 +209,10 @@ let oos = {
             document.querySelector("#term-input").value = "";
             document
               .querySelector(".root")
-              .scrollTo(0, document.querySelector(".root").scrollHeight);
+              .scrollTo({
+                top: document.querySelector(".root").scrollHeight,
+                behavior: "smooth",
+              });
           }
         });
     });
