@@ -773,7 +773,7 @@ let oos = {
     }
 
     exist(path) {
-      new Promise((resolve, reject) => {
+      let promise = new Promise((resolve, reject) => {
         let req = this.db
           .transaction("fs", "readonly")
           .objectStore("fs")
@@ -784,9 +784,8 @@ let oos = {
           if (data.data[path]) resolve(true);
           else resolve(false);
         };
-      }).then((r) => {
-        return r;
       });
+      return promise;
     }
 
     writestr(path, str) {
