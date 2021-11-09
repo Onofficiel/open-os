@@ -780,9 +780,7 @@ let oos = {
     correctPath(path) {
       if (!path.startsWith("/"))
         path =
-          this.currentDirectory !== "/"
-            ? this.currentDirectory
-            : "" + "/" + path;
+          (this.currentDirectory !== "/" ? this.currentDirectory : "/") + path;
       if (path.endsWith("/") && path !== "/")
         path = path.slice(0, path.length - 1);
 
@@ -794,7 +792,7 @@ let oos = {
           if (cWay === "..") path.splice(way - 1, way - 1);
       } */
 
-      return path/* .join("/"); */
+      return path; /* .join("/"); */
     }
 
     changedir(path) {
