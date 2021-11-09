@@ -778,11 +778,12 @@ let oos = {
     }
 
     correctPath(path) {
+      path = this.currentDirrectory + path;
       if (path.endsWith("/")) return (path = path.slice(0, path.length - 1));
     }
 
     changedir(path) {
-      path = this.correctPath(path);
+      if (path.endsWith("/")) return (path = path.slice(0, path.length - 1));
 
       if (path.startsWith("/")) {
         this.isFile(path).then((r) => {
