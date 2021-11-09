@@ -785,25 +785,30 @@ let oos = {
             : "" + "/" + path;
       if (path.endsWith("/") && path !== "/")
         path = path.slice(0, path.length - 1);
+      
+      let list = []
+      let decomp = path.split("/");
+
+      for (const way in decomp) {
+        if (Object.hasOwnProperty.call(decomp, way)) {
+          const cWay = decomp[way];
+          
+          if (cWay === "..")
+            decomp.splice(cWay - 1, cWay);
+        }
+      }
+      console.log(decomp);
 
       return path;
     }
 
     changedir(path) {
-      if (path.endsWith("/") && path !== "/")
-        path = path.slice(0, path.length - 1);
+      path = this.correctPath(path);
 
-      if (path.startsWith("/")) {
-        this.isFile(path).then((r) => {
-          if (r) throw new Error("Can't change directory, not a directory");
-          return (this.currentDirectory = path);
-        });
-      } else {
-        this.isFile(this.currentDirectory + path).then((r) => {
-          if (r) throw new Error("Can't change directory, not a directory");
-          return (this.currentDirectory += path);
-        });
-      }
+      this.isFile(path).then((r) => {
+        if (r) throw new Error("Can't change directory, not a directory");
+        return (this.currentDirectory = path);
+      });
     }
 
     exist(path) {
