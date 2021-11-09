@@ -731,6 +731,7 @@ let oos = {
   FS: class {
     constructor() {
       this.db = "";
+      this.currentDirrectory = "/";
       let openReq = indexedDB.open("OpenFS", 1);
 
       openReq.onupgradeneeded = () => {
@@ -742,6 +743,8 @@ let oos = {
           fsName: "main",
           data: {},
         });
+
+        this.mkdir("/");
       };
 
       openReq.onerror = () => {
@@ -770,6 +773,22 @@ let oos = {
           resolve(!req.result.data[path].type);
         };
       });
+    }
+
+    changedir(path) {
+      if (!path.endsWith("/")) path += "/";
+      
+      if (path.startsWith("/")) {
+        this.isFile(path).then((r) => {
+          if (r) throw new Error("Can't change directory, not a directory");
+        });
+        return (this.currentDirrectory = path);
+      } else {
+        this.isFile(this.currentDirrectory + path).then((r) => {
+          if (r) throw new Error("Can't change directory, not a directory");
+        });
+        return (this.currentDirrectory += path);
+      }
     }
 
     exist(path) {
@@ -840,13 +859,14 @@ let oos = {
 
     mkdir(path) {
       return new Promise((resolve, reject) => {
+        if (path.endsWith("/")) path = path.slice(0, path.length - 1);
+
         let transaction = this.db
           .transaction("fs", "readwrite")
           .objectStore("fs");
         let req = transaction.get("main");
 
         req.onsuccess = function () {
-          if (path.endsWith("/")) path = path.slice(0, path.length - 1);
           let data = req.result;
           data.data[path] = {
             type: 1,
