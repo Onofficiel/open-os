@@ -777,17 +777,17 @@ let oos = {
 
     changedir(path) {
       if (!path.endsWith("/")) path += "/";
-      
+
       if (path.startsWith("/")) {
         this.isFile(path).then((r) => {
           if (r) throw new Error("Can't change directory, not a directory");
+          return (this.currentDirrectory = path);
         });
-        return (this.currentDirrectory = path);
       } else {
         this.isFile(this.currentDirrectory + path).then((r) => {
           if (r) throw new Error("Can't change directory, not a directory");
+          return (this.currentDirrectory += path);
         });
-        return (this.currentDirrectory += path);
       }
     }
 
