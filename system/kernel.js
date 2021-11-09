@@ -789,7 +789,7 @@ let oos = {
       for (const way in path) {
           const cWay = path[way];
 
-          if (cWay === "..") path.splice(way - 1, way - 1);
+          if (cWay === "..") path.splice(way - 1, way);
       }
 
       return path.join("/");
