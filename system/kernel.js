@@ -778,14 +778,16 @@ let oos = {
     }
 
     correctPath(path) {
-      if (!path.startsWith("/")) path = this.currentDirrectory + path;
-      if (path.endsWith("/") && path !== "/") path = path.slice(0, path.length - 1);
+      if (!path.startsWith("/")) path = this.currentDirrectory + "/" + path;
+      if (path.endsWith("/") && path !== "/")
+        path = path.slice(0, path.length - 1);
 
       return path;
     }
 
     changedir(path) {
-      if (path.endsWith("/") && path !== "/") path = path.slice(0, path.length - 1);
+      if (path.endsWith("/") && path !== "/")
+        path = path.slice(0, path.length - 1);
 
       if (path.startsWith("/")) {
         this.isFile(path).then((r) => {
