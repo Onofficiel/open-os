@@ -800,7 +800,7 @@ let oos = {
           let dir = path.split("/");
           dir.pop();
 
-          if (!data.data[dir.join("/")] || data.data[path].type)
+          if (!data.data[dir.join("/")])
             throw new Error("Can't write.");
 
           data.data[path] = {
