@@ -799,10 +799,8 @@ let oos = {
 
           let dir = path.split("/");
           dir.pop();
-          dir.join("/");
-          console.log(dir);
 
-          if (!data.data[dir] || data.data[path].type !== 0)
+          if (!data.data[dir.join("/")] || data.data[path].type)
             throw new Error("Can't write.");
 
           data.data[path] = {
