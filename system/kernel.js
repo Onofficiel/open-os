@@ -764,6 +764,8 @@ let oos = {
 
     isFile(path) {
       return new Promise((resolve, reject) => {
+        if (path.endsWith("/")) path = path.slice(0, path.length - 1);
+
         let req = this.db
           .transaction("fs", "readonly")
           .objectStore("fs")
