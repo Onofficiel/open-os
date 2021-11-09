@@ -731,7 +731,7 @@ let oos = {
   FS: class {
     constructor() {
       this.db = "";
-      this.currentDirrectory = "/";
+      this.currentDirectory = "/";
       let openReq = indexedDB.open("OpenFS", 1);
 
       openReq.onupgradeneeded = () => {
@@ -778,7 +778,7 @@ let oos = {
     }
 
     correctPath(path) {
-      if (!path.startsWith("/")) path = this.currentDirrectory + "/" + path;
+      if (!path.startsWith("/")) path = this.currentDirectory + "/" + path;
       if (path.endsWith("/") && path !== "/")
         path = path.slice(0, path.length - 1);
 
@@ -792,12 +792,12 @@ let oos = {
       if (path.startsWith("/")) {
         this.isFile(path).then((r) => {
           if (r) throw new Error("Can't change directory, not a directory");
-          return (this.currentDirrectory = path);
+          return (this.currentDirectory = path);
         });
       } else {
-        this.isFile(this.currentDirrectory + path).then((r) => {
+        this.isFile(this.currentDirectory + path).then((r) => {
           if (r) throw new Error("Can't change directory, not a directory");
-          return (this.currentDirrectory += path);
+          return (this.currentDirectory += path);
         });
       }
     }
