@@ -741,10 +741,10 @@ let oos = {
 
         fsDB.put({
           fsName: "main",
-          data: {},
+          data: {
+            "/": { type: 1 },
+          },
         });
-
-        this.mkdir("/");
       };
 
       openReq.onerror = () => {
