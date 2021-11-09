@@ -764,7 +764,7 @@ let oos = {
 
     isFile(path) {
       return new Promise((resolve, reject) => {
-        if (path.endsWith("/")) path = path.slice(0, path.length - 1);
+        path = this.correctPath(path);
 
         let req = this.db
           .transaction("fs", "readonly")
@@ -782,6 +782,8 @@ let oos = {
     }
 
     changedir(path) {
+      path = this.correctPath(path);
+
       if (path.startsWith("/")) {
         this.isFile(path).then((r) => {
           if (r) throw new Error("Can't change directory, not a directory");
@@ -796,6 +798,8 @@ let oos = {
     }
 
     exist(path) {
+      path = this.correctPath(path);
+
       return new Promise((resolve, reject) => {
         let req = this.db
           .transaction("fs", "readonly")
@@ -811,6 +815,8 @@ let oos = {
     }
 
     writestr(path, str) {
+      path = this.correctPath(path);
+
       return new Promise((resolve, reject) => {
         let transaction = this.db
           .transaction("fs", "readwrite")
@@ -841,6 +847,8 @@ let oos = {
     }
 
     clearstr(path) {
+      path = this.correctPath(path);
+
       return new Promise((resolve, reject) => {
         let transaction = this.db
           .transaction("fs", "readwrite")
@@ -862,9 +870,9 @@ let oos = {
     }
 
     mkdir(path) {
-      return new Promise((resolve, reject) => {
-        if (path.endsWith("/")) path = path.slice(0, path.length - 1);
+      path = this.correctPath(path);
 
+      return new Promise((resolve, reject) => {
         let transaction = this.db
           .transaction("fs", "readwrite")
           .objectStore("fs");
@@ -883,6 +891,8 @@ let oos = {
     }
 
     readstr(path) {
+      path = this.correctPath(path);
+
       return new Promise((resolve, reject) => {
         let req = this.db
           .transaction("fs", "readonly")
@@ -896,6 +906,8 @@ let oos = {
     }
 
     readdir(path) {
+      path = this.correctPath(path);
+
       return new Promise((resolve, reject) => {
         let req = this.db
           .transaction("fs", "readonly")
@@ -910,8 +922,6 @@ let oos = {
               Object.hasOwnProperty.call(Object.keys(req.result[0].data), cPath)
             ) {
               const el = Object.keys(req.result[0].data)[cPath];
-
-              if (!path.endsWith("/") && path !== "/") path += "/";
 
               if (
                 el.startsWith(path) &&
