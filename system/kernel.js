@@ -782,7 +782,6 @@ let oos = {
 
       if (path.startsWith("/")) {
         this.isFile(path).then((r) => {
-          console.log(r);
           if (r) throw new Error("Can't change directory, not a directory");
           return (this.currentDirrectory = path);
         });
