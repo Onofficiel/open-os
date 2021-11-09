@@ -793,7 +793,7 @@ let oos = {
         if (Object.hasOwnProperty.call(decomp, way)) {
           const cWay = decomp[way];
 
-          if (cWay === "..") decomp.splice(cWay - 1, cWay);
+          if (cWay === "..") decomp.splice(way - 1, way);
         }
       }
       console.log(decomp);
