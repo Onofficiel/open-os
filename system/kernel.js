@@ -786,17 +786,15 @@ let oos = {
       if (path.endsWith("/") && path !== "/")
         path = path.slice(0, path.length - 1);
 
-      let list = [];
-      let decomp = path.split("/");
+      path = path.split("/");
 
-      for (const way in decomp) {
-          const cWay = decomp[way];
+      for (const way in path) {
+          const cWay = path[way];
 
-          if (cWay === "..") decomp.splice(way - 1, way - 1);
+          if (cWay === "..") path.splice(way - 1, way - 1);
       }
-      console.log(decomp.join("/"));
 
-      return path;
+      return path.join("/");
     }
 
     changedir(path) {
