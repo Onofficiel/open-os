@@ -786,8 +786,8 @@ let oos = {
 
       path = path.split("/");
 
-      for (const way in path) {
-          const cWay = path[way];
+      for (let way in path) {
+          let cWay = path[way];
 
           if (cWay === "..") path.splice(way - 1, way);
       }
