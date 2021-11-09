@@ -803,7 +803,7 @@ let oos = {
           if (!data.data[dir.join("/")])
             throw new Error("Can't write, the path don't exist.");
 
-          if (data.data[path] && data.data[path].type)
+          if (data.data[path] && data.data[path].type !== 0)
             throw new Error("Can't write, not a file.");
 
           data.data[path] = {
