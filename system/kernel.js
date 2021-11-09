@@ -796,7 +796,7 @@ let oos = {
           if (cWay === "..") decomp.splice(way - 1, way);
         }
       }
-      console.log(decomp);
+      console.log(decomp.join("/"));
 
       return path;
     }
