@@ -778,6 +778,8 @@ let oos = {
     }
 
     correctPath(path) {
+      if (!path) return this.currentDirectory;
+
       if (!path.startsWith("/"))
         path =
           (this.currentDirectory !== "/" ? this.currentDirectory + "/" : "/") +
@@ -914,7 +916,7 @@ let oos = {
     }
 
     readdir(path) {
-      path = this.correctPath(path) || this.currentDirectory;
+      path = this.correctPath(path);
 
       return new Promise((resolve, reject) => {
         let req = this.db
