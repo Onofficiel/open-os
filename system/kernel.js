@@ -914,7 +914,7 @@ let oos = {
     }
 
     readdir(path) {
-      path = this.correctPath(path);
+      path = this.correctPath(path) || this.currentDirectory;
 
       return new Promise((resolve, reject) => {
         let req = this.db
