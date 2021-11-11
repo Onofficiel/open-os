@@ -720,7 +720,7 @@ let oos = {
      * @returns HTMLElement
      */
     getContent() {
-      return this.winDiv.querySelector("window-content");
+      return this.winDiv.querySelector(".window-content");
     }
   },
   /**
