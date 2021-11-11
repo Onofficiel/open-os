@@ -359,10 +359,14 @@ let oos = {
       this.closable = true;
     }
   },
-  /**
-   * Standard Window Creator.
-   */
+  
   StandardWindow: class {
+    /**
+     * Standard Window Creator.
+     * 
+     * @param {object} params Parameters of the window.
+     * @returns StandardWindow
+     */
     constructor(params) {
       if (params == null) params = new oos.WindowParams();
 
@@ -727,10 +731,13 @@ let oos = {
     }
   },
 
-  /**
-   * Standard notification creator.
-   */
   StandardNotification: class {
+    /**
+     * Standard Notification Creator.
+     * 
+     * @param params Parameters of the notification.
+     * @returns StandardNotification
+     */
     constructor(params) {
       if (params == null) params = new oos.NotificationParams();
 
