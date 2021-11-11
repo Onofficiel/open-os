@@ -11,6 +11,9 @@
 (() => {})();
 
 let oos = {
+  /**
+   * Init the system.
+   */
   main: () => {
     window.addEventListener("load", () => {
       let osDiv = document.querySelector(".os-container");
@@ -215,6 +218,9 @@ let oos = {
         });
     });
   },
+  /**
+   * System variables and functions.
+   */
   sys: {
     var: {
       winId: [],
@@ -241,6 +247,9 @@ let oos = {
       },
     },
   },
+  /**
+   * Utilities.
+   */
   util: {
     escapeHtml: (unsafe) => {
       return unsafe
@@ -264,11 +273,17 @@ let oos = {
       return parseInt(id);
     },
   },
+  /**
+   * Interaction with the OS.
+   */
   shell: {
     send: () => {
       console.error("Sorry not yet disponible...");
     },
   },
+  /**
+   * Interaction with the UI.
+   */
   ui: {
     desk: {
       addApp: (wapp) => {
@@ -297,6 +312,9 @@ let oos = {
       },
     },
   },
+  /**
+   * Window Application.
+   */
   WApplication: class {
     constructor() {
       this.windows, (this.notifications = []);
@@ -318,6 +336,9 @@ let oos = {
       return ntf;
     }
   },
+  /**
+   * Parameters for a window.
+   */
   WindowParams: class {
     constructor() {
       this.posX = 100;
@@ -338,6 +359,9 @@ let oos = {
       this.closable = true;
     }
   },
+  /**
+   * Standard Window Creator.
+   */
   StandardWindow: class {
     constructor(params) {
       if (params == null) params = new oos.WindowParams();
@@ -455,6 +479,11 @@ let oos = {
       return this;
     }
 
+    /**
+     * Center the window on the screen.
+     * 
+     * @returns {StandardWindow}
+     */
     center() {
       this.winDiv.style.left =
         document.body.offsetWidth / 2 -
@@ -468,6 +497,10 @@ let oos = {
       return this;
     }
 
+    /**
+     * Toggle the size of the window.
+     * @returns {boolean}
+     */
     toggleMaximize() {
       if (this.maximized) {
         this.winDiv.style.left = this.maximizeInfo.left;
@@ -494,6 +527,9 @@ let oos = {
       }
     }
 
+    /**
+     * Make the window draggable.
+     */
     makeDraggable() {
       (function (ctx) {
         let wnd = ctx.winDiv;
@@ -534,6 +570,9 @@ let oos = {
       })(this);
     }
 
+    /**
+     * Make the window resizable.
+     */
     makeResizable() {
       (function (ctx) {
         let wnd = ctx.winDiv;
@@ -593,6 +632,11 @@ let oos = {
       })(this);
     }
 
+    /**
+     * Close the window.
+     * 
+     * @returns {boolean}
+     */
     close() {
       try {
         if (this.params.minimizable) oos.ui.desk.removeApp(this);
@@ -604,6 +648,11 @@ let oos = {
       }
     }
 
+    /**
+     * Minimize the window.
+     * 
+     * @returns {StandardWindow}
+     */
     hide() {
       this.winDiv.style.display = "none";
       this.minimized = true;
@@ -611,6 +660,11 @@ let oos = {
       return this;
     }
 
+    /**
+     * Render the window.
+     * 
+     * @returns {StandardWindow}
+     */
     show() {
       this.winDiv.style.display = "flex";
       this.minimized = false;
@@ -618,12 +672,22 @@ let oos = {
       return this;
     }
 
+    /**
+     * Toggle the visibility of the window.
+     * 
+     * @returns {StandardWindow}
+     */
     toggleVisibility() {
       this.minimized ? this.show() : this.hide();
 
       return this;
     }
 
+    /**
+     * Take the window to the front.
+     * 
+     * @returns {StandardWindow}
+     */
     setCurrent() {
       try {
         for (
@@ -646,6 +710,9 @@ let oos = {
       }
     }
   },
+  /**
+   * Parameters for a notification.
+   */
   NotificationParams: class {
     constructor() {
       this.title = "Untitled Notification";
@@ -659,6 +726,10 @@ let oos = {
       this.timeout = 5000;
     }
   },
+
+  /**
+   * Standard notification creator.
+   */
   StandardNotification: class {
     constructor(params) {
       if (params == null) params = new oos.NotificationParams();
@@ -722,12 +793,18 @@ let oos = {
       return this;
     }
 
+    /**
+     * Close the notification.
+     */
     close() {
       document
         .querySelector(".notification-container")
         .removeChild(this.notifDiv);
     }
   },
+  /**
+   * Open OS file system.
+   */
   FS: class {
     constructor() {
       this.db = "";
@@ -762,6 +839,12 @@ let oos = {
       return this;
     }
 
+    /**
+     * Verify if the path is a file or not.
+     * 
+     * @param {string} path The path to verify.
+     * @returns {boolean}
+     */
     isFile(path) {
       return new Promise((resolve, reject) => {
         path = this.correctPath(path);
@@ -777,6 +860,12 @@ let oos = {
       });
     }
 
+    /**
+     * Comformize the path.
+     * 
+     * @param {string} path The path to correct.
+     * @returns {string}
+     */
     correctPath(path) {
       if (!path) return this.currentDirectory;
 
@@ -798,6 +887,11 @@ let oos = {
       return path.join("/");
     }
 
+    /**
+     * Change the current directory.
+     * 
+     * @param {string} path Path of the directory.
+     */
     changedir(path) {
       path = this.correctPath(path);
 
@@ -807,6 +901,12 @@ let oos = {
       });
     }
 
+    /**
+     * Check if the path exist.
+     * 
+     * @param {string} path The path to verify.
+     * @returns {boolean}
+     */
     exist(path) {
       path = this.correctPath(path);
 
@@ -824,6 +924,13 @@ let oos = {
       });
     }
 
+    /**
+     * Write a file in the file system.
+     * 
+     * @param {string} path The path of the file.
+     * @param {string} str The content of the file.
+     * @returns {string}
+     */
     writestr(path, str) {
       path = this.correctPath(path);
 
@@ -856,6 +963,12 @@ let oos = {
       });
     }
 
+    /**
+     * Delete a file in the file system.
+     * 
+     * @param {string} path The path to clear.
+     * @returns {boolean}
+     */
     clearstr(path) {
       path = this.correctPath(path);
 
@@ -879,6 +992,12 @@ let oos = {
       });
     }
 
+    /**
+     * Create a directory in the file system.
+     * 
+     * @param {string} path The path the directory.
+     * @returns {string}
+     */
     mkdir(path) {
       path = this.correctPath(path);
 
@@ -900,6 +1019,12 @@ let oos = {
       });
     }
 
+    /**
+     * Read a file of the file system.
+     * 
+     * @param {string} path The path of the file to read.
+     * @returns {string}
+     */
     readstr(path) {
       path = this.correctPath(path);
 
@@ -915,6 +1040,11 @@ let oos = {
       });
     }
 
+    /**
+     * Read a directory of the file system.
+     * @param {string} path The path of the directory to read.
+     * @returns {string[]}
+     */
     readdir(path) {
       path = this.correctPath(path);
 
