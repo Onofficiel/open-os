@@ -1080,7 +1080,6 @@ let oos = {
               const el = Object.keys(req.result[0].data)[cPath];
 
               if (
-                !el.startsWith("/") &&
                 el.startsWith(path) &&
                 el.slice(path.length).split("/").length <= 1
               ) {
@@ -1090,6 +1089,8 @@ let oos = {
               }
             }
           }
+
+          paths.splice(paths.indexOf("/"), paths.indexOf("/"));
 
           resolve(paths);
         };
