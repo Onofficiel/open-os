@@ -1090,8 +1090,6 @@ let oos = {
             }
           }
 
-          paths.splice(paths.indexOf("/"), paths.indexOf("/"));
-
           resolve(paths);
         };
       });
