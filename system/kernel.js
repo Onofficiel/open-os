@@ -359,11 +359,11 @@ let oos = {
       this.closable = true;
     }
   },
-  
+
   StandardWindow: class {
     /**
      * Standard Window Creator.
-     * 
+     *
      * @param {object} params Parameters of the window.
      * @returns StandardWindow
      */
@@ -485,7 +485,7 @@ let oos = {
 
     /**
      * Center the window on the screen.
-     * 
+     *
      * @returns {StandardWindow}
      */
     center() {
@@ -638,7 +638,7 @@ let oos = {
 
     /**
      * Close the window.
-     * 
+     *
      * @returns {boolean}
      */
     close() {
@@ -654,7 +654,7 @@ let oos = {
 
     /**
      * Minimize the window.
-     * 
+     *
      * @returns {StandardWindow}
      */
     hide() {
@@ -666,7 +666,7 @@ let oos = {
 
     /**
      * Render the window.
-     * 
+     *
      * @returns {StandardWindow}
      */
     show() {
@@ -678,7 +678,7 @@ let oos = {
 
     /**
      * Toggle the visibility of the window.
-     * 
+     *
      * @returns {StandardWindow}
      */
     toggleVisibility() {
@@ -689,7 +689,7 @@ let oos = {
 
     /**
      * Take the window to the front.
-     * 
+     *
      * @returns {StandardWindow}
      */
     setCurrent() {
@@ -713,6 +713,15 @@ let oos = {
         return this;
       }
     }
+
+    /**
+     * Return the window content.
+     *
+     * @returns HTMLElement
+     */
+    getContent() {
+      return this.winDiv.querySelector("window-content");
+    }
   },
   /**
    * Parameters for a notification.
@@ -734,7 +743,7 @@ let oos = {
   StandardNotification: class {
     /**
      * Standard Notification Creator.
-     * 
+     *
      * @param params Parameters of the notification.
      * @returns StandardNotification
      */
@@ -848,7 +857,7 @@ let oos = {
 
     /**
      * Verify if the path is a file or not.
-     * 
+     *
      * @param {string} path The path to verify.
      * @returns {boolean}
      */
@@ -869,7 +878,7 @@ let oos = {
 
     /**
      * Comformize the path.
-     * 
+     *
      * @param {string} path The path to correct.
      * @returns {string}
      */
@@ -896,7 +905,7 @@ let oos = {
 
     /**
      * Change the current directory.
-     * 
+     *
      * @param {string} path Path of the directory.
      */
     changedir(path) {
@@ -910,7 +919,7 @@ let oos = {
 
     /**
      * Check if the path exist.
-     * 
+     *
      * @param {string} path The path to verify.
      * @returns {boolean}
      */
@@ -933,7 +942,7 @@ let oos = {
 
     /**
      * Write a file in the file system.
-     * 
+     *
      * @param {string} path The path of the file.
      * @param {string} str The content of the file.
      * @returns {string}
@@ -972,7 +981,7 @@ let oos = {
 
     /**
      * Delete a file in the file system.
-     * 
+     *
      * @param {string} path The path to clear.
      * @returns {boolean}
      */
@@ -1001,7 +1010,7 @@ let oos = {
 
     /**
      * Create a directory in the file system.
-     * 
+     *
      * @param {string} path The path the directory.
      * @returns {string}
      */
@@ -1028,7 +1037,7 @@ let oos = {
 
     /**
      * Read a file of the file system.
-     * 
+     *
      * @param {string} path The path of the file to read.
      * @returns {string}
      */
