@@ -350,6 +350,7 @@ let oos = {
       this.icon = null;
       this.content = "";
       this.headerColor = "#0099ff";
+      this.headerTextColor = "#ffffff";
 
       this.resizable = true;
       this.draggable = true;
@@ -395,7 +396,7 @@ let oos = {
           <div class="window-content">${this.params.content}</div>
           <div class="window-header cs-move" style="background: ${
             this.params.headerColor
-          };">
+          }; color: ${this.headerTextColor}">
             ${
               !!this.params.icon
                 ? `<img src="` +
