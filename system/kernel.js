@@ -1082,11 +1082,11 @@ let oos = {
               if (el.startsWith(path)) {
                 el = el.slice(path.length);
 
-                if (el.startsWith("/")) {
+                if (el.startsWith("/") && el) {
                   el = el.substring(1);
                   el = el.split("/")[0];
                   if (paths.indexOf(el) == -1 && el) paths.push(el);
-                } else {
+                } else if (el) {
                   el = el.split("/")[0] + "/";
                   if (paths.indexOf(el) == -1 && el) paths.push(el);
                 }
