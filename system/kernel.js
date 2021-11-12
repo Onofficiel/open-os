@@ -1073,6 +1073,8 @@ let oos = {
         req.onsuccess = () => {
           let paths = [];
 
+          console.log(JSON.parse(req.result[0].data))
+
           for (let i = 0; i < Object.keys(req.result[0].data).length; i++) {
             let elType = req.result[0].data[i].type;
             let el = Object.keys(req.result[0].data)[i];
