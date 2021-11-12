@@ -1078,9 +1078,10 @@ let oos = {
               let elType = req.result[0].data[cPath];
               let el = Object.keys(req.result[0].data)[cPath];
 
+              console.log(elType);
+              
               if (el.startsWith(path)) {
                 el = el.slice(path.length);
-                console.log(elType);
 
                 if (el.startsWith("/")) el = el.substring(1);
                 el = el.split("/")[0];
