@@ -1079,7 +1079,6 @@ let oos = {
             ) {
               let el = Object.keys(req.result[0].data)[i];
 
-              console.log(el);
               if (el.startsWith(path)) {
                 el = el.slice(path.length);
 
@@ -1088,8 +1087,8 @@ let oos = {
                   el = el.split("/")[0];
                   if (paths.indexOf(el) == -1 && el) paths.push(el);
                 } else {
-                  el = el.split("/")[0];
-                  if (paths.indexOf(el) == -1 && el) paths.push(el + "/");
+                  el = el.split("/")[0] + "/";
+                  if (paths.indexOf(el) == -1 && el) paths.push(el);
                 }
               }
             }
