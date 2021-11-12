@@ -1084,9 +1084,9 @@ let oos = {
           for (const cPath in req.result[0].data) {
             if (Object.hasOwnProperty.call(req.result[0].data, cPath)) {
               let elType = req.result[0].data[cPath].type;
-              let el = Object.keys(req.result[0].data);
+              let el = Object.keys(req.result[0].data)[cPath];
 
-              console.log(el[cPath]);
+              console.log(el);
               if (el.startsWith(path)) {
                 el = el.slice(path.length);
 
