@@ -1086,7 +1086,7 @@ let oos = {
 
                 console.log(el);
 
-                if (el.split("/").length <= 1) {
+                if (el.split("/").length <= 2) {
                   if (req.result[0].data[el].type)
                     paths.push(el.slice(path.length, el.length) + "/");
                   else paths.push(el.slice(path.length, el.length));
