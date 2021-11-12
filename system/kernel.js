@@ -1081,7 +1081,11 @@ let oos = {
 
               if (el.startsWith(path)) {
                 el = el.slice(path.length);
+
                 if (!el.startsWith("/")) el = "/" + el;
+
+                console.log(el);
+
                 if (el.split("/").length <= 1) {
                   if (req.result[0].data[el].type)
                     paths.push(el.slice(path.length, el.length) + "/");
