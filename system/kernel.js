@@ -1079,19 +1079,7 @@ let oos = {
             ) {
               let el = Object.keys(req.result[0].data)[cPath];
 
-              if (el.startsWith(path)) {
-                el = el.slice(path.length);
-
-                if (!el.startsWith("/")) el = "/" + el;
-
-                console.log(el);
-
-                if (el.split("/").length <= 2) {
-                  if (req.result[0].data[el].type)
-                    paths.push(el.slice(path.length, el.length) + "/");
-                  else paths.push(el.slice(path.length, el.length));
-                }
-              }
+              console.log(el);
             }
           }
 
