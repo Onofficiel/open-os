@@ -1062,7 +1062,7 @@ let oos = {
      * @returns {string[]}
      */
     readdir(path) {
-      path = this.correctPath(path) + "/";
+      path = this.correctPath(path);
 
       return new Promise((resolve, reject) => {
         let req = this.db
