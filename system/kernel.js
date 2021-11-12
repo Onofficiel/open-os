@@ -1080,7 +1080,7 @@ let oos = {
               let el = Object.keys(req.result[0].data)[cPath];
 
               if (el.startsWith(path))
-                console.log(el.split("/")[path.split("/").length]);
+                console.log(el.split("/")[path.split("/").length - 1]);
             }
           }
 
