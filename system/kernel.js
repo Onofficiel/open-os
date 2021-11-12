@@ -1073,11 +1073,8 @@ let oos = {
         req.onsuccess = function () {
           let paths = [];
 
-          for (const cPath in Object.keys(req.result[0].data)) {
-            if (
-              Object.hasOwnProperty.call(Object.keys(req.result[0].data), cPath)
-            ) {
-              console.log(cPath);
+          for (const cPath in req.result[0].data) {
+            if (Object.hasOwnProperty.call(req.result[0].data, cPath)) {
               let elType = req.result[0].data[cPath];
               let el = Object.keys(req.result[0].data)[cPath];
 
