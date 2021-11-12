@@ -1080,6 +1080,7 @@ let oos = {
               let el = Object.keys(req.result[0].data)[cPath];
 
               if (el.startsWith(path))
+                if (el.startsWith("/")) el.split("/").splice(0, 1);
                 console.log(el.split("/")[path.split("/").length - 1]);
             }
           }
