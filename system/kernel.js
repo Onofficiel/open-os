@@ -1062,8 +1062,6 @@ let oos = {
      * @returns {string[]}
      */
     readdir(path) {
-      path = this.correctPath(path);
-
       return new Promise((resolve, reject) => {
         let req = this.db
           .transaction("fs", "readonly")
@@ -1071,6 +1069,7 @@ let oos = {
           .getAll("main");
 
         req.onsuccess = () => {
+          path = this.correctPath(path);
           let paths = [];
 
           for (const cPath in req.result[0].data) {
