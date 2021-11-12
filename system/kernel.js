@@ -1079,7 +1079,7 @@ let oos = {
             ) {
               let el = Object.keys(req.result[0].data)[cPath];
 
-              console.log(el);
+              if (el.startsWith(path)) console.log(el);
             }
           }
 
