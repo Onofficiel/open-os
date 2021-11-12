@@ -1085,7 +1085,7 @@ let oos = {
                 if (el.startsWith("/")) el = el.substring(1);
                 el = el.split("/")[0];
 
-                console.log(el);
+                if (el.indexOf(paths) == -1) path.push(el);
               }
             }
           }
