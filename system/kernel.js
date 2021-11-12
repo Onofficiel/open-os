@@ -1073,6 +1073,7 @@ let oos = {
         req.onsuccess = () => {
           let paths = [];
 
+          console.log("Ok");
           for (let i = 0; i < req.result[0].data.length; i++) {
             let el = Object.keys(req.result[0].data)[i];
 
