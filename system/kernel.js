@@ -1073,14 +1073,6 @@ let oos = {
         req.onsuccess = () => {
           let paths = [];
 
-          /* for (const cPath in req.result[0].data) {
-            if (Object.hasOwnProperty.call(req.result[0].data, cPath)) {
-              const el = req.result[0].data[cPath];
-              const elKey = Object.keys(req.result[0].data)[cPath];
-
-              console.log(elKey);
-            }
-          } */
           for (const i in Object.keys(req.result[0].data)) {
             if (
               Object.hasOwnProperty.call(Object.keys(req.result[0].data), i)
@@ -1092,6 +1084,8 @@ let oos = {
                 el = el.slice(path.length);
 
                 if (el.startsWith("/")) el = el.substring(1);
+                
+                console.log(el);
                 el = el.split("/")[0];
 
                 if (paths.indexOf(el) == -1 && el) paths.push(el);
