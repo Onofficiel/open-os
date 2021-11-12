@@ -10,7 +10,7 @@
 
 (() => {})();
 
-let oos = {
+export let oos = {
   /**
    * Init the system.
    */
