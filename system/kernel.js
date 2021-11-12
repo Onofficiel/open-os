@@ -1070,7 +1070,7 @@ let oos = {
           .objectStore("fs")
           .getAll("main");
 
-        req.onsuccess = function () {
+        req.onsuccess = () => {
           let paths = [];
 
           for (const cPath in req.result[0].data) {
