@@ -1074,9 +1074,10 @@ let oos = {
           let paths = [];
 
           for (let i = 0; i < Object.keys(req.result[0].data).length; i++) {
+            let elType = req.result[0].data[i].type;
             let el = Object.keys(req.result[0].data)[i];
 
-            console.log(el);
+            console.log(el, elType);
           }
           /* for (const cPath in req.result[0].data) {
             if (Object.hasOwnProperty.call(req.result[0].data, cPath)) {
