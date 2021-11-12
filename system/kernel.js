@@ -349,6 +349,7 @@ let oos = {
       this.title = "Untitled Window";
       this.icon = null;
       this.content = "";
+      
       this.headerColor = "#0099ff";
       this.headerTextColor = "#ffffff";
 
