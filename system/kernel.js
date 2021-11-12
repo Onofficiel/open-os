@@ -1081,7 +1081,7 @@ let oos = {
 
               if (el.startsWith(path)) {
 
-                console.log(el.slice(path.split("/").length));
+                console.log(el.slice(path.split("/").length - 1));
               }
             }
           }
