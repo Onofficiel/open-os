@@ -1085,7 +1085,6 @@ let oos = {
             if (
               Object.hasOwnProperty.call(Object.keys(req.result[0].data), i)
             ) {
-              let elType = req.result[0].data[i].type;
               let el = Object.keys(req.result[0].data)[i];
 
               console.log(el);
