@@ -1077,7 +1077,7 @@ let oos = {
           for (let i = 0; i < req.result[0].data.length; i++) {
             let el = Object.keys(req.result[0].data)[i];
 
-            console.log(req.result[0].data);
+            console.log(Object.keys(req.result[0].data).length);
           }
           /* for (const cPath in req.result[0].data) {
             if (Object.hasOwnProperty.call(req.result[0].data, cPath)) {
