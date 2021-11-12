@@ -1081,10 +1081,10 @@ let oos = {
               console.log(elKey);
             }
           } */
-          for (const cPath in req.result[0].data) {
-            if (Object.hasOwnProperty.call(req.result[0].data, cPath)) {
-              let elType = req.result[0].data[cPath].type;
-              let el = Object.keys(req.result[0].data)[cPath];
+          for (const i in req.result[0].data) {
+            if (Object.hasOwnProperty.call(req.result[0].data, i)) {
+              let elType = req.result[0].data[i].type;
+              let el = Object.keys(req.result[0].data)[i];
 
               console.log(el);
               if (el.startsWith(path)) {
