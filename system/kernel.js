@@ -1081,8 +1081,10 @@ let oos = {
               console.log(elKey);
             }
           } */
-          for (const i in req.result[0].data) {
-            if (Object.hasOwnProperty.call(req.result[0].data, i)) {
+          for (const i in Object.keys(req.result[0].data)) {
+            if (
+              Object.hasOwnProperty.call(Object.keys(req.result[0].data), i)
+            ) {
               let elType = req.result[0].data[i].type;
               let el = Object.keys(req.result[0].data)[i];
 
