@@ -1083,12 +1083,14 @@ let oos = {
               if (el.startsWith(path)) {
                 el = el.slice(path.length);
 
-                if (el.startsWith("/")) el = el.substring(1);
-                
-                console.log(el);
-                el = el.split("/")[0];
-
-                if (paths.indexOf(el) == -1 && el) paths.push(el);
+                if (el.startsWith("/")) {
+                  el = el.substring(1);
+                  el = el.split("/")[0];
+                  if (paths.indexOf(el) == -1 && el) paths.push(el + "/");
+                } else {
+                  el = el.split("/")[0];
+                  if (paths.indexOf(el) == -1 && el) paths.push(el);
+                }
               }
             }
           }
