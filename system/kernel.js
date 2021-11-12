@@ -1079,15 +1079,14 @@ let oos = {
             ) {
               const el = Object.keys(req.result[0].data)[cPath];
 
-              console.log(el);
-
-              if (
-                el.startsWith(path) &&
-                el.slice(path.length).split("/").length <= 1
-              ) {
-                if (req.result[0].data[el].type)
-                  paths.push(el.slice(path.length, el.length) + "/");
-                else paths.push(el.slice(path.length, el.length));
+              if (el.startsWith(path)) {
+                el.splice(path.length);
+                if (!el.startsWith("/")) el = "/" + el;
+                if (el.split("/").length <= 1) {
+                  if (req.result[0].data[el].type)
+                    paths.push(el.slice(path.length, el.length) + "/");
+                  else paths.push(el.slice(path.length, el.length));
+                }
               }
             }
           }
