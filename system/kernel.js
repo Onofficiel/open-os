@@ -1062,7 +1062,7 @@ let oos = {
      * @returns {string[]}
      */
     readdir(path) {
-      path = this.correctPath(path);
+      path = this.correctPath(path) + "/";
 
       return new Promise((resolve, reject) => {
         let req = this.db
@@ -1081,7 +1081,7 @@ let oos = {
 
               if (
                 el.startsWith(path) &&
-                el.slice(path.length).split("/").length <= 2
+                el.slice(path.length).split("/").length <= 1
               ) {
                 if (req.result[0].data[el].type)
                   paths.push(el.slice(path.length, el.length) + "/");
