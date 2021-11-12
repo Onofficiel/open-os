@@ -1073,13 +1073,13 @@ let oos = {
         req.onsuccess = () => {
           let paths = [];
 
-          console.log(JSON.parse(JSON.stringify(req.result[0].data)).length);
+          for (const cPath in req.result[0].data) {
+            if (Object.hasOwnProperty.call(req.result[0].data, cPath)) {
+              const el = req.result[0].data[cPath];
+              const elKey = Object.keys(req.result[0].data)[cPath];
 
-          for (let i = 0; i < Object.keys(req.result[0].data).length; i++) {
-            let elType = req.result[0].data[i].type;
-            let el = Object.keys(req.result[0].data)[i];
-
-            console.log(el, elType);
+              console.log(elKey);
+            }
           }
           /* for (const cPath in req.result[0].data) {
             if (Object.hasOwnProperty.call(req.result[0].data, cPath)) {
