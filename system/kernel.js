@@ -1077,13 +1077,14 @@ let oos = {
             if (
               Object.hasOwnProperty.call(Object.keys(req.result[0].data), cPath)
             ) {
+              let elType = req.result[0].data[cPath].type;
               let el = Object.keys(req.result[0].data)[cPath];
 
               if (el.startsWith(path)) {
                 el = el.slice(path.length);
+                console.log(elType);
 
                 if (el.startsWith("/")) el = el.substring(1);
-                console.log(el);
                 el = el.split("/")[0];
 
                 if (paths.indexOf(el) == -1 && el) paths.push(el);
