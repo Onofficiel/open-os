@@ -349,7 +349,7 @@ let oos = {
       this.title = "Untitled Window";
       this.icon = null;
       this.content = "";
-      
+
       this.headerColor = "#0099ff";
       this.headerTextColor = "#ffffff";
 
@@ -397,7 +397,7 @@ let oos = {
           <div class="window-content">${this.params.content}</div>
           <div class="window-header cs-move" style="background: ${
             this.params.headerColor
-          }; color: ${this.headerTextColor}">
+          }; color: ${this.params.headerTextColor}">
             ${
               !!this.params.icon
                 ? `<img src="` +
