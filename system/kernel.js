@@ -1079,14 +1079,14 @@ let oos = {
               let el = /* Object.keys( */req.result[0].data/* ) */[cPath];
 
               console.log(el);
-              if (el.startsWith(path)) {
+              /* if (el.startsWith(path)) {
                 el = el.slice(path.length);
 
                 if (el.startsWith("/")) el = el.substring(1);
                 el = el.split("/")[0];
 
                 if (paths.indexOf(el) == -1 && el) paths.push(el);
-              }
+              } */
             }
           }
 
