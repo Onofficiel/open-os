@@ -1085,8 +1085,6 @@ let oos = {
                 if (el.startsWith("/")) el = el.substring(1);
                 el = el.split("/")[0];
 
-                console.log(el);
-                console.log(paths.indexOf(el) == -1);
                 if (paths.indexOf(el) == -1) paths.push(el);
               }
             }
