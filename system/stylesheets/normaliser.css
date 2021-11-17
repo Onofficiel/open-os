@@ -2,7 +2,7 @@
  *                                *
  *             OpenOS             *
  *                                *
- *    Copyright (c) Onofficiel    *
+ *           Onofficiel           *
  *                                *
 /*********************************/
 
