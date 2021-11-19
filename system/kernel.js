@@ -1099,7 +1099,7 @@ let oos = {
           };
         });
       };
-      return await func();
+      await func();
     }
   },
 };
