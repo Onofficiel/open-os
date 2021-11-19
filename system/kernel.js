@@ -1063,7 +1063,7 @@ let oos = {
      * @param {string} path The path of the directory to read.
      * @returns {string[]}
      */
-    async readdir(path) {
+    readdir(path) {
       path = this.correctPath(path);
 
       return new Promise((resolve, reject) => {
@@ -1072,7 +1072,7 @@ let oos = {
           .objectStore("fs")
           .getAll("main");
 
-        req.onsuccess = () => {
+        req.onsuccess = async () => {
           let paths = [];
 
           for (const i in Object.keys(req.result[0].data)) {
