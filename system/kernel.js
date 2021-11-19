@@ -1067,7 +1067,7 @@ let oos = {
       path = this.correctPath(path);
 
       let func = async () => {
-        await new Promise((resolve, reject) => {
+        return new Promise((resolve, reject) => {
           let req = this.db
             .transaction("fs", "readonly")
             .objectStore("fs")
