@@ -1082,8 +1082,9 @@ let oos = {
               let el = Object.keys(req.result[0].data)[i];
 
               if (el.startsWith(path)) {
+                console.log("B : " + el);
                 el = el.slice(path.length);
-                console.log(el);
+                console.log("A : " + el);
 
                 if (el.startsWith("/") && el) {
                   el = el.substring(1);
