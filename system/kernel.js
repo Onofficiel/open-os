@@ -1081,8 +1081,22 @@ let oos = {
             ) {
               let el = Object.keys(req.result[0].data)[i];
 
-              if (el.startsWith(path) && el !== "/") {
-                await paths.push(el);
+              if (el.startsWith(path)) {
+                let isFile = true;
+
+                await oos.FS.isFile(el).then((e) => {
+                  if (!e) isFile = false;
+                });
+                console.log(isFile);
+
+                if (el.startsWith("/") && el) {
+                  el = el.substring(1);
+                  el = el.split("/")[0];
+                  if (paths.indexOf(el) == -1 && el) paths.push(el);
+                } else if (el) {
+                  el = el.split("/")[0] + "/";
+                  if (paths.indexOf(el) == -1 && el) paths.push(el);
+                }
               }
             }
           }
