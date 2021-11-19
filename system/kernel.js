@@ -1087,7 +1087,6 @@ let oos = {
                 await oos.FS.isFile(el).then((e) => {
                   if (!e) isFile = false;
                 });
-                console.log(isFile);
 
                 if (el.startsWith("/") && el) {
                   el = el.substring(1);
@@ -1101,7 +1100,7 @@ let oos = {
             }
           }
 
-          resolve(paths);
+          await resolve(paths);
         };
       });
     }
