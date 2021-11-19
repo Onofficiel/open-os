@@ -1083,6 +1083,7 @@ let oos = {
 
               if (el.startsWith(path)) {
                 el = el.slice(path.length);
+                console.log(el);
 
                 if (el.startsWith("/") && el) {
                   el = el.substring(1);
