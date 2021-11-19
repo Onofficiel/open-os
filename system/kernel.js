@@ -1083,7 +1083,7 @@ let oos = {
 
               console.log(el.split("/"), path.split("/"));
               console.log(el.length + " == " + path.length + 1);
-              console.log(el.length === path.length + 1);
+              console.log(el.length == path.length + 1);
 
               if (
                 el.startsWith(path) &&
