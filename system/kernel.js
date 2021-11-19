@@ -1081,8 +1081,8 @@ let oos = {
             ) {
               let el = Object.keys(req.result[0].data)[i];
 
-              console.log((el.length, " + ", path.length + 1).toString());
-              console.log((el.length === path.length + 1).toString());
+              console.log(el.length + " + " + path.length + 1);
+              console.log(el.length === path.length + 1);
 
               if (
                 el.startsWith(path) &&
