@@ -1083,7 +1083,8 @@ let oos = {
 
               if (
                 el.startsWith(path) &&
-                el.split("/").length === path.split("/").length + 1
+                el.split("/").length == path.split("/").length + 1 &&
+                paths.indexOf(path) != -1
               ) {
                 paths.push(path);
               }
