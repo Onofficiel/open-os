@@ -1091,7 +1091,7 @@ let oos = {
                 el.startsWith(path) &&
                 el.split("/").length == path.split("/").length + 1
               ) {
-                paths.push(path);
+                paths.push(el);
               }
             }
           }
