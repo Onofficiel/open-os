@@ -1083,10 +1083,10 @@ let oos = {
 
               console.log(el.length);
               console.log(path.length);
-              
+
               if (
                 el.startsWith(path) &&
-                el.split("/").length == path.split("/").length + 1 &&
+                el.split("/").length == path.split("/").length &&
                 paths.indexOf(path) != -1
               ) {
                 paths.push(path);
