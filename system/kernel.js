@@ -1085,9 +1085,7 @@ let oos = {
                 let isFile = true;
 
                 oos.FS.isFile(el).then((e) => {
-                  if (!e) {
-                    isFile = false;
-                  }
+                  if (e) isFile = false;
                 });
                 console.log(isFile);
 
