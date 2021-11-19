@@ -1081,15 +1081,11 @@ let oos = {
             ) {
               let el = Object.keys(req.result[0].data)[i];
 
-              if (el.startsWith(path)) {
-                if (el.startsWith("/") && el) {
-                  el = el.substring(1);
-                  // el = el.split("/")[0];
-                  if (paths.indexOf(el) == -1 && el) paths.push(el);
-                } else if (el) {
-                  el = el.split("/")[0] + "/";
-                  if (paths.indexOf(el) == -1 && el) paths.push(el);
-                }
+              if (
+                el.startsWith(path) &&
+                el.split("/").length === path.split("/").length + 1
+              ) {
+                paths.push(path);
               }
             }
           }
