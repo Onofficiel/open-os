@@ -1081,7 +1081,9 @@ let oos = {
             ) {
               let el = Object.keys(req.result[0].data)[i];
 
-              console.log(el.length + " + " + path.length + 1);
+              console.log(
+                "el : " + el.length + " == " + "path : " + path.length + 1
+              );
               console.log(el.length === path.length + 1);
 
               if (
