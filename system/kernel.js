@@ -1084,7 +1084,7 @@ let oos = {
               if (el.startsWith(path)) {
                 if (el.startsWith("/") && el) {
                   el = el.substring(1);
-                  el = el.split("/")[0];
+                  // el = el.split("/")[0];
                   if (paths.indexOf(el) == -1 && el) paths.push(el);
                 } else if (el) {
                   el = el.split("/")[0] + "/";
