@@ -1081,12 +1081,12 @@ let oos = {
             ) {
               let el = Object.keys(req.result[0].data)[i];
 
-              console.log(el.length, " + ", path.length);
-              console.log(el.length === path.length);
+              console.log(el.length, " + ", path.length+1);
+              console.log(el.length === path.length+1);
 
               if (
                 el.startsWith(path) &&
-                el.split("/").length == path.split("/").length &&
+                el.split("/").length == path.split("/").length + 1 &&
                 paths.indexOf(path) == -1
               ) {
                 paths.push(path);
