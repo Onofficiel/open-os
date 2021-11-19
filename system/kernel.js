@@ -1100,7 +1100,7 @@ let oos = {
             }
           }
 
-          await resolve(paths);
+          resolve(paths);
         };
       });
 
