@@ -1063,10 +1063,10 @@ let oos = {
      * @param {string} path The path of the directory to read.
      * @returns {string[]}
      */
-    readdir(path) {
+    async readdir(path) {
       path = this.correctPath(path);
 
-      return new Promise((resolve, reject) => {
+      return await new Promise((resolve, reject) => {
         let req = this.db
           .transaction("fs", "readonly")
           .objectStore("fs")
@@ -1100,7 +1100,7 @@ let oos = {
             }
           }
 
-          await resolve(paths);
+          resolve(paths);
         };
       });
     }
