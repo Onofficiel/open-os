@@ -1082,9 +1082,13 @@ let oos = {
               let el = Object.keys(req.result[0].data)[i];
 
               if (el.startsWith(path)) {
-                console.log("B : " + el);
-                el = el.slice(path.length);
-                console.log("A : " + el);
+                let isFile = true;
+
+                oos.FS.isFile(el).then((e) => {
+                  if (!e) {
+                    isFile = false;
+                  }
+                });
 
                 if (el.startsWith("/") && el) {
                   el = el.substring(1);
