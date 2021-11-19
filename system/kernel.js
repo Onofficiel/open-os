@@ -1063,43 +1063,40 @@ let oos = {
      * @param {string} path The path of the directory to read.
      * @returns {string[]}
      */
-    async readdir(path) {
+    readdir(path) {
       path = this.correctPath(path);
 
-      let func = async () => {
-        return new Promise((resolve, reject) => {
-          let req = this.db
-            .transaction("fs", "readonly")
-            .objectStore("fs")
-            .getAll("main");
+      return new Promise((resolve, reject) => {
+        let req = this.db
+          .transaction("fs", "readonly")
+          .objectStore("fs")
+          .getAll("main");
 
-          req.onsuccess = () => {
-            let paths = [];
+        req.onsuccess = () => {
+          let paths = [];
 
-            for (const i in Object.keys(req.result[0].data)) {
-              if (
-                Object.hasOwnProperty.call(Object.keys(req.result[0].data), i)
-              ) {
-                let el = Object.keys(req.result[0].data)[i];
+          for (const i in Object.keys(req.result[0].data)) {
+            if (
+              Object.hasOwnProperty.call(Object.keys(req.result[0].data), i)
+            ) {
+              let el = Object.keys(req.result[0].data)[i];
 
-                if (el.startsWith(path)) {
-                  if (el.startsWith("/") && el) {
-                    el = el.substring(1);
-                    el = el.split("/")[0];
-                    if (paths.indexOf(el) == -1 && el) paths.push(el);
-                  } else if (el) {
-                    el = el.split("/")[0] + "/";
-                    if (paths.indexOf(el) == -1 && el) paths.push(el);
-                  }
+              if (el.startsWith(path)) {
+                if (el.startsWith("/") && el) {
+                  el = el.substring(1);
+                  el = el.split("/")[0];
+                  if (paths.indexOf(el) == -1 && el) paths.push(el);
+                } else if (el) {
+                  el = el.split("/")[0] + "/";
+                  if (paths.indexOf(el) == -1 && el) paths.push(el);
                 }
               }
             }
+          }
 
-            resolve(paths);
-          };
-        });
-      };
-      await func();
+          resolve(paths);
+        };
+      });
     }
   },
 };
