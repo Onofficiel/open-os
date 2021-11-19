@@ -1066,7 +1066,7 @@ let oos = {
     async readdir(path) {
       path = this.correctPath(path);
 
-      return await new Promise((resolve, reject) => {
+      let result = await new Promise((resolve, reject) => {
         let req = this.db
           .transaction("fs", "readonly")
           .objectStore("fs")
@@ -1103,6 +1103,8 @@ let oos = {
           await resolve(paths);
         };
       });
+
+      return result;
     }
   },
 };
