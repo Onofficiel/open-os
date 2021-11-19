@@ -1066,7 +1066,7 @@ let oos = {
     async readdir(path) {
       path = this.correctPath(path);
 
-      let func = () => {
+      let func = async () => {
         await new Promise((resolve, reject) => {
           let req = this.db
             .transaction("fs", "readonly")
