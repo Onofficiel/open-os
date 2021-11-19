@@ -1081,6 +1081,7 @@ let oos = {
             ) {
               let el = Object.keys(req.result[0].data)[i];
 
+              console.log(el);
               if (
                 el.startsWith(path) &&
                 el.split("/").length == path.split("/").length &&
