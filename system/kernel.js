@@ -1063,7 +1063,7 @@ let oos = {
      * @param {string} path The path of the directory to read.
      * @returns {string[]}
      */
-    readdir(path) {
+    async readdir(path) {
       path = this.correctPath(path);
 
       return new Promise((resolve, reject) => {
@@ -1084,7 +1084,7 @@ let oos = {
               if (el.startsWith(path)) {
                 let isFile = true;
 
-                oos.FS.isFile(el).then((e) => {
+                await oos.FS.isFile(el).then((e) => {
                   if (!e) isFile = false;
                 });
                 console.log(isFile);
