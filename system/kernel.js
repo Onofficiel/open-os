@@ -134,7 +134,7 @@ let oos = {
           content: `
       <div class="root">
         <div id="term-history"></div>
-        <div class="term-input-container"><span>&gt;&nbsp;</span><input type="text" id="term-input" autocomplete="off" spellcheck="false" /></div>
+        <div id="term-input-container"><span>&gt;&nbsp;</span><input type="text" id="term-input" autocomplete="off" spellcheck="false" /></div>
       </div>
       
       <style>
