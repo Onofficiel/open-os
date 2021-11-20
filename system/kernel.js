@@ -292,9 +292,9 @@ let oos = {
     /**
      * Send a command that the OS will execute.
      *
-     * @param {string} cmd Command to send.
+     * @param {string} inp Command to send.
      */
-    send: (cmd) => {
+    send: (inp) => {
       let args = cmd.split(/ +/g);
       let cmd = args[0];
       args.shift();
