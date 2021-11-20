@@ -314,7 +314,7 @@ let oos = {
         if (Object.hasOwnProperty.call(cmdList, i)) {
           const cCmd = cmdList[i];
 
-          if (cmd === cCmd.name) return cCmd.exec().join("\n");
+          if (cmd === cCmd.name) return cCmd.exec();
         }
       }
     },
