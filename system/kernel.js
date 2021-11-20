@@ -134,7 +134,7 @@ let oos = {
           content: `
       <div class="root">
         <div id="term-history"></div>
-        <span>&gt;&nbsp;</span><input type="text" id="term-input" autocomplete="off" spellcheck="false" />
+        <div class="term-input-container"><span>&gt;&nbsp;</span><input type="text" id="term-input" autocomplete="off" spellcheck="false" /></div>
       </div>
       
       <style>
@@ -151,8 +151,13 @@ let oos = {
             overflow: auto;
         }
   
-        #term-input {
+        #term-input-container {
             width: 100%;
+            display: flex;
+        }
+
+        #term-input {
+            flex: 1;
         }
   
         #term-history {
