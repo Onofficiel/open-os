@@ -294,7 +294,7 @@ let oos = {
      *
      * @param {string} inp Command to send.
      */
-    send: (inp) => {
+    send(inp) {
       let args = inp.split(/ +/g);
       let cmd = args[0];
       args.shift();
