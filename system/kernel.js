@@ -311,9 +311,9 @@ let oos = {
         {
           name: "ls",
           description: "Show all the files and foler of this directory",
-          exec: async () => {
+          exec: () => {
             let result = "";
-            return new Promise((resolve) => {
+            return new Promise(async (resolve) => {
               await oos.FS.readdir()
                 .then((r) => (result = r.join("\n")))
                 .finally(() => {
