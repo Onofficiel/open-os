@@ -308,6 +308,18 @@ let oos = {
             return args.join(" ");
           },
         },
+        {
+          name: "ls",
+          description: "Show all the files and foler of this directory",
+          exec: async () => {
+            let result = "";
+            return await oos.FS.readdir()
+              .then((r) => (result = r.join("\n")))
+              .finally(() => {
+                return result;
+              });
+          },
+        },
       ];
 
       for (const i in cmdList) {
