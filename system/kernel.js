@@ -129,7 +129,7 @@ let oos = {
 
       /*/ Init dev console /*/
 
-      (() => {
+      /* (() => {
         new oos.StandardWindow({
           content: `
       <div class="root">
@@ -227,7 +227,7 @@ let oos = {
               });
             }
           });
-      })();
+      })(); */
     });
   },
   /**
