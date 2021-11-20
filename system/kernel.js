@@ -299,7 +299,24 @@ let oos = {
       let cmd = args[0];
       args.shift();
 
-      console.log(this);
+      for (const i in cmdList) {
+        if (Object.hasOwnProperty.call(cmdList, i)) {
+          const cCmd = cmdList[i];
+
+          if (cmd === cCmd.name) return cCmd.exec().join("\n");
+        }
+      }
+
+      let cmdList = [
+        {
+          name: "echo",
+          description: "Output the argument",
+          structure: ["value"],
+          exec: () => {
+            return args.join(" ");
+          },
+        },
+      ];
     },
   },
   /**
