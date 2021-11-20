@@ -299,14 +299,6 @@ let oos = {
       let cmd = args[0];
       args.shift();
 
-      for (const i in cmdList) {
-        if (Object.hasOwnProperty.call(cmdList, i)) {
-          const cCmd = cmdList[i];
-
-          if (cmd === cCmd.name) return cCmd.exec().join("\n");
-        }
-      }
-
       let cmdList = [
         {
           name: "echo",
@@ -317,6 +309,14 @@ let oos = {
           },
         },
       ];
+
+      for (const i in cmdList) {
+        if (Object.hasOwnProperty.call(cmdList, i)) {
+          const cCmd = cmdList[i];
+
+          if (cmd === cCmd.name) return cCmd.exec().join("\n");
+        }
+      }
     },
   },
   /**
