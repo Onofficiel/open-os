@@ -317,6 +317,7 @@ let oos = {
           if (cmd === cCmd.name) return cCmd.exec();
         }
       }
+      throw "Command not found.";
     },
   },
   /**
