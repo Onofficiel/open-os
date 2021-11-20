@@ -312,13 +312,8 @@ let oos = {
           name: "ls",
           description: "Show all the files and foler of this directory",
           exec: () => {
-            let result = "";
             return new Promise(async (resolve) => {
-              await oos.FS.readdir()
-                .then((r) => (result = r.join("\n")))
-                .finally(() => {
-                  resolve(result);
-                });
+              await oos.FS.readdir().then((r) => resolve(r.join("\n")));
             });
           },
         },
