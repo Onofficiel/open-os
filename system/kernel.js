@@ -1085,6 +1085,7 @@ let oos = {
                 el.startsWith(path) &&
                 el.split("/").length ==
                   path.split("/").length + (path == "/" ? 0 : 1) &&
+                el !== "/" &&
                 paths.indexOf(el) == -1
               ) {
                 paths.push(el);
