@@ -212,7 +212,8 @@ let oos = {
                   eval(document.querySelector("#term-input").value) +
                   "</span>";
               } catch (e) {
-                result += "<span style='color: #ff6868;'>&lt;&nbsp;" + e + "</span>";
+                result +=
+                  "<span style='color: #ff6868;'>&lt;&nbsp;" + e + "</span>";
               }
 
               let line = document.createElement("div");
@@ -288,8 +289,112 @@ let oos = {
    * Interaction with the OS.
    */
   shell: {
-    send: () => {
-      console.error("Sorry not yet disponible...");
+    /**
+     * Send a command that the OS will execute.
+     *
+     * @param {string} cmd Command to send.
+     */
+    send: (cmd) => {
+      let args = cmd.split(/ +/g);
+      let cmd = args[0];
+      args.shift();
+
+      console.log(this);
+
+      let cmdsList = [
+        {
+          name: "help",
+          description: "Show commands infos",
+          structure: ["command name"],
+          exec: (args) => {
+            const getStructure = (cmd) => {
+              let newCmd = cmd.name;
+              if (settings.cmdPrefix === true && cmd.prefix)
+                newCmd = cmd.prefix + cmd.name;
+
+              if (!cmd.structure) return newCmd;
+
+              const stc = cmd.structure;
+              const structure = [];
+              for (let i = 0; i < stc.length; i++) {
+                structure.push("[" + stc[i] + "]");
+              }
+              return newCmd + " " + structure.join(" ");
+            };
+
+            if (args[0]) {
+              for (let i = 0; i < term.cmdsList.length; i++) {
+                const cmd = term.cmdsList[i];
+                if (args[0] === cmd.prefix + cmd.name || args[0] === cmd.name)
+                  return (
+                    cmd.name +
+                    ": " +
+                    getStructure(cmd) +
+                    " : " +
+                    cmd.description +
+                    "."
+                  );
+              }
+              return args[0] + " was not found in the command list.";
+            }
+
+            let helpList = "";
+
+            for (let i = 0; i < term.cmdsList.length; i++) {
+              const listCmd = term.cmdsList[i];
+              if (settings.cmdPrefix === true) {
+                if (listCmd.prefix) {
+                  helpList +=
+                    listCmd.prefix + listCmd.name + ": " + listCmd.description;
+                } else if (!listCmd.prefix) {
+                  helpList += listCmd.name + ": " + listCmd.description;
+                }
+              } else if (settings.cmdPrefix !== true) {
+                helpList += listCmd.name + ": " + listCmd.description;
+              }
+
+              if (i < term.cmdsList.length - 1) {
+                helpList += ",\n";
+              } else {
+                helpList += ".";
+              }
+            }
+            return helpList;
+          },
+        },
+        {
+          name: "echo",
+          description: "Write arguments to the terminal",
+          structure: ["text"],
+          exec: (args) => {
+            return args.join(" ");
+          },
+        },
+        {
+          name: "clear",
+          description: "Clear the terminal",
+          exec: () => {
+            history.innerHTML = null;
+            return "Terminal cleared.";
+          },
+        },
+        {
+          name: "restart",
+          description: "Reload the page",
+          exec: () => {
+            document.location.reload();
+            return "Reloading page...";
+          },
+        },
+        {
+          name: "exe",
+          description: "execute javascript",
+          structure: ["js code"],
+          exec: (args) => {
+            return eval(args.join(" "));
+          },
+        },
+      ];
     },
   },
   /**
