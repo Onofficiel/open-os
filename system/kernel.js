@@ -122,100 +122,106 @@ let oos = {
           height: 200,
           title: "Alert",
         })
+          .center()
           .show()
           .setCurrent();
       };
 
       /*/ Init dev console /*/
 
-      new oos.StandardWindow({
-        content: `
-    <div class="root">
-      <div id="term-history"></div>
-      <input type="text" id="term-input" autocomplete="off" spellcheck="false" />
-    </div>
-    
-    <style>
-      .root {
+      (() => {
+        new oos.StandardWindow({
+          content: `
+      <div class="root">
+        <div id="term-history"></div>
+        <input type="text" id="term-input" autocomplete="off" spellcheck="false" />
+      </div>
+      
+      <style>
+        .root {
+            width: 100%;
+            height: 100%;
+      
+            padding: 5px;
+      
+            font-family: monospace;
+            background: #0f1020;
+            color: #fff;
+  
+            overflow: auto;
+        }
+  
+        #term-input {
+            width: 100%;
+        }
+  
+        #term-history {
           width: 100%;
-          height: 100%;
-    
-          padding: 5px;
-    
-          font-family: monospace;
-          background: #0f1020;
-          color: #fff;
+        }
+      
+        input#term-input:focus, input#term-input {
+            outline: none;
+            border: none;
+            margin: 0;
+      
+            background: #0f1020;
+            color: #fff;
+            font-family: monospace;
+        }
+      </style>`,
+          headerColor: "#0f1020",
+          title: "Console",
+          closable: 0,
+          maximizable: 0,
+          minimizable: 0,
+          icon: "https://open-os.netlify.app/system/ressources/icon/terminal.png",
+        }).show();
 
-          overflow: auto;
-      }
-
-      #term-input {
-          width: 100%;
-      }
-
-      #term-history {
-        width: 100%;
-      }
-    
-      input#term-input:focus, input#term-input {
-          outline: none;
-          border: none;
-          margin: 0;
-    
-          background: #0f1020;
-          color: #fff;
-          font-family: monospace;
-      }
-    </style>`,
-        headerColor: "#0f1020",
-        title: "Console",
-        closable: 0,
-        maximizable: 0,
-        minimizable: 0,
-        icon: "https://open-os.netlify.app/system/ressources/icon/terminal.png",
-      }).show();
-
-      document.querySelector(".root").addEventListener("click", () => {
-        document.querySelector("#term-input").focus();
-      });
-
-      window.addEventListener("error", (e) => {
-        let error = "<span style='color: #ff6868;'>" + e + "</span>";
-
-        let line = document.createElement("div");
-        line.innerHTML = error;
-
-        document.querySelector("#term-history").appendChild(line);
-      });
-
-      document
-        .querySelector("#term-input")
-        .addEventListener("keypress", (e) => {
-          if (e.key == "Enter") {
-            let result =
-              "<span>" +
-              oos.util.escapeHtml(document.querySelector("#term-input").value) +
-              "</span><br />";
-            try {
-              result +=
-                "<span>" +
-                eval(document.querySelector("#term-input").value) +
-                "</span>";
-            } catch (e) {
-              result += "<span style='color: #ff6868;'>" + e + "</span>";
-            }
-
-            let line = document.createElement("div");
-            line.innerHTML = result;
-
-            document.querySelector("#term-history").appendChild(line);
-            document.querySelector("#term-input").value = "";
-            document.querySelector(".root").scrollTo({
-              top: document.querySelector(".root").scrollHeight,
-              behavior: "smooth",
-            });
-          }
+        document.querySelector(".root").addEventListener("click", () => {
+          document.querySelector("#term-input").focus();
         });
+
+        window.addEventListener("error", (e) => {
+          let error =
+            "<span style='color: #ff6868;'>&lt;&nbsp;" + e + "</span>";
+
+          let line = document.createElement("div");
+          line.innerHTML = error;
+
+          document.querySelector("#term-history").appendChild(line);
+        });
+
+        document
+          .querySelector("#term-input")
+          .addEventListener("keypress", (e) => {
+            if (e.key == "Enter") {
+              let result =
+                "<span>" +
+                oos.util.escapeHtml(
+                  "> " + document.querySelector("#term-input").value
+                ) +
+                "</span><br />";
+              try {
+                result +=
+                  "<span>&lt;&nbsp;" +
+                  eval(document.querySelector("#term-input").value) +
+                  "</span>";
+              } catch (e) {
+                result += "<span style='color: #ff6868;'>&lt;&nbsp;" + e + "</span>";
+              }
+
+              let line = document.createElement("div");
+              line.innerHTML = result;
+
+              document.querySelector("#term-history").appendChild(line);
+              document.querySelector("#term-input").value = "";
+              document.querySelector(".root").scrollTo({
+                top: document.querySelector(".root").scrollHeight,
+                behavior: "smooth",
+              });
+            }
+          });
+      })();
     });
   },
   /**
