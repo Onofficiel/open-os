@@ -315,6 +315,14 @@ let oos = {
             return (await oos.FS.readdir()).join("\n");
           },
         },
+        {
+          name: "cd",
+          description: "Show all the files and foler of this directory",
+          structure: ["path"],
+          exec: async () => {
+            return (await oos.FS.changedir(args[0]));
+          },
+        },
       ];
 
       for (const i in cmdList) {
