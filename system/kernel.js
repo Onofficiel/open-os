@@ -324,6 +324,36 @@ let oos = {
           },
         },
         {
+          name: "touch",
+          description: "Create a file",
+          structure: ["path", "content"],
+          exec: async () => {
+            if (!args[0] || !args[1]) throw "Missing argument(s).";
+
+            return await oos.FS.writestr(args[0], args[1]);
+          },
+        },
+        {
+          name: "mkdir",
+          description: "Create a folder",
+          structure: ["path"],
+          exec: async () => {
+            if (!args[0]) throw "Missing path.";
+
+            return await oos.FS.mkdir(args[0]);
+          },
+        },
+        {
+          name: "cat",
+          description: "Read the content of a file",
+          structure: ["path"],
+          exec: async () => {
+            if (!args[0]) throw "Missing path.";
+
+            return await oos.FS.readstr(args[0]);
+          },
+        },
+        {
           name: "clear",
           description: "Clear the terminal",
           exec: async () => {
