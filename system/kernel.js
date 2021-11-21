@@ -312,7 +312,7 @@ let oos = {
           name: "ls",
           description: "Show all the files and foler of this directory",
           exec: async () => {
-            await oos.FS.readdir().then((r) => resolve(r.join("\n")));
+            return (await oos.FS.readdir()).join("\n");
           },
         },
       ];
