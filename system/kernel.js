@@ -294,7 +294,7 @@ let oos = {
      *
      * @param {string} inp Command to send.
      */
-    send(inp) {
+    send: async (inp) => {
       let args = inp.split(/ +/g);
       let cmd = args[0];
       args.shift();
@@ -311,10 +311,8 @@ let oos = {
         {
           name: "ls",
           description: "Show all the files and foler of this directory",
-          exec: () => {
-            return new Promise(async (resolve) => {
-              await oos.FS.readdir().then((r) => resolve(r.join("\n")));
-            });
+          exec: async () => {
+            await oos.FS.readdir().then((r) => resolve(r.join("\n")));
           },
         },
       ];
@@ -323,7 +321,7 @@ let oos = {
         if (Object.hasOwnProperty.call(cmdList, i)) {
           const cCmd = cmdList[i];
 
-          if (cmd === cCmd.name) return cCmd.exec();
+          if (cmd === cCmd.name) return await cCmd.exec();
         }
       }
       return "Command not found.";
