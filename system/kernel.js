@@ -362,7 +362,7 @@ let oos = {
         },
       ];
 
-      if (!inp) return;
+      if (!inp) return "";
       for (const i in cmdList) {
         if (Object.hasOwnProperty.call(cmdList, i)) {
           const cCmd = cmdList[i];
