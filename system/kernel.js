@@ -317,12 +317,19 @@ let oos = {
         },
         {
           name: "cd",
-          description: "Show all the files and foler of this directory",
+          description: "Change the current directory",
           structure: ["path"],
           exec: async () => {
             return args[0]
               ? await oos.FS.changedir(args[0])
               : await oos.FS.changedir("/");
+          },
+        },
+        {
+          name: "clear",
+          description: "Clear the terminal",
+          exec: async () => {
+            return (document.querySelector("#term-history").innerHTML = "");
           },
         },
       ];
