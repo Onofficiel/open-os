@@ -299,7 +299,7 @@ let oos = {
 
       let cmdList = [
         {
-          name: "echo" || "test",
+          name: "echo",
           description: "Output the argument",
           structure: ["value"],
           exec: () => {
