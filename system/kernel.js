@@ -339,7 +339,7 @@ let oos = {
           if (cmd === cCmd.name) return await cCmd.exec();
         }
       }
-      return "Command not found.";
+      throw new Error("Command not found.");
     },
   },
   /**
