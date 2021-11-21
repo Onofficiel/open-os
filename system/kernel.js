@@ -127,107 +127,105 @@ let oos = {
           .setCurrent();
       };
 
-      /*/ Init dev console /*/
+      /*/ Init dev terminal /*/
 
-      /* (() => {
-        new oos.StandardWindow({
+      (() => {
+        let wnd = new oos.StandardWindow({
           content: `
-      <div class="root">
-        <div id="term-history"></div>
-        <div id="term-input-container"><span>&gt;&nbsp;</span><input type="text" id="term-input" autocomplete="off" spellcheck="false" /></div>
-      </div>
+        <div class="root">
+          <div id="term-history"></div>
+          <div id="term-input-container"><span id="term-prefix">${oos.FS.currentDirectory} $&nbsp;</span><input type="text" id="term-input" autocomplete="off" spellcheck="false" /></div>
+        </div>
+        
+        <style>
+          .root {
+              width: 100%;
+              height: 100%;
+        
+              padding: 5px;
+        
+              font-family: monospace;
+              background: #0f1020;
+              color: #fff;
       
-      <style>
-        .root {
+              overflow: auto;
+          }
+      
+          #term-input-container {
+              width: 100%;
+              display: flex;
+          }
+      
+          #term-input {
+              flex: 1;
+          }
+      
+          #term-history {
             width: 100%;
-            height: 100%;
-      
-            padding: 5px;
-      
-            font-family: monospace;
-            background: #0f1020;
-            color: #fff;
-  
-            overflow: auto;
-        }
-  
-        #term-input-container {
-            width: 100%;
-            display: flex;
-        }
-
-        #term-input {
-            flex: 1;
-        }
-  
-        #term-history {
-          width: 100%;
-        }
-      
-        input#term-input:focus, input#term-input {
-            outline: none;
-            border: none;
-            margin: 0;
-      
-            background: #0f1020;
-            color: #fff;
-            font-family: monospace;
-        }
-      </style>`,
+          }
+        
+          input#term-input:focus, input#term-input {
+              outline: none;
+              border: none;
+              margin: 0;
+        
+              background: #0f1020;
+              color: #fff;
+              font-family: monospace;
+          }
+        </style>`,
           headerColor: "#0f1020",
-          title: "Console",
+          title: "Terminal",
           closable: 0,
           maximizable: 0,
           minimizable: 0,
           icon: "https://open-os.netlify.app/system/ressources/icon/terminal.png",
         }).show();
 
-        document.querySelector(".root").addEventListener("click", () => {
-          document.querySelector("#term-input").focus();
+        let body = wnd.getContent();
+
+        body.querySelector(".root").addEventListener("click", () => {
+          body.querySelector("#term-input").focus();
         });
 
-        window.addEventListener("error", (e) => {
-          let error =
-            "<span style='color: #ff6868;'>&lt;&nbsp;" + e + "</span>";
-
-          let line = document.createElement("div");
-          line.innerHTML = error;
-
-          document.querySelector("#term-history").appendChild(line);
-        });
-
-        document
+        body
           .querySelector("#term-input")
-          .addEventListener("keypress", (e) => {
+          .addEventListener("keypress", async (e) => {
             if (e.key == "Enter") {
+              body.querySelector("#term-prefix").innerHTML =
+                oos.FS.currentDirectory + " $&nbsp;";
+
               let result =
                 "<span>" +
                 oos.util.escapeHtml(
-                  "> " + document.querySelector("#term-input").value
+                  oos.FS.currentDirectory +
+                    " $ " +
+                    body.querySelector("#term-input").value
                 ) +
                 "</span><br />";
               try {
                 result +=
-                  "<span>&lt;&nbsp;" +
-                  eval(document.querySelector("#term-input").value) +
+                  "<span>" +
+                  (await oos.shell.send(
+                    body.querySelector("#term-input").value
+                  )) +
                   "</span>";
               } catch (e) {
-                result +=
-                  "<span style='color: #ff6868;'>&lt;&nbsp;" + e + "</span>";
+                result += "<span style='color: #ff6868;'>" + e + "</span>";
               }
 
               let line = document.createElement("div");
               line.innerHTML = result;
 
-              document.querySelector("#term-history").appendChild(line);
-              document.querySelector("#term-input").value = "";
-              document.querySelector(".root").scrollTo({
-                top: document.querySelector(".root").scrollHeight,
+              body.querySelector("#term-history").appendChild(line);
+              body.querySelector("#term-input").value = "";
+              body.querySelector(".root").scrollTo({
+                top: body.querySelector(".root").scrollHeight,
                 behavior: "smooth",
               });
             }
           });
-      })(); */
+      })();
     });
   },
   /**
