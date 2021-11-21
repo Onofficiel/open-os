@@ -321,8 +321,8 @@ let oos = {
           structure: ["path"],
           exec: async () => {
             return args[0]
-              ? await oos.FS.changedir("/")
-              : await oos.FS.changedir(args[0]);
+              ? await oos.FS.changedir(args[0])
+              : await oos.FS.changedir("/");
           },
         },
       ];
