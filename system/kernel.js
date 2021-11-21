@@ -320,7 +320,9 @@ let oos = {
           description: "Show all the files and foler of this directory",
           structure: ["path"],
           exec: async () => {
-            return (await oos.FS.changedir(args[0]));
+            return args[0]
+              ? await oos.FS.changedir("/")
+              : await oos.FS.changedir(args[0]);
           },
         },
       ];
