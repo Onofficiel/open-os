@@ -1092,6 +1092,8 @@ let oos = {
           let data = req.result;
 
           oos.FS.isFile(path).then((bool) => {
+            console.log(bool);
+            
             if (!bool) {
               try {
                 for (const i in Object.keys(data.data)) {
