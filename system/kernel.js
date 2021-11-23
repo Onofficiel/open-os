@@ -1091,12 +1091,12 @@ let oos = {
         req.onsuccess = function () {
           let data = req.result;
 
-          oos.FS.isFile(path).then((bool) => {
-            console.log(transaction);
-            console.log(bool);
+          try {
+            oos.FS.isFile(path).then((bool) => {
+              console.log(transaction);
+              console.log(bool);
 
-            if (!bool) {
-              try {
+              if (!bool) {
                 for (const i in Object.keys(data.data)) {
                   if (Object.hasOwnProperty.call(Object.keys(data.data, i))) {
                     const key = Object.keys(data.data[i]);
@@ -1108,21 +1108,16 @@ let oos = {
                 }
 
                 transaction.put(data);
-                resolve(true);
-              } catch (e) {
-                reject(e);
-              }
-            } else {
-              try {
+              } else {
                 delete data.data[path];
-
-                transaction.put(data);
-                resolve(true);
-              } catch {
-                reject(false);
               }
-            }
-          });
+            });
+            transaction.put(data);
+            
+            resolve(true);
+          } catch {
+            reject(false);
+          }
         };
       });
     }
