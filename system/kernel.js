@@ -1093,7 +1093,7 @@ let oos = {
 
           oos.FS.isFile(path).then((bool) => {
             console.log(bool);
-            
+
             if (!bool) {
               try {
                 for (const i in Object.keys(data.data)) {
@@ -1108,8 +1108,8 @@ let oos = {
 
                 transaction.put(data);
                 resolve(true);
-              } catch {
-                reject(false);
+              } catch (e) {
+                reject(false, e);
               }
             } else {
               try {
