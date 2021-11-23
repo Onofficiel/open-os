@@ -1109,7 +1109,7 @@ let oos = {
                 transaction.put(data);
                 resolve(true);
               } catch (e) {
-                reject(false, e);
+                reject(e);
               }
             } else {
               try {
