@@ -1092,6 +1092,7 @@ let oos = {
           let data = req.result;
 
           oos.FS.isFile(path).then((bool) => {
+            console.log(transaction);
             console.log(bool);
 
             if (!bool) {
