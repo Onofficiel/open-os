@@ -1089,15 +1089,37 @@ let oos = {
         let req = transaction.get("main");
 
         req.onsuccess = function () {
-          try {
-            let data = req.result;
-            delete data.data[path];
+          let data = req.result;
 
-            transaction.put(data);
-            resolve(true);
-          } catch {
-            reject(false);
-          }
+          oos.FS.isFile(path).then((bool) => {
+            if (!bool) {
+              try {
+                for (const i in Object.keys(data.data)) {
+                  if (Object.hasOwnProperty.call(Object.keys(data.data, i))) {
+                    const key = Object.keys(data.data[i]);
+
+                    if (path.startsWith(key + "/") || path === key) {
+                      delete data.data[key];
+                    }
+                  }
+                }
+
+                transaction.put(data);
+                resolve(true);
+              } catch {
+                reject(false);
+              }
+            } else {
+              try {
+                delete data.data[path];
+
+                transaction.put(data);
+                resolve(true);
+              } catch {
+                reject(false);
+              }
+            }
+          });
         };
       });
     }
