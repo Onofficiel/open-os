@@ -1115,6 +1115,7 @@ let oos = {
               }
             });
 
+            console.log(data);
             resolve(transaction.put(data));
           } catch (e) {
             reject(e);
