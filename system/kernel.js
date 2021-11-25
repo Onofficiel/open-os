@@ -1113,8 +1113,8 @@ let oos = {
             transaction.put(data);
 
             resolve(true);
-          } catch {
-            reject(false);
+          } catch (e) {
+            reject(e);
           }
         };
       });
