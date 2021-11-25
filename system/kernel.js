@@ -1092,28 +1092,33 @@ let oos = {
           let data = req.result;
 
           try {
-            oos.FS.isFile(path).then((bool) => {
-              console.group("Debug");
+            let isFile = false;
+            oos.FS.isFile(path)
+              .then((bool) => {
+                isFile = bool;
+              })
+              .finally(() => {
+                console.group("Debug");
 
-              console.log(transaction);
-              console.log(bool);
+                console.log(transaction);
+                console.log(isFile);
 
-              console.groupEnd();
+                console.groupEnd();
 
-              if (!bool) {
-                for (const i in Object.keys(data.data)) {
-                  if (Object.hasOwnProperty.call(Object.keys(data.data, i))) {
-                    const key = Object.keys(data.data[i]);
+                if (!isFile) {
+                  for (const i in Object.keys(data.data)) {
+                    if (Object.hasOwnProperty.call(Object.keys(data.data, i))) {
+                      const key = Object.keys(data.data[i]);
 
-                    if (path.startsWith(key + "/") || path === key) {
-                      delete data.data[key];
+                      if (path.startsWith(key + "/") || path === key) {
+                        delete data.data[key];
+                      }
                     }
                   }
+                } else {
+                  delete data.data[path];
                 }
-              } else {
-                delete data.data[path];
-              }
-            });
+              });
 
             console.log(data);
             resolve(transaction.put(data));
