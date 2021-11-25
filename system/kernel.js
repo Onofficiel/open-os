@@ -1109,7 +1109,7 @@ let oos = {
 
               transaction.put(data);
             } else { */
-              delete data.data[path];
+            delete data.data[path];
             /* } */
           });
           transaction.put(data);
