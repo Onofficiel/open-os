@@ -1110,9 +1110,8 @@ let oos = {
                 delete data.data[path];
               }
             });
-            transaction.put(data);
 
-            resolve(true);
+            resolve(transaction.put(data));
           } catch (e) {
             reject(e);
           }
