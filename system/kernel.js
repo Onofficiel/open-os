@@ -1093,8 +1093,6 @@ let oos = {
 
           try {
             oos.FS.isFile(path).then((bool) => {
-              let modifiedData = data;
-
               console.group("Debug");
 
               console.log(transaction);
@@ -1103,25 +1101,21 @@ let oos = {
               console.groupEnd();
 
               if (!bool) {
-                for (const i in Object.keys(modifiedData.data)) {
-                  if (
-                    Object.hasOwnProperty.call(
-                      Object.keys(modifiedData.data, i)
-                    )
-                  ) {
-                    const key = Object.keys(modifiedData.data[i]);
+                for (const i in Object.keys(data.data)) {
+                  if (Object.hasOwnProperty.call(Object.keys(data.data, i))) {
+                    const key = Object.keys(data.data[i]);
 
                     if (path.startsWith(key + "/") || path === key) {
-                      delete modifiedData.data[key];
+                      delete data.data[key];
                     }
                   }
                 }
               } else {
-                delete modifiedData.data[path];
+                delete data.data[path];
               }
             });
 
-            resolve(transaction.put(modifiedData));
+            resolve(transaction.put(data));
           } catch (e) {
             reject(e);
           }
