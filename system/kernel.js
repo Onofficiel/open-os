@@ -1096,7 +1096,7 @@ let oos = {
             console.log(transaction);
             console.log(bool);
 
-            if (!bool) {
+            /* if (!bool) {
               for (const i in Object.keys(data.data)) {
                 if (Object.hasOwnProperty.call(Object.keys(data.data, i))) {
                   const key = Object.keys(data.data[i]);
@@ -1108,9 +1108,9 @@ let oos = {
               }
 
               transaction.put(data);
-            } else {
+            } else { */
               delete data.data[path];
-            }
+            /* } */
           });
           transaction.put(data);
 
