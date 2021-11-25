@@ -1093,25 +1093,35 @@ let oos = {
 
           try {
             oos.FS.isFile(path).then((bool) => {
+              let modifiedData = data;
+
+              console.group("Debug");
+
               console.log(transaction);
               console.log(bool);
 
+              console.groupEnd();
+
               if (!bool) {
-                for (const i in Object.keys(data.data)) {
-                  if (Object.hasOwnProperty.call(Object.keys(data.data, i))) {
-                    const key = Object.keys(data.data[i]);
+                for (const i in Object.keys(modifiedData.data)) {
+                  if (
+                    Object.hasOwnProperty.call(
+                      Object.keys(modifiedData.data, i)
+                    )
+                  ) {
+                    const key = Object.keys(modifiedData.data[i]);
 
                     if (path.startsWith(key + "/") || path === key) {
-                      delete data.data[key];
+                      delete modifiedData.data[key];
                     }
                   }
                 }
               } else {
-                delete data.data[path];
+                delete modifiedData.data[path];
               }
             });
 
-            resolve(transaction.put(data));
+            resolve(transaction.put(modifiedData));
           } catch (e) {
             reject(e);
           }
