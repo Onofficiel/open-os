@@ -644,9 +644,7 @@ let oos = {
           window.addEventListener("mouseup", mouseup);
 
           function mousemove(e) {
-            if (ctx.maximized) {
-              ctx.toggleMaximize();
-            }
+            if (ctx.maximized) return;
 
             let newX = prevX - e.clientX;
             let newY = prevY - e.clientY;
