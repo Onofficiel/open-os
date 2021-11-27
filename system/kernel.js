@@ -1121,8 +1121,10 @@ let oos = {
               });
 
             console.log(data);
-            transaction.delete("main");
-            console.log(transaction.getAll())
+            let req2 = transaction.delete("main");
+
+            console.log(req2);
+            console.log(transaction.getAll());
             transaction.add(data);
             resolve();
           } catch (e) {
