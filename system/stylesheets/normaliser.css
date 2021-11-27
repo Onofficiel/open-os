@@ -50,6 +50,8 @@
 .desktop>.desk {
   width: 50px;
   min-height: 80%;
+  max-height: 95%;
+  overflow: auto;
   background: #4e4e4eee;
   border-radius: 25px;
   margin-right: 30px;
