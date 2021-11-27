@@ -1105,7 +1105,7 @@ let oos = {
 
                 console.groupEnd();
 
-                if (!isFile) {
+                if (isFile) {
                   for (const i in Object.keys(data.data)) {
                     if (Object.hasOwnProperty.call(Object.keys(data.data, i))) {
                       const key = Object.keys(data.data[i]);
