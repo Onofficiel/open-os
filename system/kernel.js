@@ -1123,11 +1123,11 @@ let oos = {
             console.log(data);
             let req2 = transaction.delete("main");
 
-            req2.onsuccess(() => {
+            req2.onsuccess = () => {
               transaction.put(data);
 
               resolve(true);
-            });
+            };
           } catch (e) {
             reject(e);
           }
