@@ -690,9 +690,7 @@ let oos = {
             window.addEventListener("mouseup", mouseup);
 
             function mousemove(e) {
-              if (ctx.maximized) {
-                ctx.toggleMaximize();
-              }
+              if (ctx.maximized) return;
 
               const rect = wnd.getBoundingClientRect();
 
