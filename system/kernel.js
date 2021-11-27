@@ -1123,7 +1123,7 @@ let oos = {
             console.log(data);
             transaction.delete("main");
             console.log(transaction.getAll())
-            transaction.put(data);
+            transaction.add(data);
             resolve();
           } catch (e) {
             reject(e);
