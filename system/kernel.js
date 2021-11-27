@@ -1121,7 +1121,9 @@ let oos = {
               });
 
             console.log(data);
-            resolve(transaction.put(data));
+            transaction.delete("main");
+            transaction.put(data);
+            resolve();
           } catch (e) {
             reject(e);
           }
