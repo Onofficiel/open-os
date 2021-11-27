@@ -1007,7 +1007,8 @@ let oos = {
 
       this.isFile(path).then((r) => {
         if (r) throw new Error("Can't change directory, not a directory");
-        return (this.currentDirectory = path);
+        this.currentDirectory = path;
+        return path;
       });
     }
 
