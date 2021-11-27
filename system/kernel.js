@@ -1121,10 +1121,10 @@ let oos = {
                 }
               });
 
-            console.log(data);
             let req2 = transaction.delete("main");
 
             req2.onsuccess = () => {
+              console.log(data);
               transaction.put(data);
 
               resolve(true);
