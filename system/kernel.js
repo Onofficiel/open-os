@@ -1124,7 +1124,7 @@ let oos = {
             let req2 = transaction.delete("main");
 
             req2.onsuccess = () => {
-              transaction.put(data);
+              transaction.add(data);
 
               resolve(true);
             };
