@@ -310,7 +310,7 @@ let oos = {
           name: "ls",
           description: "Show all the files and foler of this directory",
           exec: async () => {
-            return (await oos.FS.readdir()).join("\n");
+            return (await oos.FS.readDir()).join("\n");
           },
         },
         {
@@ -319,8 +319,8 @@ let oos = {
           structure: ["path"],
           exec: async () => {
             return args[0]
-              ? await oos.FS.changedir(args[0])
-              : await oos.FS.changedir("/");
+              ? await oos.FS.changeDir(args[0])
+              : await oos.FS.changeDir("/");
           },
         },
         {
@@ -330,7 +330,7 @@ let oos = {
           exec: async () => {
             if (!args[0] || !args[1]) throw "Missing argument(s).";
 
-            return await oos.FS.writestr(args[0], args[1]);
+            return await oos.FS.writeFile(args[0], args[1]);
           },
         },
         {
@@ -350,7 +350,7 @@ let oos = {
           exec: async () => {
             if (!args[0]) throw "Missing path.";
 
-            return await oos.FS.readstr(args[0]);
+            return await oos.FS.readFile(args[0]);
           },
         },
         {
@@ -998,7 +998,7 @@ let oos = {
      *
      * @param {string} path Path of the directory.
      */
-    changedir(path) {
+    changeDir(path) {
       path = this.correctPath(path);
 
       this.isFile(path).then((r) => {
@@ -1038,7 +1038,7 @@ let oos = {
      * @param {string} str The content of the file.
      * @returns {string}
      */
-    writestr(path, str) {
+    writeFile(path, str) {
       path = this.correctPath(path);
 
       return new Promise((resolve, reject) => {
