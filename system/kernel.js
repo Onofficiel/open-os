@@ -199,7 +199,7 @@ let oos = {
                 oos.util.escapeHtml(
                   oos.FS.currentDirectory +
                     " $ " +
-                    body.querySelector("#term-input").value.replace("\\n", "<br/>")
+                    body.querySelector("#term-input").value
                 ) +
                 "</span><br />";
               try {
