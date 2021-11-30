@@ -118,8 +118,8 @@ let oos = {
           minimizable: false,
           maximizable: false,
           headerColor: "#333333",
-          width: 430,
-          height: 200,
+          width: 660,
+          height: 400,
           title: "Alert",
         })
           .center()
