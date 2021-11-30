@@ -199,14 +199,14 @@ let oos = {
                 oos.util.escapeHtml(
                   oos.FS.currentDirectory +
                     " $ " +
-                    body.querySelector("#term-input").value.replace("\n", "<br/>")
+                    body.querySelector("#term-input").value.replace("\\n", "<br/>")
                 ) +
                 "</span><br />";
               try {
                 result +=
                   "<span>" +
                   (await oos.shell.send(
-                    body.querySelector("#term-input").value.replace("\n", "<br/>")
+                    body.querySelector("#term-input").value.replace("\\n", "<br/>")
                   )) +
                   "</span>";
               } catch (e) {
