@@ -1071,12 +1071,12 @@ let oos = {
     }
 
     /**
-     * Delete a file in the file system.
+     * Delete a file or a directory in the file system.
      *
-     * @param {string} path The path to clear.
+     * @param {string} path The path to delete.
      * @returns {boolean}
      */
-    clearstr(path) {
+    delete(path) {
       path = this.correctPath(path);
 
       return new Promise((resolve, reject) => {
@@ -1165,7 +1165,7 @@ let oos = {
      * @param {string} path The path of the file to read.
      * @returns {string}
      */
-    readstr(path) {
+    readFile(path) {
       path = this.correctPath(path);
 
       return new Promise((resolve, reject) => {
@@ -1185,7 +1185,7 @@ let oos = {
      * @param {string} path The path of the directory to read.
      * @returns {string[]}
      */
-    readdir(path) {
+    readDir(path) {
       path = this.correctPath(path);
 
       return new Promise((resolve, reject) => {
