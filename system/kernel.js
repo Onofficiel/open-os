@@ -1,10 +1,10 @@
 /**********************************
- *                                *
- *             OpenOS             *
- *                                *
- *           Onofficiel           *
- *                                *
-/*********************************/
+   *                                *
+   *             OpenOS             *
+   *                                *
+   *           Onofficiel           *
+   *                                *
+  /*********************************/
 
 //           kernel.js           //
 
@@ -36,18 +36,18 @@ let oos = {
       /*/ Render Graphic User Interface /*/
 
       osDiv.innerHTML = `
-            <div class='loader'>
-                <img src="https://open-os.netlify.app/system/ressources/img/OutlinedLogoWhite.png">
-            </div>
-            <div class='desktop'>Desktop</div>
-            `;
+              <div class='loader'>
+                  <img src="https://open-os.netlify.app/system/ressources/img/OutlinedLogoWhite.png">
+              </div>
+              <div class='desktop'>Desktop</div>
+              `;
 
       osDiv.querySelector(".desktop").innerHTML = `
-            
-            <div class="notification-container"></div>
-            <div class="desk"></div>
+              
+              <div class="notification-container"></div>
+              <div class="desk"></div>
 
-            `;
+              `;
       osDiv.removeChild(osDiv.querySelector(".loader"));
 
       /*/ Redefining some JavaScript functions /*/
@@ -55,28 +55,28 @@ let oos = {
       window.console.error = (error) => {
         let wnd = new oos.StandardWindow({
           content: `
-          <div style="background-color: #ff6868;
-                  width: 100%;
-                  height: 100%;">
-        <span style="font-size:100px;
+            <div style="background-color: #ff6868;
+                    width: 100%;
+                    height: 100%;">
+          <span style="font-size:100px;
+                    position: absolute;
+                    left: 50%;
+                    top: 30%;
+                    transform: translate(-150%, -50%);
+                    color: #fff;">&#9888;</span>
+          <h2 style="color: #fff;
+                  position: absolute;
+                  left: 60%;
+                  top: 30%;
+                  transform: translate(-50%, -50%);">An error occured.</h2>
+          <p style="color: #fff;
                   position: absolute;
                   left: 50%;
-                  top: 30%;
-                  transform: translate(-150%, -50%);
-                  color: #fff;">&#9888;</span>
-        <h2 style="color: #fff;
-                 position: absolute;
-                 left: 60%;
-                 top: 30%;
-                 transform: translate(-50%, -50%);">An error occured.</h2>
-        <p style="color: #fff;
-                 position: absolute;
-                 left: 50%;
-                 top: 60%;
-                 transform: translateX(-50%);
-                 padding: 5px:">${error.toString()}</p>
-        </div>
-          `,
+                  top: 60%;
+                  transform: translateX(-50%);
+                  padding: 5px:">${error.toString()}</p>
+          </div>
+            `,
           resizable: false,
           minimizable: false,
           maximizable: false,
@@ -93,27 +93,27 @@ let oos = {
       window.alert = (msg) => {
         let wnd = new oos.StandardWindow({
           content: `
-          <div style="
-      
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: space-evenly;
-      
-          width: 100%;
-          height: 100%;
-      
-          color: #333333;
-      
-          ">
-              <h1 style="
-      
-              font-size: 80px;
-      
-              ">⚠</h1>
-              <div>${msg.toString()}</div>
-          </div>
-          `,
+            <div style="
+        
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        
+            width: 100%;
+            height: 100%;
+        
+            color: #333333;
+        
+            ">
+                <h1 style="
+        
+                font-size: 80px;
+        
+                ">⚠</h1>
+                <div>${msg.toString()}</div>
+            </div>
+            `,
           resizable: false,
           minimizable: false,
           maximizable: false,
@@ -132,48 +132,48 @@ let oos = {
       (() => {
         let wnd = new oos.StandardWindow({
           content: `
-        <div class="root">
-          <div id="term-history"></div>
-          <div id="term-input-container"><span id="term-prefix">${oos.FS.currentDirectory} $&nbsp;</span><input type="text" id="term-input" autocomplete="off" spellcheck="false" /></div>
-        </div>
+          <div class="root">
+            <div id="term-history"></div>
+            <div id="term-input-container"><span id="term-prefix">${oos.FS.currentDirectory} $&nbsp;</span><input type="text" id="term-input" autocomplete="off" spellcheck="false" /></div>
+          </div>
+          
+          <style>
+            .root {
+                width: 100%;
+                height: 100%;
+          
+                padding: 5px;
+          
+                font-family: monospace;
+                background: #0f1020;
+                color: #fff;
         
-        <style>
-          .root {
+                overflow: auto;
+            }
+        
+            #term-input-container {
+                width: 100%;
+                display: flex;
+            }
+        
+            #term-input {
+                flex: 1;
+            }
+        
+            #term-history {
               width: 100%;
-              height: 100%;
-        
-              padding: 5px;
-        
-              font-family: monospace;
-              background: #0f1020;
-              color: #fff;
-      
-              overflow: auto;
-          }
-      
-          #term-input-container {
-              width: 100%;
-              display: flex;
-          }
-      
-          #term-input {
-              flex: 1;
-          }
-      
-          #term-history {
-            width: 100%;
-          }
-        
-          input#term-input:focus, input#term-input {
-              outline: none;
-              border: none;
-              margin: 0;
-        
-              background: #0f1020;
-              color: #fff;
-              font-family: monospace;
-          }
-        </style>`,
+            }
+          
+            input#term-input:focus, input#term-input {
+                outline: none;
+                border: none;
+                margin: 0;
+          
+                background: #0f1020;
+                color: #fff;
+                font-family: monospace;
+            }
+          </style>`,
           headerColor: "#0f1020",
           title: "Terminal",
           closable: 0,
@@ -486,50 +486,50 @@ let oos = {
       this.id = this.winDiv.dataset.id;
 
       this.winDiv.innerHTML = `
-          <div class="window-content">${this.params.content}</div>
-          <div class="window-header cs-move" style="background: ${
-            this.params.headerColor
-          }; color: ${this.params.headerTextColor}">
-            ${
-              !!this.params.icon
-                ? `<img src="` +
-                  this.params.icon +
-                  `" style="width: 20px; height: 20px; ">`
-                : ""
-            }
-            <span class="title">${this.params.title}</span>
-            ${
-              this.params.minimizable ||
-              this.params.maximizable ||
-              this.params.closable
-                ? `
-              <span class="ctrl-btn">
-                ${
-                  this.params.minimizable
-                    ? '<span class="minimize-btn cs-pointer">🗕</span>'
-                    : ""
-                }
-                ${
-                  this.params.maximizable
-                    ? '<span class="maximize-btn cs-pointer">🗖</span>'
-                    : ""
-                }
-                ${
-                  this.params.closable
-                    ? '<span class="close-btn cs-pointer">🗙</span>'
-                    : ""
-                }
-              </span>
-              `
-                : ""
-            }
-          </div>
+            <div class="window-content">${this.params.content}</div>
+            <div class="window-header cs-move" style="background: ${
+              this.params.headerColor
+            }; color: ${this.params.headerTextColor}">
+              ${
+                !!this.params.icon
+                  ? `<img src="` +
+                    this.params.icon +
+                    `" style="width: 20px; height: 20px; ">`
+                  : ""
+              }
+              <span class="title">${this.params.title}</span>
+              ${
+                this.params.minimizable ||
+                this.params.maximizable ||
+                this.params.closable
+                  ? `
+                <span class="ctrl-btn">
+                  ${
+                    this.params.minimizable
+                      ? '<span class="minimize-btn cs-pointer">🗕</span>'
+                      : ""
+                  }
+                  ${
+                    this.params.maximizable
+                      ? '<span class="maximize-btn cs-pointer">🗖</span>'
+                      : ""
+                  }
+                  ${
+                    this.params.closable
+                      ? '<span class="close-btn cs-pointer">🗙</span>'
+                      : ""
+                  }
+                </span>
+                `
+                  : ""
+              }
+            </div>
 
-          <div class="resizer nw"></div>
-          <div class="resizer ne"></div>
-          <div class="resizer se"></div>
-          <div class="resizer sw"></div>
-      `;
+            <div class="resizer nw"></div>
+            <div class="resizer ne"></div>
+            <div class="resizer se"></div>
+            <div class="resizer sw"></div>
+        `;
 
       this.hide();
 
@@ -850,33 +850,33 @@ let oos = {
 
       this.notifDiv.innerHTML = `
 
-      
-      ${
-        !!this.params.icon
-          ? `<img src="` +
-            this.params.icon +
-            `" style="width: 50px; height: 50px; margin-right: 10px">`
-          : ""
-      }
-
-      <div style="display: flex;
-                  flex-direction: column;
-      ">
-
-        <b>${this.params.title}</b>
-        <p>${this.params.content}</p>
         
-      </div>
-
-      <span>
         ${
-          this.params.closable
-            ? `<span class="close-btn cs-pointer" style="margin-left: 10px;">🗙</span>`
+          !!this.params.icon
+            ? `<img src="` +
+              this.params.icon +
+              `" style="width: 50px; height: 50px; margin-right: 10px">`
             : ""
         }
-      </span>
 
-      `;
+        <div style="display: flex;
+                    flex-direction: column;
+        ">
+
+          <b>${this.params.title}</b>
+          <p>${this.params.content}</p>
+          
+        </div>
+
+        <span>
+          ${
+            this.params.closable
+              ? `<span class="close-btn cs-pointer" style="margin-left: 10px;">🗙</span>`
+              : ""
+          }
+        </span>
+
+        `;
 
       if (this.params.closable) {
         this.notifDiv
