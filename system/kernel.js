@@ -194,20 +194,19 @@ let oos = {
             if (e.key == "Enter") {
               body.querySelector("#term-prefix").innerHTML =
                 oos.FS.currentDirectory + " $&nbsp;";
-
               let result =
                 "<span>" +
                 oos.util.escapeHtml(
                   oos.FS.currentDirectory +
                     " $ " +
-                    body.querySelector("#term-input").value
+                    body.querySelector("#term-input").value.replace("\n", "<br/>")
                 ) +
                 "</span><br />";
               try {
                 result +=
                   "<span>" +
                   (await oos.shell.send(
-                    body.querySelector("#term-input").value
+                    body.querySelector("#term-input").value.replace("\n", "<br/>")
                   )) +
                   "</span>";
               } catch (e) {
