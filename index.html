@@ -13,6 +13,31 @@
 
     <!-- Kernel -->
     <script src="https://open-os.netlify.app/system/kernel.js"></script>
+    
+    <!-- Firebase -->
+    <script defer type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyDrtwgGJUuxeU-Gg1N8o4ILyABSdlyQnEw",
+        authDomain: "openos-9363c.firebaseapp.com",
+        projectId: "openos-9363c",
+        storageBucket: "openos-9363c.appspot.com",
+        messagingSenderId: "799622340877",
+        appId: "1:799622340877:web:822697406fae0d37ebd044",
+        measurementId: "G-W85WGSR679"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
   </head>
 
   <body>
