@@ -1123,12 +1123,9 @@ let oos = {
                 }
               });
 
-            let req2 = transaction.delete("main");
+            let req2 = transaction.put(data);
 
             req2.onsuccess = () => {
-              console.log(data);
-              transaction.put(data);
-
               resolve(true);
             };
           } catch (e) {
