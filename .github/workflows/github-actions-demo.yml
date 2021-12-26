@@ -1,8 +1,0 @@
-name: Deploy
-on: [push]
-jobs:
-  Deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Currently deploying..."
-      - run: npm -v
