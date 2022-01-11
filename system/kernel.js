@@ -555,7 +555,6 @@ let oos = {
           .addEventListener("click", () => {
             this.hide();
           });
-        oos.ui.desk.addApp(this);
       }
       if (this.params.maximizable) {
         this.winDiv
@@ -580,8 +579,15 @@ let oos = {
       return this;
     }
 
+    /**
+     * Render the window.
+     *
+     * @returns {StandardWindow}
+     */
     render() {
       document.querySelector(".desktop").appendChild(this.winDiv);
+      if (this.params.minimizable) oos.ui.desk.addApp(this);
+      return this;
     }
 
     /**
