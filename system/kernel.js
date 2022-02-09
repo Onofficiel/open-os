@@ -1122,7 +1122,11 @@ let oos = {
                     }
                   }
                 } else {
-                  console.log(data.data);
+                  for (const key of Object.keys(data.data)) {
+                    if (path === key) {
+                      console.log(data.data, data.data[key]);
+                    }
+                  }
                 }
               });
 
