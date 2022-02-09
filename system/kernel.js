@@ -8,15 +8,16 @@
 
 //           kernel.js           //
 
-(() => {})();
+{
+}
 
-let oos = {
+const oos = {
   /**
    * Init the system.
    */
   main: () => {
     window.addEventListener("load", () => {
-      let osDiv = document.querySelector(".os-container");
+      const osDiv = document.querySelector(".os-container");
 
       /*/ import Other Ressources /*/
 
@@ -53,7 +54,7 @@ let oos = {
       /*/ Redefining some JavaScript functions /*/
 
       window.console.error = (error) => {
-        let wnd = new oos.StandardWindow({
+        const wnd = new oos.StandardWindow({
           content: `
             <div style="background-color: #ff6868;
                     width: 100%;
@@ -130,7 +131,7 @@ let oos = {
       /*/ Init dev terminal /*/
 
       (() => {
-        let wnd = new oos.StandardWindow({
+        const wnd = new oos.StandardWindow({
           content: `
           <div class="root">
             <div id="term-history"></div>
@@ -184,7 +185,7 @@ let oos = {
           icon: "https://open-os.netlify.app/system/ressources/icon/terminal.png",
         }).show();
 
-        let body = wnd.getContent();
+        const body = wnd.getContent();
 
         body.querySelector(".root").addEventListener("click", () => {
           body.querySelector("#term-input").focus();
@@ -198,7 +199,7 @@ let oos = {
           .addEventListener("keypress", async (e) => {
             if (e.key == "Enter") {
               body.querySelector("#term-prefix").innerHTML =
-                oos.FS.currentDirectory + " $&nbsp;";
+                `${oos.FS.currentDirectory} $&nbsp;`;
               let result =
                 "<span>" +
                 oos.util.escapeHtml(
@@ -1117,8 +1118,9 @@ let oos = {
 
                 if (!isFile) {
                   for (const key of Object.keys(data.data)) {
-                    if (path.startsWith(key + "/") || path === key) {
-                      console.log(key + " is:", data.data[key]);
+                    if (!(path.startsWith(`${key}/`) || path === key)) {
+                    } else {
+                      console.log(`${key} is:`, data.data[key]);
                     }
                   }
                 } else {
