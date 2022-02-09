@@ -1118,13 +1118,14 @@ let oos = {
                 if (!isFile) {
                   for (const key of Object.keys(data.data)) {
                     if (path.startsWith(key + "/") || path === key) {
-                      console.log(data.data[key]);
+                      console.log(key + " is:" ,data.data[key]);
                     }
                   }
                 } else {
                   for (const key of Object.keys(data.data)) {
                     if (path === key) {
                       console.log(data.data[key]);
+                      delete data.data[key];
                     }
                   }
                 }
