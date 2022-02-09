@@ -1121,11 +1121,13 @@ let oos = {
                       const key = Object.keys(data.data[i]);
 
                       if (path.startsWith(key + "/") || path === key) {
+                        console.log(data.data);
                         data.data.splice(key, 1);
                       }
                     }
                   }
                 } else {
+                  console.log(data.data);
                   data.data.splice(path, 1);
                 }
               });
