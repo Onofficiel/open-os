@@ -1134,7 +1134,8 @@ let oos = {
             console.log(data);
             let req2 = transaction.put(data);
 
-            req2.onsuccess = () => {
+            req2.onsuccess = (e) => {
+              console.log(e);
               resolve(true);
             };
           } catch (e) {
