@@ -1116,19 +1116,13 @@ let oos = {
                 console.groupEnd();
 
                 if (!isFile) {
-                  for (const i in Object.keys(data.data)) {
-                    if (Object.hasOwnProperty.call(Object.keys(data.data, i))) {
-                      const key = Object.keys(data.data[i]);
-
-                      if (path.startsWith(key + "/") || path === key) {
-                        console.log(data.data);
-                        data.data.splice(key, 1);
-                      }
+                  for (const key of Object.keys(data.data)) {
+                    if (path.startsWith(key + "/") || path === key) {
+                      console.log(data.data, data.data[key]);
                     }
                   }
                 } else {
                   console.log(data.data);
-                  data.data.splice(path, 1);
                 }
               });
 
